@@ -3,12 +3,6 @@
  * Make grapgh div naming dynamic
  * Be able to feed data as a csv file to it
  * Validate form inputs
- * Fix the Series duplication part that prevents tabs to work anymore.
- * Chart series types should be implenmented
- * The same for trhe 
-
-
- * have a data part s
  */
 var titleData          = {
     "category" : "title",
@@ -3580,9 +3574,11 @@ window.onload =function load_inputs() {
             break;
             case("color") :
               var defaultVal= ''; 
-              if (typeof scaleData[m].inputs[j].defValue != 'undefined' ) {
+              if (typeof scaleData[m].inputs[j].defValue != 'undefined' &&  scaleData[m].inputs[j].defValue != '') {
                 defaultVal = scaleData[m].inputs[j].defValue;
-              };
+              } else {
+                defaultVal = "#000000";
+              }
               seriesElement[i].innerHTML += linebreak
               +"<label>"+ scaleData[m].inputs[j].label+": </label>"
               +"<input type='color' id='"+scaleData[m].inputs[j].id+"' data-category='"
@@ -3714,9 +3710,9 @@ window.onload =function load_inputs() {
               seriesElement[i].innerHTML += linebreak
               +"<label>"+ seriesData[m].inputs[j].label+": </label>"
               +"<input type='checkbox' id='"+seriesData[m].inputs[j].id+"' data-category='"
-              +seriesData[m]["category"]+"' data-key='"+seriesData[m].inputs[j].key+"' dat-subcat='"+
+              +seriesData[m]["category"]+"' data-key='"+seriesData[m].inputs[j].key+"' data-subcat='"+
               seriesData[m].subcategory
-              +"' onchange='Modify_chart_series(this, this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>";
+              +"' onchange='Modify_chart_series(this, this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"data-subcat\"))'><br>";
             break;
             case("text") :
               var defaultVal= ''; 
@@ -3858,9 +3854,11 @@ window.onload =function load_inputs() {
             break;
              case("color") :
               var defaultVal= ''; 
-              if (typeof labelData.inputs[j].defValue != 'undefined' ) {
+              if (typeof labelData.inputs[j].defValue != 'undefined' && labelData.inputs[j].defValue !='') {
                 defaultVal = labelData.inputs[j].defValue;
-              };
+              } else {
+                defaultVal = "#000000";
+              }
               lblArrayElemnt[i].innerHTML += linebreak
               +"<label>"+ labelData.inputs[j].label+": </label>"
               +"<input type='color' id='"+labelData.inputs[j].id+"' data-category='"
@@ -3978,6 +3976,11 @@ window.onload =function load_inputs() {
             switch(formData[m].inputs[j].type){
             case("color") :
               var defaultVal= ''; 
+              if (typeof labelData.inputs[j].defValue != 'undefined' && labelData.inputs[j].defValue !='') {
+                defaultVal = labelData.inputs[j].defValue;
+              } else {
+                defaultVal = "#000000";
+              } 
               element[i].innerHTML += linebreak
               +"<label>"+ formData[m].inputs[j].label+": </label>"
               +"<input type='color' id='"+formData[m].inputs[j].id+"' data-category='"
@@ -4583,7 +4586,9 @@ function new_series() {
           //if the child has data-category == series and it is a elemnet 
         if (childs[i].childNodes[k].nodeName != "#text") {
           if (childs[i].childNodes[k].getAttribute("data-category") == "series") {
-            childs[i].childNodes[k].innerHTML += seriesConfigId;
+            if (childs[i].childNodes[k].type =="label") {
+              childs[i].childNodes[k].innerHTML += seriesConfigId;
+            };
             childs[i].childNodes[k].setAttribute("data-count",seriesConfigId);
           };
         };
@@ -4856,17 +4861,30 @@ function set_line_series(element,category,subCategory) {
  */
 function Modify_chart_series(element,type,key,category,subCategory) {
   count = element.parentElement.parentElement.dataset.count;
-  var value = ''
+  var tempValue = '';
   switch (type) {
     case("checkbox") :
-      value = element.checked;
+      tempValue = element.checked;
     break;
     case("select-one") :
-      value  = element.options[element.selectedIndex].value;
+      tempValue  = element.options[element.selectedIndex].value;
     break;
     default:
     //default is for text,range
-      value= element.value;
+      tempValue= element.value;
+  }
+  if (key == "values") {
+    var temp = new Array();
+    temp = tempValue.toString().split(",");
+    var value = new Array();
+    for(num in temp){
+      if (temp[num] != '') {
+        value.push(parseInt(temp[num]));
+      };
+      
+    }
+  } else {
+    var value = tempValue;
   }
   // Get chart JSON
   var chartDta = zingchart.exec(chartID, 'getdata');
@@ -5289,3 +5307,15 @@ function drawChart(){
     data:chartData
   });
 };
+
+
+function load_attrs(element) {
+  if(document.getElementById('zingcharts-javaScript').value != ""){
+    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    for(attr in chartJason['graphset'][0]["title"] ) {
+      console.log(attr);
+    }
+  }
+}
+
+

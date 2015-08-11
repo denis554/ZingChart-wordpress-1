@@ -149,7 +149,7 @@ left: -0.25em;
 <div style="clear:both"></div>
 
 <div id="accordion">
-  <h3>Title</h3>
+  <h3 onclick="load_attrs()" data-laod="0" data-category = "title">Title</h3>
   <div class="frm-el" data-category = "title" data-sub-category = "title">
   </div>
   <h3>Sub title</h3>
@@ -296,7 +296,10 @@ left: -0.25em;
               <li><a href="#seriesTab6">Tool Tip</a></li>
               <li><a href="#seriesTab7">Value Box</a></li>
             </ul>
-            <div id="seriesTab0" class="series-el" data-category = "series" data-sub-category = "data"></div>
+            <div id="seriesTab0" class="series-el" data-category = "series" data-sub-category = "data">
+              <label for="seriesData">Values:</label>
+              <textarea id="seriesData" data-key="values" data-category="series" data-subcat = "series" oninput='Modify_chart_series(this,this.type,this.getAttribute("data-key"),this.getAttribute("data-category"),this.getAttribute("data-subcat"))'></textarea>
+            </div>
             <div id="seriesTab1" class="series-el" data-category = "series" data-sub-category = "series"></div>
             <div id="seriesTab2" class="series-el" data-category = "series" data-sub-category = "animation"></div>
             <div id="seriesTab3" class="series-el" data-category = "series" data-sub-category = "hoverState"></div>
@@ -317,7 +320,7 @@ function zing_javascript($post) {
   $javaScript =  get_post_meta($post->ID,'zing_javascript_content',true);
   add_thickbox();
   ?>
-    <textarea name="JavaScriptZing" class="widefat code code-html" id="zingcharts-javaScript"> <?php echo esc_textarea( $javaScript ); ?></textarea>
+    <textarea name="JavaScriptZing" class="widefat code code-html" id="zingcharts-javaScript" disabled> <?php echo esc_textarea( $javaScript ); ?></textarea>
   <?php
 }
 /**
