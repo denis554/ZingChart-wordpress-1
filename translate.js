@@ -3,6 +3,7 @@
  * Make grapgh div naming dynamic
  * Be able to feed data as a csv file to it
  * Validate form inputs
+ * Add set data Key for inputing data,(it is a little buggy)
  */
 var titleData          = {
     "category" : "title",
@@ -42,12 +43,53 @@ var titleData          = {
         "label": "",
         "divider" :"true",
       },
+      {   
+        "type"  :"select",
+        "values":[
+          "linear",
+          "radial",
+        ],
+        "label" :"Fill type",
+        "id"    :"fillTypeTitle",
+        "key"   :"fill-type",
+        "divider":"true",
+      },
       {
-        "type" : "font",
-        "id"   : "title", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
+        "type" : "color",
+        "id"   : "fontColorTitle", //In the case of category ID the id should match the category name
+        "key"  : "font-color",
+        "label": "Font color",
         "divider" :"true",
+      },
+      {   
+        "type"  :"select",
+        "values":[
+          "normal",
+          "italic",
+          "oblique",
+        ],
+        "label" :"Font Style",
+        "id"    :"fontStyleItemTitle",
+        "key"   :"font-style",
+        "divider":"true",
+      },
+      {
+        "type" : "text",
+        "id"   : "fontFamilyItemTitle",
+        "key"  : "font-family",
+        "label": "Font family"
+      },
+      {   
+        "type"  :"select",
+        "values":[
+          "Center",
+          "left",
+          "Right",
+        ],
+        "label" :"Text align",
+        "id"    :"textAlignitemTitle",
+        "key"   :"text-align",
+        "divider":"true",
       },
       {
         "type" : "border",
@@ -110,14 +152,14 @@ var titleData          = {
         "type" : "text",
         "id"   : "xTitle",
         "key"  : "x",
-        "label": "x-string",
+        "label": "X",
         "divider" : "true"
       },
       {
         "type" : "text",
         "id"   : "yTitle",
         "key"  : "y",
-        "label": "y-string",
+        "label": "Y",
       },
     ],};
 var subtitleData       = {
@@ -158,12 +200,53 @@ var subtitleData       = {
         "label": "",
         "divider" :"true",
       },
+       {   
+        "type"  :"select",
+        "values":[
+          "linear",
+          "radial",
+        ],
+        "label" :"Fill type",
+        "id"    :"fillTypeSubitle",
+        "key"   :"fill-type",
+        "divider":"true",
+      },
       {
-        "type" : "font",
-        "id"   : "subtitle", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
+        "type" : "color",
+        "id"   : "fontColorSubTitle", //In the case of category ID the id should match the category name
+        "key"  : "font-color",
+        "label": "Font color",
         "divider" :"true",
+      },
+      {   
+        "type"  :"select",
+        "values":[
+          "normal",
+          "italic",
+          "oblique",
+        ],
+        "label" :"Font Style",
+        "id"    :"fontStyleItemSubTitle",
+        "key"   :"font-style",
+        "divider":"true",
+      },
+      {
+        "type" : "text",
+        "id"   : "fontFamilyItemSubTitle",
+        "key"  : "font-family",
+        "label": "Font family"
+      },
+      {   
+        "type"  :"select",
+        "values":[
+          "Center",
+          "left",
+          "Right",
+        ],
+        "label" :"Text align",
+        "id"    :"textAlignitemSubitle",
+        "key"   :"text-align",
+        "divider":"true",
       },
       {
         "type" : "border",
@@ -226,14 +309,14 @@ var subtitleData       = {
         "type" : "text",
         "id"   : "xSubTitle",
         "key"  : "x",
-        "label": "x-string",
+        "label": "X",
         "divider" : "true"
       },
       {
         "type" : "text",
         "id"   : "ySubTitle",
         "key"  : "y",
-        "label": "y-string",
+        "label": "Y",
       },
     ],};
 var legendDatageneral  = {
@@ -3539,6 +3622,706 @@ var scaleXItem         = {
       "divider" :"true",
     },
   ],};
+var scaleY             = {
+  "category" : "scale-y",
+  "subcategory" :"scale-y",
+  "inputs" :[
+  {
+    "type" : "range",
+    "id"   : "alphascaleY",
+    "key"  : "alpha",
+    "label": "Alpha",
+    "min"  : '0',
+    "max"  : '1',
+    "step" :'.1'
+  },
+  {
+    "type" : "text",
+    "id"   : "decimalsScaleY",
+    "key"  : "decimals",
+    "label": "Decimals",
+    "divider" :"true"
+  },
+  {
+    "type" : "text",
+    "id"   : "decimals-separatorScaleY",
+    "key"  : "decimals-separator",
+    "label": "Decimals separator",
+  },
+  {
+    "type" : "text",
+    "id"   : "formatScaleY",
+    "key"  : "format",
+    "label": "Format",
+    "divider" :"true"
+  },
+  {
+    "type" : "checkbox",
+    "id"   : "items-overlap",
+    "key"  : "items-overlap",
+    "label": "Callvitems-overlapout",
+    "divider" :"true",
+  },
+  {
+    "type" : "color",
+    "id"   : "line-colorScaleY",
+    "key"  : "line-color",
+    "label": "Line color",
+    "divider" :"true"
+  },
+  {
+    "type" : "range",
+    "id"   : "line-widthscaleY",
+    "key"  : "line-width",
+    "label": "Alpha",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "select",
+    "id"   : "methodAnimation", 
+    "values" :["solid","dotted","dashed"],
+    "labels" :['Solid',
+    'Dotted',
+    'Dashed',
+    ],
+    "key"  : "line-style",
+    "label": "Line style",
+  },
+  {
+    "type" : "text",
+    "id"   : "paddingTopScaleY",
+    "key"  : "padding-top",
+    "label": "padding-top",
+    "divider" :"true"
+  },
+  {
+    "type" : "text",
+    "id"   : "paddingTopScaleY",
+    "key"  : "padding-right",
+    "label": "padding-right",
+  },
+  {
+    "type" : "text",
+    "id"   : "paddingBottomScaleY",
+    "key"  : "padding-bottom",
+    "label": "padding-bottom",
+  },
+  {
+    "type" : "text",
+    "id"   : "paddingleftScaleY",
+    "key"  : "padding-left",
+    "label": "padding-left",
+  },
+  {
+    "type" : "text",
+    "id"   : "marginTopScaleY",
+    "key"  : "margin-top",
+    "label": "margin-top",
+    "divider" :"true"
+  },
+  {
+    "type" : "text",
+    "id"   : "marginTopScaleY",
+    "key"  : "margin-right",
+    "label": "margin-right",
+  },
+  {
+    "type" : "text",
+    "id"   : "marginBottomScaleY",
+    "key"  : "margin-bottom",
+    "label": "margin-bottom",
+  },
+  {
+    "type" : "text",
+    "id"   : "margingleftScaleY",
+    "key"  : "margin-left",
+    "label": "margin-left",
+  },
+  {
+    "type" : "range",
+    "id"   : "max-itemsscaleY",
+    "key"  : "max-items",
+    "label": "Max items",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1',
+    "divider" : "true"
+  },
+  {
+    "type" : "range",
+    "id"   : "max-ticksscaleY",
+    "key"  : "max-ticks",
+    "label": "Max ticks",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "select",
+    "id"   : "methodAnimation", 
+    "values" :["standard","currency"],
+    "labels" :['Standartd',
+    'Currancy',
+    ],
+    "key"  : "negation",
+    "label": "Negation",
+    "divider" : "true"
+  },
+  {
+    "type" : "select",
+    "id"   : "short-unitScaleY", 
+    "values" :["k","K","m","M","b","B"],
+    "key"  : "short-unit",
+    "label": "Short unit",
+    "divider" : "true"
+  },
+  {
+    "type" : "select",
+    "id"   : "thousands-separatorScaleY", 
+    "values" :[",","."],
+    "key"  : "thousands-separator",
+    "label": "Thousands Separator",
+    "divider" : "true"
+  },
+  {
+    "type" : "text",
+    "id"   : "valuesScaleY",
+    "key"  : "values",
+    "label": "Values",
+    "divider" :"true"
+  },
+  {
+    "type" : "checkbox",
+    "id"   : "zoomingScaleY",
+    "key"  : "zooming",
+    "label": "Zooming",
+    "divider" :"true",
+  },
+  {
+    "type" : "checkbox",
+    "id"   : "zoom-snapScaleY",
+    "key"  : "zoom-snap",
+    "label": "zoom-snap",
+  },
+   {
+    "type" : "text",
+    "id"   : "zoom-toScaleY",
+    "key"  : "zoom-to",
+    "label": "Zoom to",
+    "divider" :"true"
+  },
+  {
+    "type" : "select",
+    "id"   : "placementScaleY", 
+    "values" :["default","opposite"],
+    "key"  : "placement",
+    "label": "Placement",
+    "divider" : "true"
+  },
+
+  ],};
+var scaleYGuid         = {
+  "category" : "scale-y",
+  "subcategory" :"guide",
+  "inputs" :[
+  {
+    "type" : "range",
+    "id"   : "alphascaleX",
+    "key"  : "alpha",
+    "label": "Alpha",
+    "min"  : '0',
+    "max"  : '1',
+    "step" :'.1'
+  },
+  {
+    "type" : "color",
+    "id"   : "line-colorScaleX",
+    "key"  : "line-color",
+    "label": "Line color",
+    "divider" :"true"
+  },
+  {
+    "type" : "range",
+    "id"   : "line-widthscaleX",
+    "key"  : "line-width",
+    "label": "Line width",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-gap-sizescaleX",
+    "key"  : "line-gap-size",
+    "label": "Line gap size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-segment-sizescaleX",
+    "key"  : "line-segment-size",
+    "label": "Line segment size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "select",
+    "id"   : "methodAnimation", 
+    "values" :["solid","dotted","dashed"],
+    "labels" :['Solid',
+    'Dotted',
+    'Dashed',
+    ],
+    "key"  : "line-style",
+    "label": "Line style",
+  },
+  {
+    "type" : "checkbox",
+    "id"   : "visibleScaleX",
+    "key"  : "visible",
+    "label": "Visible",
+    "divider" :"true",
+  },
+  ],};
+var scaleYLabel        = {
+  "category" : "scale-y",
+  "subcategory" :"label",
+  "inputs" :[
+    {
+      "type" : "range",
+      "id"   : "font-sizeLabelScaleX",
+      "key"  : "font-size",
+      "label": "Font size",
+      "min"  : '0',
+      "max"  : '100',
+      "step" :'1',
+    },
+    {
+      "type" : "color",
+      "id"   : "font-colorLabelScaleX",
+      "key"  : "font-color",
+      "label": "Font color",
+    },
+    {
+      "type" : "text",
+      "id"   : "font-familyLabelScaleX",
+      "key"  : "font-family",
+      "label": "Font family",
+    },
+    {
+      "type" : "checkbox",
+      "id"   : "boldLabelScaleX",
+      "key"  : "bold",
+      "label": "bold",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingTopLabelScaleX",
+      "key"  : "padding-top",
+      "label": "padding-top",
+      "divider" :"true",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingTopLabelScaleX",
+      "key"  : "padding-right",
+      "label": "padding-right",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingBottomLabelScaleX",
+      "key"  : "padding-bottom",
+      "label": "padding-bottom",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingleftLabelScaleX",
+      "key"  : "padding-left",
+      "label": "padding-left",
+    },
+    {
+      "type" : "text",
+      "id"   : "marginTopLabelScaleX",
+      "key"  : "margin-top",
+      "label": "margin-top",
+      "divider" :"true"
+    },
+    {
+      "type" : "text",
+      "id"   : "marginTopLabelScaleX",
+      "key"  : "margin-right",
+      "label": "margin-right",
+    },
+    {
+      "type" : "text",
+      "id"   : "marginBottomLabelScaleX",
+      "key"  : "margin-bottom",
+      "label": "margin-bottom",
+    },
+    {
+      "type" : "text",
+      "id"   : "margingleftLabelScaleX",
+      "key"  : "margin-left",
+      "label": "margin-left",
+    },
+    {
+      "type" : "text",
+      "id"   : "textLabelScaleX",
+      "key"  : "text",
+      "label": "Text",
+      "divider" :"true",
+    },
+    {
+      "type" : "range",
+      "id"   : "heightLabelScaleX",
+      "key"  : "height",
+      "label": "Height",
+      "min"  : '0',
+      "max"  : '1000',
+      "step" :'1',
+      "divider" : "true",
+    },
+    {
+      "type" : "range",
+      "id"   : "widthLabelScaleX",
+      "key"  : "width",
+      "label": "Width",
+      "min"  : '0',
+      "max"  : '1000',
+      "step" :'1'
+    },
+    {
+      "type" : "checkbox",
+      "id"   : "wrap-textLabelScaleX",
+      "key"  : "wrap-text",
+      "label": "Wrap text",
+    },
+  ], };
+var scaleYmarkers      = {
+  "category" : "scale-y",
+  "subcategory" :"markers",
+  "inputs" :[
+    {
+    "type" : "select",
+    "id"   : "typeMarkersScale-x", 
+    "values" :["line","area"],
+    "key"  : "type",
+    "label": "Type",
+  },
+  {
+    "type"   : "select",
+    "id"     : "placementMarkersScaleX", 
+    "values" :["default","opposite"],
+    "key"    : "placement",
+    "label"  : "Placement",
+    "divider" : "true"
+  },
+  {
+    "type" : "range",
+    "id"   : "alphaMarkerscaleX",
+    "key"  : "alpha",
+    "label": "Alpha",
+    "min"  : '0',
+    "max"  : '1',
+    "step" :'.1'
+  },
+  {
+    "type" : "bgcolor",
+    "id"   : "scale-xmarkers", //In the case of category ID the id should match the category name
+    "key"  : "",
+    "label": "",
+    "divider" :"true",
+  },
+  {
+    "type" : "color",
+    "id"   : "line-colorScaleX",
+    "key"  : "line-color",
+    "label": "Line color",
+    "divider" :"true"
+  },
+  {
+    "type" : "range",
+    "id"   : "line-widthscaleX",
+    "key"  : "line-width",
+    "label": "Line width",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-gap-sizescaleX",
+    "key"  : "line-gap-size",
+    "label": "Line gap size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-segment-sizescaleX",
+    "key"  : "line-segment-size",
+    "label": "Line segment size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "select",
+    "id"   : "methodAnimation", 
+    "values" :["solid","dotted","dashed"],
+    "labels" :['Solid',
+    'Dotted',
+    'Dashed',
+    ],
+    "key"  : "line-style",
+    "label": "Line style",
+  },
+
+  ],};
+var scaleYrefLine      = {
+  "category" : "scale-y",
+  "subcategory" :"ref-line",
+  "inputs" :[
+  {
+    "type" : "range",
+    "id"   : "alphaMarkerscaleX",
+    "key"  : "alpha",
+    "label": "Alpha",
+    "min"  : '0',
+    "max"  : '1',
+    "step" :'.1'
+  },
+  {
+    "type" : "color",
+    "id"   : "line-colorScaleX",
+    "key"  : "line-color",
+    "label": "Line color",
+    "divider" :"true"
+  },
+  {
+    "type" : "range",
+    "id"   : "line-widthscaleX",
+    "key"  : "line-width",
+    "label": "Line width",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-gap-sizescaleX",
+    "key"  : "line-gap-size",
+    "label": "Line gap size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-segment-sizescaleX",
+    "key"  : "line-segment-size",
+    "label": "Line segment size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "select",
+    "id"   : "lineStyleRefLineScaleX", 
+    "values" :["solid","dotted","dashed"],
+    "labels" :['Solid',
+    'Dotted',
+    'Dashed',
+    ],
+    "key"  : "line-style",
+    "label": "Line style",
+  },
+  {
+    "type" : "checkbox",
+    "id"   : "visibleRefLineScaleX",
+    "key"  : "visible",
+    "label": "Visible",
+    "divider" :"true"
+  },
+  ],};
+var scaleYTick         = {
+  "category" : "scale-y",
+  "subcategory" :"tick",
+  "inputs" :[
+  {
+    "type" : "range",
+    "id"   : "alphaTickscaleX",
+    "key"  : "alpha",
+    "label": "Alpha",
+    "min"  : '0',
+    "max"  : '1',
+    "step" :'.1'
+  },
+  {
+    "type" : "color",
+    "id"   : "line-colorTickScaleX",
+    "key"  : "line-color",
+    "label": "Line color",
+    "divider" :"true"
+  },
+  {
+    "type" : "range",
+    "id"   : "line-widthTickscaleX",
+    "key"  : "line-width",
+    "label": "Line width",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-gap-sizeTickscaleX",
+    "key"  : "line-gap-size",
+    "label": "Line gap size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "range",
+    "id"   : "line-segment-sizeTickscaleX",
+    "key"  : "line-segment-size",
+    "label": "Line segment size",
+    "min"  : '0',
+    "max"  : '100',
+    "step" :'1'
+  },
+  {
+    "type" : "select",
+    "id"   : "lineStyleRefLineTickScaleX", 
+    "values" :["solid","dotted","dashed"],
+    "labels" :['Solid',
+    'Dotted',
+    'Dashed',
+    ],
+    "key"  : "line-style",
+    "label": "Line style",
+  },
+  {
+    "type" : "select",
+    "id"   : "placementTickScaleX", 
+    "values" :["default","opposite"],
+    "key"  : "placement",
+    "label": "Placement",
+    "divider" : "true"
+  },
+  {
+    "type" : "checkbox",
+    "id"   : "visibleRefLineScaleX",
+    "key"  : "visible",
+    "label": "Visible",
+    "divider" :"true"
+  },
+  ],};
+var scaleYItem         = {
+  "category" : "scale-y",
+  "subcategory" :"item",
+  "inputs" :[
+    {
+      "type" : "range",
+      "id"   : "font-sizeItemScaleX",
+      "key"  : "font-size",
+      "label": "Font size",
+      "min"  : '0',
+      "max"  : '100',
+      "step" :'1',
+    },
+    {
+      "type" : "color",
+      "id"   : "font-colorItemScaleX",
+      "key"  : "font-color",
+      "label": "Font color",
+    },
+    {
+      "type" : "text",
+      "id"   : "font-familyItemScaleX",
+      "key"  : "font-family",
+      "label": "Font family",
+    },
+    {
+      "type" : "range",
+      "id"   : "font-angelItemScaleX",
+      "key"  : "font-angel",
+      "label": "Font angel",
+      "min"  : '0',
+      "max"  : '360',
+      "step" :'1',
+    },
+    {
+      "type" : "checkbox",
+      "id"   : "boldItemScaleX",
+      "key"  : "bold",
+      "label": "bold",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingTopItemScaleX",
+      "key"  : "padding-top",
+      "label": "padding-top",
+      "divider" :"true",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingTopItemScaleX",
+      "key"  : "padding-right",
+      "label": "padding-right",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingBottomItemScaleX",
+      "key"  : "padding-bottom",
+      "label": "padding-bottom",
+    },
+    {
+      "type" : "text",
+      "id"   : "paddingleftItemScaleX",
+      "key"  : "padding-left",
+      "label": "padding-left",
+    },
+    {
+      "type" : "text",
+      "id"   : "marginTopItemScaleX",
+      "key"  : "margin-top",
+      "label": "margin-top",
+      "divider" :"true"
+    },
+    {
+      "type" : "text",
+      "id"   : "marginTopItemScaleX",
+      "key"  : "margin-right",
+      "label": "margin-right",
+    },
+    {
+      "type" : "text",
+      "id"   : "marginBottomItemScaleX",
+      "key"  : "margin-bottom",
+      "label": "margin-bottom",
+    },
+    {
+      "type" : "text",
+      "id"   : "margingleftItemScaleX",
+      "key"  : "margin-left",
+      "label": "margin-left",
+    },
+    {
+      "type" : "text",
+      "id"   : "max-charsItemScaleX",
+      "key"  : "max-chars",
+      "label": "Max chars",
+      "divider" :"true",
+    },
+  ],};
 //These arrays will regeiustor Json to HTML 
 var formData   = [titleData,subtitleData,legendDatageneral,legendDataitem,
 legendDataMarker,plotareaData,plotGeneralData,plotAnimationData,
@@ -3547,7 +4330,8 @@ valueBox,scaleData,scaleRData,previewData];
 var seriesData = [seriesGeneralData,seriesAnimationData,seriesHoverState,
 serieshoverMarker,seriesMarkerData,seriestooltip,seriesvalueBox];
 var scaleData  = [scaleX,scaleXGuid,scaleXLabel,scaleXmarkers,
-scaleXrefLine,scaleXTick,scaleXItem];
+scaleXrefLine,scaleXTick,scaleXItem,scaleY,scaleYGuid,scaleYLabel,scaleYmarkers,
+scaleYrefLine,scaleYTick,scaleYItem ];
 var j = 0;
 var labelConfigId  = 0; // This is for the label replaction. It holds each labels id.
 var seriesConfigId = 0;
@@ -3555,6 +4339,7 @@ var scaleXCounter  = 0;
 var scaleYCounter  = 0;
 window.onload =function load_inputs() {
 
+document.body.onkeydown ="return (event.keyCode!=13)";
 /*All Scale data goes here*/ 
   var seriesElement = document.getElementsByClassName("scl-el");
   var linebreak = "";
@@ -4873,16 +5658,17 @@ function Modify_chart_series(element,type,key,category,subCategory) {
     //default is for text,range
       tempValue= element.value;
   }
+
+
   if (key == "values") {
-    var temp = new Array();
-    temp = tempValue.toString().split(",");
-    var value = new Array();
-    for(num in temp){
-      if (temp[num] != '') {
-        value.push(parseInt(temp[num]));
-      };
-      
+    
+    try {
+      tempValue = "["+tempValue + "]";
+      value = JSON.parse(tempValue);
+    } catch (e) {
+
     }
+    
   } else {
     var value = tempValue;
   }
@@ -4969,69 +5755,128 @@ function Modify_chart_scale(element,type,key,category,subCategory) {
     //default is for text,range
       value= element.value;
   }
-  // Get chart JSON, see if it has our category or not
-  var chartDta = zingchart.exec(chartID, 'getdata');
-  var temp = (scaleXCounter == 0)?"": "-"+scaleXCounter;
-  var scalename = "scale-x"+temp;
-  var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
+  if (category == "scale-x") {
+    // Get chart JSON, see if it has our category or not
+    var chartDta = zingchart.exec(chartID, 'getdata');
+    var temp = (scaleXCounter == 0)?"": "-"+scaleXCounter;
+    var scalename = "scale-x"+temp;
+    var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
 
-  if (typeof chartScale  == "undefined" ){ //Empty array situation, creating a new scale-x
-    var dataObj = {};
-    dataObj[scalename] ={};
-    if (category == subCategory) { // The same category part
-      dataObj[scalename][key] = value;
-    } else {
-      dataObj[scalename][subCategory] = {};
-      dataObj[scalename][subCategory][key] = value;
-    }
-    zingchart.exec(chartID,'modify', {
-        graphid : 0,
-        data : dataObj  
-      });
-  } else { //Scale already exists, so we're modifying instead of creating 
-      if (category == subCategory) {
-        //Not sure when this case will happen
-        if (count == chartScale.length) {//New elemnt case we have to push it 
-            var vals = {};
-            vals[key] = value;
-            chartDta['graphset'][0][scalename].push(vals);
-            ////TODO
-           zingchart.exec(chartID,'modify', {
-            graphid : 0,
-            data : chartDta['graphset'][0]
-          });
-        } else {
-          //This should happen in general tabs in all categories
-          chartDta['graphset'][0][scalename][key] = value;
-          zingchart.exec(chartID,'setdata', {
-            graphid : 0,
-            data : chartDta['graphset'][0]
-          });
-        }
+    if (typeof chartScale  == "undefined" ){ //Empty array situation, creating a new scale-x
+      var dataObj = {};
+      dataObj[scalename] ={};
+      if (category == subCategory) { // The same category part
+        dataObj[scalename][key] = value;
       } else {
-        if (count == chartScale.length) {//New elemnt case we have to push it 
-            var vals = {};
-            vals[key] = value;
-            var sub = {}
-            sub[subCategory] = vals;
-            chartLabels.push(sub);
-            zingchart.exec(chartID,'modify', {
-            graphid : 0,
-            data : {
-              "scale-x": chartScale
-            }
-          });
-        } else {
-          console.log(vals);
-          chartDta['graphset'][0][scalename][subCategory][key] = value;
-          zingchart.exec(chartID,'setdata', {
-            graphid : 0,
-            data : chartDta['graphset'][0] 
-          });
-        }
+        dataObj[scalename][subCategory] = {};
+        dataObj[scalename][subCategory][key] = value;
       }
+      zingchart.exec(chartID,'modify', {
+          graphid : 0,
+          data : dataObj  
+        });
+    } else { //Scale already exists, so we're modifying instead of creating 
+        if (category == subCategory) {
+          //Not sure when this case will happen
+          if (count == chartScale.length) {//New elemnt case we have to push it 
+              var vals = {};
+              vals[key] = value;
+              chartDta['graphset'][0][scalename].push(vals);
+              ////TODO
+             zingchart.exec(chartID,'modify', {
+              graphid : 0,
+              data : chartDta['graphset'][0]
+            });
+          } else {
+            //This should happen in general tabs in all categories
+            chartDta['graphset'][0][scalename][key] = value;
+            zingchart.exec(chartID,'setdata', {
+              graphid : 0,
+              data : chartDta['graphset'][0]
+            });
+          }
+        } else {
+          if (count == chartScale.length) {//New elemnt case we have to push it 
+              var vals = {};
+              vals[key] = value;
+              var sub = {}
+              sub[subCategory] = vals;
+              chartLabels.push(sub);
+              zingchart.exec(chartID,'modify', {
+              graphid : 0,
+              data : {
+                "scale-x": chartScale
+              }
+            });
+          } else {
+            console.log(vals);
+            chartDta['graphset'][0][scalename][subCategory][key] = value;
+            zingchart.exec(chartID,'setdata', {
+              graphid : 0,
+              data : chartDta['graphset'][0] 
+            });
+          }
+        }
+
+    }
+  }else  {
+    // Get chart JSON, see if it has our category or not
+    var chartDta = zingchart.exec(chartID, 'getdata');
+    var temp = (scaleYCounter == 0)?"": "-"+scaleYCounter;
+    var scalename = "scale-y"+temp;
+    var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
+
+    if (typeof chartScale  == "undefined" ){ //Empty array situation, creating a new scale-x
+      var dataObj = {};
+      dataObj[scalename] ={};
+      if (category == subCategory) { // The same category part
+        dataObj[scalename][key] = value;
+      } else {
+        dataObj[scalename][subCategory] = {};
+        dataObj[scalename][subCategory][key] = value;
+      }
+      zingchart.exec(chartID,'modify', {
+          graphid : 0,
+          data : dataObj  
+        });
+    } else { //Scale already exists, so we're modifying instead of creating 
+        if (category == subCategory) {
+          //Not sure when this case will happen
+          if (count == chartScale.length) {//New elemnt case we have to push it 
+              var vals = {};
+              vals[key] = value;
+              chartDta['graphset'][0][scalename].push(vals);
+              ////TODO
+             zingchart.exec(chartID,'modify', {
+              graphid : 0,
+              data : chartDta['graphset'][0]
+            });
+          } else {
+            //This should happen in general tabs in all categories
+            chartDta['graphset'][0][scalename][key] = value;
+            zingchart.exec(chartID,'setdata', {
+              graphid : 0,
+              data : chartDta['graphset'][0]
+            });
+          }
+        } else {
+          if (chartDta['graphset'][0][scalename][subCategory]) {
+            chartDta['graphset'][0][scalename][subCategory][key] = value;
+          } else {
+            chartDta['graphset'][0][scalename][subCategory] = {};
+            chartDta['graphset'][0][scalename][subCategory][key] = value;
+          }
+            zingchart.exec(chartID,'setdata', {
+              graphid : 0,
+              data : chartDta['graphset'][0] 
+            });
+        }
+
+    }
 
   }
+
+
   creat_json();}
 function new_scale_x() {
   var clonedTitle  = document.getElementById("scaleX").cloneNode(true);
@@ -5154,9 +5999,9 @@ function creat_json() {
 }
 function chartRouter() {
   var charts = document.getElementById('whichChart');
-  document.getElementById("accordion").style.display = "block";
+  /*document.getElementById("accordion").style.display = "block";
   document.getElementById("dataTabs").style.display = "block";
-  document.getElementById("chartSelector").style.display = "none";
+  document.getElementById("chartSelector").style.display = "none";*/
   var selectedChart = charts.options[charts.selectedIndex].value;
   switch (selectedChart) {
     case 'bar' :
@@ -5299,16 +6144,6 @@ function chartRouter() {
   drawChart();
 }
 
-function drawChart(){
-  zingchart.render({
-    id:chartID,
-    height:400,
-    width:600,
-    data:chartData
-  });
-};
-
-
 function load_attrs(element) {
   if(document.getElementById('zingcharts-javaScript').value != ""){
     var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
@@ -5318,4 +6153,11 @@ function load_attrs(element) {
   }
 }
 
-
+function drawChart(){
+  zingchart.render({
+    id:chartID,
+    height:400,
+    width:600,
+    data:chartData
+  });
+};

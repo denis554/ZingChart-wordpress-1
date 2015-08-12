@@ -16,6 +16,7 @@ TO DOs:
 * Creat a editor button for inserting shortcodes
 * Fixing the abspath issue
 * Make sure the plugin loads only once
+* In the view post show the chart
 */
 /*if (!'defined( 'ABSPATH' )') {
 header( 'HTTP/1.0 404 Not Found', true, 404 );
@@ -121,15 +122,23 @@ jQuery(document).ready(function($) {
   $("#scaleYTabs").tabs();
   $("#legendTabs").tabs();
 });
+
+// Prevent 'enter' button from submitting the form
+document.onkeydown = function(evt) {
+     var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+     if (keyCode == 13) {
+          return false;
+     }
+}
 </script>
 <style type="text/css">
 #accordion{
 float: left;
 width: 60%;
-display: none;
+-display: none;
 }
 #dataTabs {
-  display: none;
+  -display: none;
 }
 .ui-accordion .ui-accordion-header .ui-icon {
 left: -0.25em;
@@ -229,23 +238,23 @@ left: -0.25em;
       <div>
         <div id="scaleYTabs" data-count = "0">
           <ul>
-            <li><a href="#scaleXGeneral">General</a></li>
-            <li><a href="#scaleXGuid">Guid</a></li>
-            <li><a href="#scaleXLabels">Label</a></li>
-            <li><a href="#scaleXMarkers">Markers</a></li>
-            <li><a href="#ScaleXRefLine">ref-line</a></li>
-            <li><a href="#scaleXTransform">Transform</a></li>
-            <li><a href="#scaleXTick">Tick</a></li>
-            <li><a href="#scaleXItem">Item</a></li>
+            <li><a href="#scaleYGeneral">General</a></li>
+            <li><a href="#scaleYGuid">Guid</a></li>
+            <li><a href="#scaleYLabels">Label</a></li>
+            <li><a href="#scaleYMarkers">Markers</a></li>
+            <li><a href="#ScaleYRefLine">ref-line</a></li>
+            <li><a href="#scaleYTransform">Transform</a></li>
+            <li><a href="#scaleYTick">Tick</a></li>
+            <li><a href="#scaleYItem">Item</a></li>
           </ul>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "scale-x" id="scaleXGeneral"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "guide"    id="scaleXGuid"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "label"  id="scaleXLabels"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "markers"   id="scaleXMarkers"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "ref-line"  id="ScaleXRefLine"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "transform" id="scaleXTransform"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "tick"    id="scaleXTick"></div>
-          <div class = "scl-el" data-category = "scale-x" data-sub-category = "item"    id="scaleXItem"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "scale-y" id="scaleYGeneral"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "guide"    id="scaleYGuid"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "label"  id="scaleYLabels"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "markers"   id="scaleYMarkers"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "ref-line"  id="ScaleYRefLine"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "transform" id="scaleYTransform"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "tick"    id="scaleYTick"></div>
+          <div class = "scl-el" data-category = "scale-y" data-sub-category = "item"    id="scaleYItem"></div>
         </div>
       </div>
       <h3>Scale-r</h3>
