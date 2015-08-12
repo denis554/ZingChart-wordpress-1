@@ -158,7 +158,7 @@ left: -0.25em;
 <div style="clear:both"></div>
 
 <div id="accordion">
-  <h3 onclick="load_attrs()" data-laod="0" data-category = "title">Title</h3>
+  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "title">Title</h3>
   <div class="frm-el" data-category = "title" data-sub-category = "title">
   </div>
   <h3>Sub title</h3>
@@ -329,7 +329,7 @@ function zing_javascript($post) {
   $javaScript =  get_post_meta($post->ID,'zing_javascript_content',true);
   add_thickbox();
   ?>
-    <textarea name="JavaScriptZing" class="widefat code code-html" id="zingcharts-javaScript" disabled> <?php echo esc_textarea( $javaScript ); ?></textarea>
+    <textarea name="JavaScriptZing" class="widefat code code-html" id="zingcharts-javaScript" > <?php echo esc_textarea( $javaScript ); ?></textarea>
   <?php
 }
 /**

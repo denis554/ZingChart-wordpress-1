@@ -4828,7 +4828,7 @@ document.body.onkeydown ="return (event.keyCode!=13)";
               +"<option value='solid'>Solid</option><option value='gradiant'>Gradiant</option></select><br>"
               +"<label> Background color 1 : </label> <input type='color' id='backgroundColor1"+formData[m].inputs[j].id+"' data-category ='"+formData[m]["category"]
               +"' dat-subcat='"+formData[m]["subcategory"]+"' onchange='set_bg_color(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>"
-              +"<label> Background color 2 : </lable> <input type='color' id='backgroundColor2"+formData[m].inputs[j].id+"' data-category ='"+formData[m]["category"]
+              +"<label style='visibility :hidden'> Background color 2 : </label> <input type='color' id='backgroundColor2"+formData[m].inputs[j].id+"' data-category ='"+formData[m]["category"]
               +"' dat-subcat='"+formData[m]["subcategory"]+"' onchange='set_bg_color(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' style='visibility :hidden'><br>";
             break;
             case ("border") :
@@ -4930,9 +4930,14 @@ function set_bg_type(id,category,subCategory) {
   var type = document.getElementById(id);
   bgType = type.options[type.selectedIndex].value;
   if (bgType =="gradiant") {
-    document.getElementById("backgroundColor2"+subCategory+category).style.visibility = "visible";
+    var domHolder = document.getElementById("backgroundColor2"+subCategory+category);
+    domHolder.style.visibility = "visible";
+    domHolder.previousElementSibling.style.visibility = "visible";
+
   } else {
-    document.getElementById("backgroundColor2"+subCategory+category).style.visibility = "hidden";
+    var domHolder = document.getElementById("backgroundColor2"+subCategory+category)
+    domHolder.style.visibility = "hidden";
+    domHolder.previousElementSibling.style.visibility = "hidden";
   }
   set_bg_color(category,subCategory);}
 function set_bg_color(category,subCategory) {
@@ -6148,6 +6153,45 @@ function load_attrs(element) {
   if(document.getElementById('zingcharts-javaScript').value != ""){
     var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
     for(attr in chartJason['graphset'][0]["title"] ) {
+      var elements = element.nextElementSibling.childNodes;
+      // This part is for setting bg color attrs since They will set without key
+      if (attr == "background-color-1") {
+        if (chartJason['graphset'][0]["title"][attr] != chartJason['graphset'][0]["title"]["background-color-2"]) {
+          document.getElementById("backgroundTypetitletitle").selectedIndex = 1;
+          document.getElementById("backgroundColor2titletitle").style.visibility = "visible";
+          document.getElementById("backgroundColor2titletitle").previousElementSibling.style.visibility = "visible";
+        } else {
+          //No need to set the vis here because when it gets loaded its defualt to hidden.
+          document.getElementById("backgroundTypetitletitle").selectedIndex = 0;
+        }
+      };
+      // border check box should be cheked manually as well
+      if (attr == "border-width" && chartJason['graphset'][0]["title"][attr] != 0 ) {
+        document.getElementById("bordertitle").checked = true;
+      };
+      for(el in elements) {
+        if (elements[el].nodeName != "#text") {
+          // Seems that it has a problem witht the undefined keys so I used try catch for it. 
+          //It may be bettter way to handle it though.
+          try {
+            if (elements[el].dataset.key == attr) {
+              switch (elements[el].type) {
+              case ("checkbox"):
+                elements[el].checked = chartJason['graphset'][0]["title"][attr];
+                break;
+              case("select-one") :
+                elements[el].value  = chartJason['graphset'][0]["title"][attr];
+                break;
+              default:
+                elements[el].value = chartJason['graphset'][0]["title"][attr];
+              }
+
+            }
+          } catch (e) {
+
+          }
+        }
+      }
       console.log(attr);
     }
   }
