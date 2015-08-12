@@ -4899,29 +4899,48 @@ function Modify_chart(element,key,category,subCategory) {
     //default is for text,range
       value= element.value;
   }
-  var dataObj = {};
-  dataObj[category] = {};
-
-  if (category === "preview" && !element.checked && element.id === "visiblePreview") {
-    var tempobj = zingchart.exec(chartID,'getdata' );
-      delete tempobj.graphset[0][category];
-      zingchart.exec(chartID,'setdata', {
-        data : tempobj
+  var chartData = zingchart.exec(chartID, 'getdata');
+  if (!chartData['graphset'][0][category]) {
+    var dataObj = {};
+    dataObj[category] = {};
+    if (category === "preview" && !element.checked && element.id === "visiblePreview") {
+      var tempobj = zingchart.exec(chartID,'getdata' );
+        delete tempobj.graphset[0][category];
+        zingchart.exec(chartID,'setdata', {
+          data : tempobj
+        });
+        creat_json();
+    } else {
+      if (category != subCategory ) {
+        dataObj[category][subCategory] ={};
+        dataObj[category][subCategory][key] = value;
+      } else {
+        dataObj[category][key] = value;
+      }
+      zingchart.exec(chartID,'modify', {
+        graphid : 0,
+        data : dataObj   
       });
-      creat_json();
+    }
   } else {
     if (category != subCategory ) {
-      dataObj[category][subCategory] ={};
-      dataObj[category][subCategory][key] = value;
-    } else {
-      dataObj[category][key] = value;
-    }
-    zingchart.exec(chartID,'modify', {
-      graphid : 0,
-      data : dataObj   
-    });
-    creat_json();}
+        if (chartaDta['graphset'][0][category][subCategory]) {
+          chartData['graphset'][0][category][subCategory][key] = value;
+        } else {
+          chartData['graphset'][0][category][subCategory] ={};
+          chartData['graphset'][0][category][subCategory][key] = value;
+        }
+      } else {
+        chartData['graphset'][0][category][key] = value;
+      }
+      zingchart.exec(chartID,'modify', {
+        graphid : 0,
+        data : chartData['graphset'][0], 
+      });
   }
+    creat_json();
+}
+  
 /*
  * Generic functions for bg Color
  */
