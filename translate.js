@@ -5650,10 +5650,10 @@ function chartRouter() {
     }
     drawChart();
   } else {
-    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
-    chartJason['graphset'][0]["type"] = selectedChart;
+    var chartJSON = JSON.parse(document.getElementById('zingcharts-javaScript').value.trim());
+    chartJSON['graphset'][0]["type"] = selectedChart;
      zingchart.exec(chartID,'setdata', {
-          data : chartJason
+          data : chartJSON
         });
     setTimeout(create_json(),100);
   }
@@ -5661,13 +5661,13 @@ function chartRouter() {
 }
 
 function load_attrs(element) {
-  if(document.getElementById('zingcharts-javaScript').value != ""){
-    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
-    for(attr in chartJason['graphset'][0][element.dataset.category] ) {
+  if(document.getElementById('zingcharts-javaScript').value.trim() != ""){
+    var chartJSON = JSON.parse(document.getElementById('zingcharts-javaScript').value.trim());
+    for(attr in chartJSON['graphset'][0][element.dataset.category] ) {
       var elements = element.nextElementSibling.childNodes;
       // This part is for setting bg color attrs since They will set without key
       if (attr == "background-color-1") {
-        if (chartJason['graphset'][0][element.dataset.category][attr] != chartJason['graphset'][0][element.dataset.category]["background-color-2"]) {
+        if (chartJSON['graphset'][0][element.dataset.category][attr] != chartJSON['graphset'][0][element.dataset.category]["background-color-2"]) {
           document.getElementById("backgroundType"+element.dataset.category+element.dataset.category).selectedIndex = 1;
           document.getElementById("backgroundColor2"+element.dataset.category+element.dataset.category).style.visibility = "visible";
           document.getElementById("backgroundColor2"+element.dataset.category+element.dataset.category).previousElementSibling.style.visibility = "visible";
@@ -5677,7 +5677,7 @@ function load_attrs(element) {
         }
       };
       // border check box should be cheked manually as well
-      if (attr == "border-width" && chartJason['graphset'][0]["title"][attr] != 0 ) {
+      if (attr == "border-width" && chartJSON['graphset'][0]["title"][attr] != 0 ) {
         document.getElementById("border"+element.dataset.category).checked = true;
       };
       for(el in elements) {
@@ -5688,13 +5688,13 @@ function load_attrs(element) {
             if (elements[el].dataset.key == attr) {
               switch (elements[el].type) {
               case ("checkbox"):
-                elements[el].checked = chartJason['graphset'][0][element.dataset.category][attr];
+                elements[el].checked = chartJSON['graphset'][0][element.dataset.category][attr];
                 break;
               case("select-one") :
-                elements[el].value  = chartJason['graphset'][0][element.dataset.category][attr];
+                elements[el].value  = chartJSON['graphset'][0][element.dataset.category][attr];
                 break;
               default:
-                elements[el].value = chartJason['graphset'][0][element.dataset.category][attr];
+                elements[el].value = chartJSON['graphset'][0][element.dataset.category][attr];
               }
 
             }
@@ -5709,8 +5709,8 @@ function load_attrs(element) {
 
 function load_empty_labels() {
   if(document.getElementById('zingcharts-javaScript').value.trim() != ""){
-    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
-    for(label in chartJason['graphset'][0]["labels"] ) {
+    var chartJSON = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    for(label in chartJSON['graphset'][0]["labels"] ) {
       new_label();
     }
   }
@@ -5718,8 +5718,8 @@ function load_empty_labels() {
 
 function load_label_data() {
   if(document.getElementById('zingcharts-javaScript').value.trim() != ""){
-    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
-    for(label in chartJason['graphset'][0]["labels"] ) {
+    var chartJSON = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    for(label in chartJSON['graphset'][0]["labels"] ) {
       //new_label();
     }
   }
