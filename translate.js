@@ -1721,7 +1721,7 @@ var previewData        = {
       },
       {
         "type" : "bgcolor",
-        "id"   : "preview", //In the case of category ID the id should match the category name
+        "id"   : "previewpreview", //In the case of category ID the id should match the category name
         "key"  : "",
         "label": "",
         "divider" :"true",
@@ -6171,9 +6171,13 @@ function chartRouter() {
       break;
     }
   } else {
-    zingchart.exec(chartID,'setcharttype',{
-      type:selectedChart
+    zingchart.exec(chartID,'modify', {
+        graphid : 0,
+        data : {
+        type : selectedChart
+      }
     });
+    setTimeout(creat_json(),100);
   }
   drawChart();
 }
@@ -6186,17 +6190,17 @@ function load_attrs(element) {
       // This part is for setting bg color attrs since They will set without key
       if (attr == "background-color-1") {
         if (chartJason['graphset'][0][element.dataset.category][attr] != chartJason['graphset'][0][element.dataset.category]["background-color-2"]) {
-          document.getElementById("backgroundTypetitletitle").selectedIndex = 1;
-          document.getElementById("backgroundColor2titletitle").style.visibility = "visible";
-          document.getElementById("backgroundColor2titletitle").previousElementSibling.style.visibility = "visible";
+          document.getElementById("backgroundType"+element.dataset.category+element.dataset.category).selectedIndex = 1;
+          document.getElementById("backgroundColor2"+element.dataset.category+element.dataset.category).style.visibility = "visible";
+          document.getElementById("backgroundColor2"+element.dataset.category+element.dataset.category).previousElementSibling.style.visibility = "visible";
         } else {
           //No need to set the vis here because when it gets loaded its defualt to hidden.
-          document.getElementById("backgroundTypetitletitle").selectedIndex = 0;
+          document.getElementById("backgroundType"+element.dataset.category+element.dataset.category).selectedIndex = 0;
         }
       };
       // border check box should be cheked manually as well
       if (attr == "border-width" && chartJason['graphset'][0]["title"][attr] != 0 ) {
-        document.getElementById("bordertitle").checked = true;
+        document.getElementById("border"+element.dataset.category).checked = true;
       };
       for(el in elements) {
         if (elements[el].nodeName != "#text") {
@@ -6221,7 +6225,6 @@ function load_attrs(element) {
           }
         }
       }
-      console.log(attr);
     }
   }
 }
