@@ -5648,16 +5648,16 @@ function chartRouter() {
         };
       break;
     }
+    drawChart();
   } else {
-    zingchart.exec(chartID,'modify', {
-        graphid : 0,
-        data : {
-        type : selectedChart
-      }
-    });
+    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    chartJason['graphset'][0]["type"] = selectedChart;
+     zingchart.exec(chartID,'setdata', {
+          data : chartJason
+        });
     setTimeout(create_json(),100);
   }
-  drawChart();
+  
 }
 
 function load_attrs(element) {
