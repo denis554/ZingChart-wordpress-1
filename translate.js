@@ -1,6 +1,15 @@
+
 /* Converts user interface options into the actual chart itself. */
 
 /* JSON for all the different UI elements that interact with the chart */
+
+/*
+ * TO DO : 
+ * Make grapgh div naming dynamic
+ * Be able to feed data as a csv file to it
+ * Validate form inputs
+ * Add set data Key for inputing data,(it is a little buggy)
+ */
 var userInterface = {
     "titleData": {
         "category": "title",
@@ -3800,6 +3809,7 @@ serieshoverMarker,userInterface.seriesMarkerData,userInterface.seriestooltip,use
 var scaleData  = [userInterface.scaleX,userInterface.scaleXGuid,userInterface.scaleXLabel,userInterface.scaleXmarkers,userInterface.
 scaleXrefLine,userInterface.scaleXTick,userInterface.scaleXItem,userInterface.scaleY,userInterface.scaleYGuid,userInterface.scaleYLabel,userInterface.scaleYmarkers,userInterface.
 scaleYrefLine,userInterface.scaleYTick,userInterface.scaleYItem ];
+
 var j = 0;
 var labelConfigId  = 0; // This is for the label replaction. It holds each labels id.
 var seriesConfigId = 0;
@@ -4228,7 +4238,7 @@ document.body.onkeydown ="return (event.keyCode!=13)";
             linebreak = formData[m].inputs[j].divider ? "<hr>" :" ";
             switch(formData[m].inputs[j].type){
             case("color") :
-              var defaultVal= ''; 
+              var defaultVal= '';
               if (typeof userInterface.labelData.inputs[j].defValue != 'undefined' && userInterface.labelData.inputs[j].defValue !='') {
                 defaultVal = userInterface.labelData.inputs[j].defValue;
               } else {
@@ -4468,6 +4478,7 @@ function set_bg_color(category,subCategory) {
   }
   
   
+
   create_json();
  }
  /*
@@ -4497,8 +4508,6 @@ function set_border(category,subCategory) {
       graphid : 0,
       data : dataObj
     });
-
-
   create_json();}
 /*
  * Generic function for seting line
@@ -4628,7 +4637,7 @@ function new_label() {
       data : chartLabels  
     });
   }
-  create_json();}
+ create_json();}
 /*
  * Label Modify chart
  */
@@ -5619,22 +5628,22 @@ function chartRouter() {
 
 function load_attrs(element) {
   if(document.getElementById('zingcharts-javaScript').value != ""){
-    var chartJSON = JSON.parse(document.getElementById('zingcharts-javaScript').value);
-    for(attr in chartJSON['graphset'][0]["title"] ) {
+    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    for(attr in chartJason['graphset'][0]["title"] ) {
       var elements = element.nextElementSibling.childNodes;
       // This part is for setting bg color attrs since They will set without key
       if (attr == "background-color-1") {
-        if (chartJSON['graphset'][0]["title"][attr] != chartJSON['graphset'][0]["title"]["background-color-2"]) {
-          document.getElementById("backgroundTypetitleTitle").selectedIndex = 1;
-          document.getElementById("backgroundColor2titleTitle").style.visibility = "visible";
-          document.getElementById("backgroundColor2titleTitle").previousElementSibling.style.visibility = "visible";
+        if (chartJason['graphset'][0]["title"][attr] != chartJason['graphset'][0]["title"]["background-color-2"]) {
+          document.getElementById("backgroundTypetitletitle").selectedIndex = 1;
+          document.getElementById("backgroundColor2titletitle").style.visibility = "visible";
+          document.getElementById("backgroundColor2titletitle").previousElementSibling.style.visibility = "visible";
         } else {
           //No need to set the vis here because when it gets loaded its defualt to hidden.
-          document.getElementById("backgroundTypetitleTitle").selectedIndex = 0;
+          document.getElementById("backgroundTypetitletitle").selectedIndex = 0;
         }
       };
       // border check box should be cheked manually as well
-      if (attr == "border-width" && chartJSON['graphset'][0]["title"][attr] != 0 ) {
+      if (attr == "border-width" && chartJason['graphset'][0]["title"][attr] != 0 ) {
         document.getElementById("bordertitle").checked = true;
       };
       for(el in elements) {
@@ -5645,13 +5654,13 @@ function load_attrs(element) {
             if (elements[el].dataset.key == attr) {
               switch (elements[el].type) {
               case ("checkbox"):
-                elements[el].checked = chartJSON['graphset'][0]["title"][attr];
+                elements[el].checked = chartJason['graphset'][0]["title"][attr];
                 break;
               case("select-one") :
-                elements[el].value  = chartJSON['graphset'][0]["title"][attr];
+                elements[el].value  = chartJason['graphset'][0]["title"][attr];
                 break;
               default:
-                elements[el].value = chartJSON['graphset'][0]["title"][attr];
+                elements[el].value = chartJason['graphset'][0]["title"][attr];
               }
 
             }
