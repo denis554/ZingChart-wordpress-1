@@ -288,7 +288,7 @@ left: -0.25em;
       <li><a href="#series">data</a></li>
     </ul>
     <div id='jsonString'>
-      <textarea name="JavaScript" class="widefat code code-html" id="zingcharts-javaScript"> </textarea>
+      <textarea name="JavaScript" class="widefat code code-html" id="zingcharts-javaScript34333"> </textarea>
     </div>
     <div id="series">
       <div id="seriesAccordion">
