@@ -1,3 +1,8 @@
+
+/* Converts user interface options into the actual chart itself. */
+
+/* JSON for all the different UI elements that interact with the chart */
+
 /*
  * TO DO : 
  * Make grapgh div naming dynamic
@@ -5,4333 +10,3806 @@
  * Validate form inputs
  * Add set data Key for inputing data,(it is a little buggy)
  */
-var titleData          = {
-    "category" : "title",
-    "subcategory" :"title",
-    "inputs" : [
-      {
-        "type":"checkbox",
-        "label": "Visible",
-        "id" :"visibleTitle",
-        "key" :"visible"
-      },
-      {
-        "type" : "text",
-        "id"   : "textTitle",
-        "key"  : "text",
-        "label": "text",
-        "divider" :"true"
-      },
-      {
-        "type":"checkbox",
-        "label": "Adjust Layout",
-        "id" :"adjustLayoutTitle",
-        "key" :"adjust-layout",
-        "divider" :"true"
-      },
-      {
-        "type":"checkbox",
-        "label": "Bold",
-        "id" :"boldTitle",
-        "key" :"bold",
-        "divider" :"true"
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "titletitle", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "linear",
-          "radial",
-        ],
-        "label" :"Fill type",
-        "id"    :"fillTypeTitle",
-        "key"   :"fill-type",
-        "divider":"true",
-      },
-      {
-        "type" : "color",
-        "id"   : "fontColorTitle", //In the case of category ID the id should match the category name
-        "key"  : "font-color",
-        "label": "Font color",
-        "divider" :"true",
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "normal",
-          "italic",
-          "oblique",
-        ],
-        "label" :"Font Style",
-        "id"    :"fontStyleItemTitle",
-        "key"   :"font-style",
-        "divider":"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "fontFamilyItemTitle",
-        "key"  : "font-family",
-        "label": "Font family"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "Center",
-          "left",
-          "Right",
-        ],
-        "label" :"Text align",
-        "id"    :"textAlignitemTitle",
-        "key"   :"text-align",
-        "divider":"true",
-      },
-      {
-        "type" : "border",
-        "id"   : "title", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopTitle",
-        "key"  : "padding-top",
-        "label": "padding-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightTitle",
-        "key"  : "padding-right",
-        "label": "padding-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomTitle",
-        "key"  : "padding-bottom",
-        "label": "padding-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingleftTitle",
-        "key"  : "padding-left",
-        "label": "padding-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginTopTitle",
-        "key"  : "margin-top",
-        "label": "margin-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "marginRightTitle",
-        "key"  : "margin-right",
-        "label": "margin-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginBottomTitle",
-        "key"  : "margin-bottom",
-        "label": "margin-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "margingleftTitle",
-        "key"  : "margin-left",
-        "label": "margin-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "xTitle",
-        "key"  : "x",
-        "label": "X",
-        "divider" : "true"
-      },
-      {
-        "type" : "text",
-        "id"   : "yTitle",
-        "key"  : "y",
-        "label": "Y",
-      },
-    ],};
-var subtitleData       = {
-    "category" : "subtitle",
-    "subcategory" :"subtitle",
-    "inputs" : [
-      {
-        "type":"checkbox",
-        "label": "Visible",
-        "id" :"visibleSubTitle",
-        "key" :"visible"
-      },
-      {
-        "type" : "text",
-        "id"   : "textSubTitle",
-        "key"  : "text",
-        "label": "text",
-        "divider" :"true"
-      },
-      {
-        "type":"checkbox",
-        "label": "Adjust Layout",
-        "id" :"adjustLayoutSubTitle",
-        "key" :"adjust-layout",
-        "divider" :"true"
-      },
-      {
-        "type":"checkbox",
-        "label": "Bold",
-        "id" :"boldSubTitle",
-        "key" :"bold",
-        "divider" :"true"
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "subtitlesubtitle", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {   
-        "type"  :"select",
-        "values":[
-          "linear",
-          "radial",
-        ],
-        "label" :"Fill type",
-        "id"    :"fillTypeSubitle",
-        "key"   :"fill-type",
-        "divider":"true",
-      },
-      {
-        "type" : "color",
-        "id"   : "fontColorSubTitle", //In the case of category ID the id should match the category name
-        "key"  : "font-color",
-        "label": "Font color",
-        "divider" :"true",
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "normal",
-          "italic",
-          "oblique",
-        ],
-        "label" :"Font Style",
-        "id"    :"fontStyleItemSubTitle",
-        "key"   :"font-style",
-        "divider":"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "fontFamilyItemSubTitle",
-        "key"  : "font-family",
-        "label": "Font family"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "Center",
-          "left",
-          "Right",
-        ],
-        "label" :"Text align",
-        "id"    :"textAlignitemSubitle",
-        "key"   :"text-align",
-        "divider":"true",
-      },
-      {
-        "type" : "border",
-        "id"   : "subtitle", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopSubTitle",
-        "key"  : "padding-top",
-        "label": "padding-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightSubTitle",
-        "key"  : "padding-right",
-        "label": "padding-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomSubTitle",
-        "key"  : "padding-bottom",
-        "label": "padding-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingleftSubTitle",
-        "key"  : "padding-left",
-        "label": "padding-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginTopSubTitle",
-        "key"  : "margin-top",
-        "label": "margin-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "marginRightSubTitle",
-        "key"  : "margin-right",
-        "label": "margin-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginBottomSubTitle",
-        "key"  : "margin-bottom",
-        "label": "margin-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "margingleftSubTitle",
-        "key"  : "margin-left",
-        "label": "margin-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "xSubTitle",
-        "key"  : "x",
-        "label": "X",
-        "divider" : "true"
-      },
-      {
-        "type" : "text",
-        "id"   : "ySubTitle",
-        "key"  : "y",
-        "label": "Y",
-      },
-    ],};
-var legendDatageneral  = {
-    "category" : "legend",
-    "subcategory" :"legend",
-    "inputs" : [
-      {
-        "type":"checkbox",
-        "label": "Visible",
-        "id" :"visibleLegend",
-        "key" :"visible"
-      },
-      {
-        "type":"checkbox",
-        "label": "Adjust Layout",
-        "id" :"adjustLayoutLegend",
-        "key" :"adjust-layout",
-        "divider" :"true"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "Center",
-          "left",
-          "Right",
-        ],
-        "label" :"Align",
-        "id"    :"alignLegend",
-        "key"   :"align",
-        "divider":"true",
-      },
-      {
-        "type":"checkbox",
-        "label": "Daggable",
-        "id" :"draggableLegend",
-        "key" :"draggable",
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "vertical",
-          "horizontal",
-          "float",
-          "col x row",
-        ],
-        "label" :"Layout",
-        "id"    :"layoutlegend",
-        "key"   :"layout",
-        "divider":"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "rowLayoutLegend",
-        "key"  : "",
-        "label": "Row(Works only in col x row)",
-      },
-      {
-        "type" : "text",
-        "id"   : "columnLayoutLegend",
-        "key"  : "",
-        "label": "Column(Works only in col x row)",
-      },
-      {
-        "type" : "text",
-        "id"   : "xLegend",
-        "key"  : "x",
-        "label": "x-string",
-        "divider" : "true",
-        "defValue" : "0",
-      },
-      {
-        "type" : "text",
-        "id"   : "yLegend",
-        "key"  : "y",
-        "label": "y-string",
-        "defValue" : "0",
-      },
-      {
-        "type":"checkbox",
-        "label": "Minimize",
-        "id" :"minimizeLegend",
-        "key" :"minimize",
-        "divider" :"true"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "hide",
-          "remove",
-          "disabled",
-        ],
-        "label" :"Toggle action",
-        "id"    :"toggle-actionLegend",
-        "key"   :"toggle-action",
-        "divider":"true",
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "legendlegend",
-        "key"  : "",
-        "label": "",
-        "divider" : "true",
-      },
-      {
-        "type" : "border",
-        "id"   : "legend",
-        "key"  : "",
-        "label": "",
-        "divider" : "true",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopLegend",
-        "key"  : "padding-top",
-        "label": "padding-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightLegend",
-        "key"  : "padding-right",
-        "label": "padding-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomLegend",
-        "key"  : "padding-bottom",
-        "label": "padding-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingleftLegend",
-        "key"  : "padding-left",
-        "label": "padding-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginTopLegend",
-        "key"  : "margin-top",
-        "label": "margin-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "marginRightLegend",
-        "key"  : "margin-right",
-        "label": "margin-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginBottomLegend",
-        "key"  : "margin-bottom",
-        "label": "margin-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "margingleftLegend",
-        "key"  : "margin-left",
-        "label": "margin-left",
-      },
-      {
-        "type":"checkbox",
-        "label": "Highlight plot",
-        "id" :"highlight-plotLegend",
-        "key" :"highlight-plot",
-        "divider" :"true"
-      },
-    ],};
-var legendDataitem     = {
-    "category" : "legend",
-    "subcategory" :"item",
-    "inputs" : [
-      {
-        "type":"checkbox",
-        "label": "Bold",
-        "id" :"highlight-plotLegend",
-        "key" :"highlight-plot",
-      },
-      {
-        "type":"color",
-        "label": "Font color",
-        "id" :"font-colorItmeLegend",
-        "key" :"font-color",
-        "divider":"true"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "normal",
-          "italic",
-          "oblique",
-        ],
-        "label" :"Font Style",
-        "id"    :"fontStyleItemLegend",
-        "key"   :"font-style",
-        "divider":"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "fontFamilyItemLegend",
-        "key"  : "font-family",
-        "label": "Font family"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "Center",
-          "left",
-          "Right",
-        ],
-        "label" :"Text align",
-        "id"    :"textAlignitemLegend",
-        "key"   :"text-align",
-        "divider":"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopItemLegend",
-        "key"  : "padding-top",
-        "label": "padding-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightItemLegend",
-        "key"  : "padding-right",
-        "label": "padding-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomItemLegend",
-        "key"  : "padding-bottom",
-        "label": "padding-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingleftItemLegend",
-        "key"  : "padding-left",
-        "label": "padding-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginTopItemLegend",
-        "key"  : "margin-top",
-        "label": "margin-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "marginRightItemLegend",
-        "key"  : "margin-right",
-        "label": "margin-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginBottomItemLegend",
-        "key"  : "margin-bottom",
-        "label": "margin-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "margingleftItemLegend",
-        "key"  : "margin-left",
-        "label": "margin-left",
-      },
+var userInterface = {
+    "titleData": {
+        "category": "title",
+        "subcategory": "title",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Visible",
+            "id": "visibleTitle",
+            "key": "visible"
+        }, {
+            "type": "text",
+            "id": "textTitle",
+            "key": "text",
+            "label": "text",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "label": "Adjust Layout",
+            "id": "adjustLayoutTitle",
+            "key": "adjust-layout",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "label": "Bold",
+            "id": "boldTitle",
+            "key": "bold",
+            "divider": "true"
+        }, {
+            "type": "bgcolor",
+            "id": "titleTitle",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "linear",
+                "radial"
+            ],
+            "label": "Fill type",
+            "id": "fillTypeTitle",
+            "key": "fill-type",
+            "divider": "true"
+        }, {
+            "type": "color",
+            "id": "fontColorTitle",
+            "key": "font-color",
+            "label": "Font color",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "fontStyleItemTitle",
+            "key": "font-style",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "fontFamilyItemTitle",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "select",
+            "values": [
+                "Center",
+                "left",
+                "Right"
+            ],
+            "label": "Text align",
+            "id": "textAlignItemTitle",
+            "key": "text-align",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "title",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopTitle",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightTitle",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomTitle",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingLeftTitle",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopTitle",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginRightTitle",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomTitle",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "marginLeftTitle",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "text",
+            "id": "xTitle",
+            "key": "x",
+            "label": "X",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "yTitle",
+            "key": "y",
+            "label": "Y"
+        }]
+    },
+    "subtitleData": {
+        "category": "subtitle",
+        "subcategory": "subtitle",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Visible",
+            "id": "visibleSubtitle",
+            "key": "visible"
+        }, {
+            "type": "text",
+            "id": "textSubtitle",
+            "key": "text",
+            "label": "text",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "label": "Adjust Layout",
+            "id": "adjustLayoutSubtitle",
+            "key": "adjust-layout",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "label": "Bold",
+            "id": "boldSubtitle",
+            "key": "bold",
+            "divider": "true"
+        }, {
+            "type": "bgcolor",
+            "id": "subtitlesubtitle",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "linear",
+                "radial"
+            ],
+            "label": "Fill type",
+            "id": "fillTypeSubitle",
+            "key": "fill-type",
+            "divider": "true"
+        }, {
+            "type": "color",
+            "id": "fontColorSubtitle",
+            "key": "font-color",
+            "label": "Font color",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "fontStyleItemSubtitle",
+            "key": "font-style",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "fontFamilyItemSubtitle",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "select",
+            "values": [
+                "Center",
+                "left",
+                "Right"
+            ],
+            "label": "Text align",
+            "id": "textAlignitemSubitle",
+            "key": "text-align",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "subtitle",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopSubtitle",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightSubtitle",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomSubtitle",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftSubtitle",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopSubtitle",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginRightSubtitle",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomSubtitle",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftSubtitle",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "text",
+            "id": "xSubtitle",
+            "key": "x",
+            "label": "X",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "ySubtitle",
+            "key": "y",
+            "label": "Y"
+        }]
+    },
+    "legendDatageneral": {
+        "category": "legend",
+        "subcategory": "legend",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Visible",
+            "id": "visibleLegend",
+            "key": "visible"
+        }, {
+            "type": "checkbox",
+            "label": "Adjust Layout",
+            "id": "adjustLayoutLegend",
+            "key": "adjust-layout",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "Center",
+                "left",
+                "Right"
+            ],
+            "label": "Align",
+            "id": "alignLegend",
+            "key": "align",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "label": "Daggable",
+            "id": "draggableLegend",
+            "key": "draggable"
+        }, {
+            "type": "select",
+            "values": [
+                "vertical",
+                "horizontal",
+                "float",
+                "col x row"
+            ],
+            "label": "Layout",
+            "id": "layoutlegend",
+            "key": "layout",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "rowLayoutLegend",
+            "key": "",
+            "label": "Row(Works only in col x row)"
+        }, {
+            "type": "text",
+            "id": "columnLayoutLegend",
+            "key": "",
+            "label": "Column(Works only in col x row)"
+        }, {
+            "type": "text",
+            "id": "xLegend",
+            "key": "x",
+            "label": "x-string",
+            "divider": "true",
+            "defValue": "0"
+        }, {
+            "type": "text",
+            "id": "yLegend",
+            "key": "y",
+            "label": "y-string",
+            "defValue": "0"
+        }, {
+            "type": "checkbox",
+            "label": "Minimize",
+            "id": "minimizeLegend",
+            "key": "minimize",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "hide",
+                "remove",
+                "disabled"
+            ],
+            "label": "Toggle action",
+            "id": "toggle-actionLegend",
+            "key": "toggle-action",
+            "divider": "true"
+        }, {
+            "type": "bgcolor",
+            "id": "legendlegend",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "legend",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopLegend",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightLegend",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomLegend",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftLegend",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopLegend",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginRightLegend",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomLegend",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftLegend",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "checkbox",
+            "label": "Highlight plot",
+            "id": "highlight-plotLegend",
+            "key": "highlight-plot",
+            "divider": "true"
+        }]
+    },
+    "legendDataitem": {
+        "category": "legend",
+        "subcategory": "item",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Bold",
+            "id": "highlight-plotLegend",
+            "key": "highlight-plot"
+        }, {
+            "type": "color",
+            "label": "Font color",
+            "id": "font-colorItmeLegend",
+            "key": "font-color",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "fontStyleItemLegend",
+            "key": "font-style",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "fontFamilyItemLegend",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "select",
+            "values": [
+                "Center",
+                "left",
+                "Right"
+            ],
+            "label": "Text align",
+            "id": "textAlignitemLegend",
+            "key": "text-align",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopItemLegend",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightItemLegend",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomItemLegend",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftItemLegend",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopItemLegend",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginRightItemLegend",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomItemLegend",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftItemLegend",
+            "key": "margin-left",
+            "label": "margin-left"
+        }]
+    },
+    "legendDataMarker": {
+        "category": "legend",
+        "subcategory": "marker",
+        "inputs": [{
+            "type": "select",
+            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
+                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
+            ],
+            "label": "Type ",
+            "id": "typeMarkerLegend",
+            "key": "type"
+        }, {
+            "type": "range",
+            "id": "alphaMarkerLegend",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "markerlegend",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImageMarkerLegend",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "markerlegend",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }]
+    },
+    "plotareaData": {
+        "category": "plotarea",
+        "subcategory": "plotarea",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Adjust Layout",
+            "id": "adjustLayoutPlotArea",
+            "key": "adjust-layout",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "alphaPlotArea",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "plotareaplotarea",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImagePlotArea",
+            "key": "backgroundImage",
+            "label": "Background Image"
+        }, {
+            "type": "select",
+            "values": ["X", "Y", "XY"],
+            "label": "Background fit",
+            "id": "background-fitPlotArea",
+            "key": "background-fit"
+        }, {
+            "type": "border",
+            "id": "plotarea",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopPlotArea",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightPlotArea",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomPlotArea",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftPlotArea",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopPlotArea",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginRightPlotArea",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomPlotArea",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftPlotArea",
+            "key": "margin-left",
+            "label": "margin-left"
+        }]
+    },
+    "plotGeneralData": {
+        "category": "plot",
+        "subcategory": "plot",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Active Area",
+            "id": "activeAreaPlot",
+            "key": "active_area"
+        }, {
+            "type": "range",
+            "id": "alphaAreaPlot",
+            "key": "alphaArea",
+            "label": "Alpha Area",
+            "divider": "true",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "select",
+            "values": [
+                "hand",
+                "normal"
+            ],
+            "labels": [
+                "Hand",
+                "Normal"
+            ],
+            "label": "Cursor",
+            "id": "cursorPlot",
+            "key": "cursor",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "cone",
+                "cylinder",
+                "pyramid",
+                "histogram",
+                "stepped",
+                "spline",
+                "segmented"
+            ],
+            "label": "Aspect",
+            "id": "aspectPlot",
+            "key": "aspect",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "decimalsPlot",
+            "key": "decimals",
+            "label": "decimals",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "decimalsSeparatorPlot",
+            "key": "decimalsSeparator",
+            "label": "Decimals Separator",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "detachPlot",
+            "key": "detach",
+            "label": "Detach",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "maxNodesPlot",
+            "key": "maxNodes",
+            "label": "max Nodes",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "multiplierPlot",
+            "key": "multiplier",
+            "label": "Multiplier",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "standard",
+                "currency"
+            ],
+            "label": "Negation",
+            "id": "negationPlot",
+            "key": "negation",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "refAnglePlot",
+            "key": "refAngle",
+            "label": "Ref Angle",
+            "divider": "true",
+            "min": "0",
+            "max": "360",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "shortPlot",
+            "key": "short",
+            "label": "Short",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "K",
+                "M",
+                "B"
+            ],
+            "label": "Short Unit",
+            "id": "shortUnitPlot",
+            "key": "shortUnit"
+        }, {
+            "type": "range",
+            "id": "slicePlot",
+            "key": "slice",
+            "label": "Slice",
+            "divider": "true",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "stackedPlot",
+            "key": "stacked",
+            "label": "Stacked",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "thousandsSeparatorPlot",
+            "key": "thousandsSeparator",
+            "label": "Thousands Separator",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "alphaPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "divider": "true",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "plotplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "plot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "plot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }]
+    },
+    "plotAnimationData": {
+        "category": "plot",
+        "subcategory": "animation",
+        "inputs": [{
+            "type": "select",
+            "id": "effectAnimation",
+            "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            "labels": ["FADE IN",
+                "EXPAND VERTICAL",
+                "EXPAND TOP",
+                "EXPAND BOTTOM",
+                "EXPAND LEFT",
+                "EXPAND RIGHT",
+                "EXPAND HORIZONTAL",
+                "SLIDE LEFT",
+                "SLIDE RIGHT",
+                "SLIDE TOP",
+                "SLIDE BOTTOM",
+                "UNFOLD HORIZONTAL",
+                "UNFOLD VERTICAL"
+            ],
+            "key": "effect",
+            "label": "Effect"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": [1, 2, 3, 4, 5],
+            "labels": ["LINEAR",
+                "BACK EASE OUT",
+                "ELASTIC EASE OUT",
+                "BOUNCE EASE OUT",
+                "STRONG EASE OUT",
+                "REGULAR EASE OUT"
+            ],
+            "key": "method",
+            "label": "Method",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "sequenceAnimation",
+            "values": [1, 2, 3],
+            "labels": ["NO SEQUENCE",
+                "BY PLOT",
+                "BY NODE",
+                "BY PLOT AND NODE"
+            ],
+            "key": "sequence",
+            "label": "Sequence",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "speedAnimation",
+            "values": [4000, 1000],
+            "labels": ["Slow",
+                "Fast"
+            ],
+            "key": "speed",
+            "label": "Speed",
+            "divider": "true"
+        }]
+    },
+    "plotHoverState": {
+        "category": "plot",
+        "subcategory": "hoverState",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaHoverStatePlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "divider": "true",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "hoverStateplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "hoverStateplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "hoverStateplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }]
+    },
+    "hoverMarker": {
+        "category": "plot",
+        "subcategory": "hoverMarker",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaHoverMarkerPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "hoverMarkerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImageHoverMarkerPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFithoverMarkerPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeathoverMarkerPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "hoverMarkerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "hoverMarkerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
+                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
+            ],
+            "label": "Type",
+            "id": "typehoverMarkerPlot",
+            "key": "type ",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visiblehoverMarkerPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }]
+    },
+    "plotMarkerData": {
+        "category": "plot",
+        "subcategory": "marker",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaMarkerPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "markerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImageMarkerPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFitMarkerPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeatMarkerPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "markerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "markerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
+                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
+            ],
+            "label": "Type ",
+            "id": "typeMarkerPlot",
+            "key": "type",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visibleMarkerPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }]
+    },
+    "tooltip": {
+        "category": "plot",
+        "subcategory": "tooltip",
+        "inputs": [{
+            "type": "range",
+            "id": "alphatooltipPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImagetooltipPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFittooltipPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeatTooltipPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visibletooltipPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }, {
+            "type": "font",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "heightTooltipPlot",
+            "key": "height",
+            "label": "Height ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "widthTooltipPlot",
+            "key": "width",
+            "label": "Width ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginToptooltipplot",
+            "key": "marginTop",
+            "label": "Margin Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginRighttooltipplot",
+            "key": "marginRight",
+            "label": "Margin Right"
+        }, {
+            "type": "text",
+            "id": "MarginBottomtooltipplot",
+            "key": "marginBottom",
+            "label": "Margin Bottom"
+        }, {
+            "type": "text",
+            "id": "MarginLefttooltipplot",
+            "key": "marginLeft",
+            "label": "Margin Left"
+        }, {
+            "type": "text",
+            "id": "paddingToptooltipplot",
+            "key": "paddingTop",
+            "label": "Padding Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRighttooltipplot",
+            "key": "paddingRight",
+            "label": "Padding Right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomtooltipplot",
+            "key": "paddingBottom",
+            "label": "Padding Bottom"
+        }, {
+            "type": "text",
+            "id": "paddingLefttooltipplot",
+            "key": "paddingLeft",
+            "label": "Padding Left"
+        }, {
+            "type": "checkbox",
+            "id": "calloutTooltipPlot",
+            "key": "callout",
+            "label": "Callout",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutHeightTooltipplot",
+            "key": "calloutHeight",
+            "label": "Callout Height",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutWidthTooltipplot",
+            "key": "calloutWidth",
+            "label": "Callout Width"
+        }, {
+            "type": "select",
+            "values": [
+                "top",
+                "right",
+                "bottom",
+                "left"
+            ],
+            "labels": [
+                "Top",
+                "Right",
+                "Bottom",
+                "Left"
+            ],
+            "label": "Callout Position ",
+            "id": "calloutPositionTooltipPlot",
+            "key": "calloutPosition"
+        }, {
+            "type": "text",
+            "id": "xTooltipPlot",
+            "key": "x",
+            "label": "Offset X",
+            "divider": "true",
+            "defValue": "0"
+        }, {
+            "type": "text",
+            "id": "yTooltipPlot",
+            "key": "y",
+            "label": "Offset Y",
+            "defValue": "0"
+        }, {
+            "type": "checkbox",
+            "id": "wrapTextTooltipPlot",
+            "key": "wrapText",
+            "label": "Wrap text",
+            "divider": "true"
+        }]
+    },
+    "valueBox": {
+        "category": "plot",
+        "subcategory": "value-box",
+        "inputs": [{
+            "type": "range",
+            "id": "alphavalueBoxPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImagevalueBoxPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFitvalueBoxPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeatvalueBoxPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visiblevalueBoxPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }, {
+            "type": "font",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "heightvalueBoxPlot",
+            "key": "height",
+            "label": "Height ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "widthvalueBoxPlot",
+            "key": "width",
+            "label": "Width ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginTopvalueBoxPlot",
+            "key": "marginTop",
+            "label": "Margin Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginRightvalueBoxPlot",
+            "key": "marginRight",
+            "label": "Margin Right"
+        }, {
+            "type": "text",
+            "id": "MarginBottomvalueBoxPlot",
+            "key": "marginBottom",
+            "label": "Margin Bottom"
+        }, {
+            "type": "text",
+            "id": "MarginLeftvalueBoxPlot",
+            "key": "marginLeft",
+            "label": "Margin Left"
+        }, {
+            "type": "text",
+            "id": "paddingTopvalueBoxPlot",
+            "key": "paddingTop",
+            "label": "Padding Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightvalueBoxPlot",
+            "key": "paddingRight",
+            "label": "Padding Right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomvalueBoxPlot",
+            "key": "paddingBottom",
+            "label": "Padding Bottom"
+        }, {
+            "type": "text",
+            "id": "paddingLeftvalueBoxPlot",
+            "key": "paddingLeft",
+            "label": "Padding Left"
+        }, {
+            "type": "checkbox",
+            "id": "calloutvalueBoxPlot",
+            "key": "callout",
+            "label": "Callout",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutHeightvalueBoxPlot",
+            "key": "calloutHeight",
+            "label": "Callout Height",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutWidthvalueBoxPlot",
+            "key": "calloutWidth",
+            "label": "Callout Width"
+        }, {
+            "type": "select",
+            "values": [
+                "top",
+                "right",
+                "bottom",
+                "left"
+            ],
+            "labels": [
+                "Top",
+                "Right",
+                "Bottom",
+                "Left"
+            ],
+            "label": "Callout Position ",
+            "id": "calloutPositionvalueBoxPlot",
+            "key": "calloutPosition"
+        }, {
+            "type": "text",
+            "id": "xvalueBoxPlot",
+            "key": "x",
+            "label": "Offset X",
+            "divider": "true",
+            "defValue": "0"
+        }, {
+            "type": "text",
+            "id": "yvalueBoxPlot",
+            "key": "y",
+            "label": "Offset Y",
+            "defValue": "0"
+        }, {
+            "type": "checkbox",
+            "id": "wrapTextvalueBoxPlot",
+            "key": "wrapText",
+            "label": "Wrap text",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "placementvalueBoxPlot",
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }]
+    },
+    "previewData": {
+        "category": "preview",
+        "subcategory": "preview",
+        "inputs": [{
+            "type": "checkbox",
+            "id": "visiblePreview",
+            "key": "visible",
+            "label": "Visib"
+        }, {
+            "type": "checkbox",
+            "id": "adjustLayoutPreview",
+            "key": "adjust-layout",
+            "label": "Adjust Layout",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "heightPreview",
+            "key": "height",
+            "label": "Height",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "widthPreview",
+            "key": "width",
+            "label": "Width",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginPreview",
+            "key": "marginTop",
+            "label": "Margin Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginRightPreview",
+            "key": "marginRight",
+            "label": "Margin Right"
+        }, {
+            "type": "text",
+            "id": "MarginBottomPreview",
+            "key": "marginBottom",
+            "label": "Margin Bottom"
+        }, {
+            "type": "text",
+            "id": "MarginLeftPreview",
+            "key": "marginLeft",
+            "label": "Margin Left"
+        }, {
+            "type": "text",
+            "id": "paddingTopPreview",
+            "key": "paddingTop",
+            "label": "Padding Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightPreview",
+            "key": "paddingRight",
+            "label": "Padding Right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomPreview",
+            "key": "paddingBottom",
+            "label": "Padding Bottom"
+        }, {
+            "type": "text",
+            "id": "paddingLeftPreview",
+            "key": "paddingLeft",
+            "label": "Padding Left"
+        }, {
+            "type": "text",
+            "id": "xPreview",
+            "key": "x",
+            "label": "Offset X",
+            "divider": "true",
+            "defValue": "0"
+        }, {
+            "type": "text",
+            "id": "yPreview",
+            "key": "y",
+            "label": "Offset Y",
+            "defValue": "0"
+        }, {
+            "type": "bgcolor",
+            "id": "preview",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }]
+    },
+    "scaleRData": {
+        "category": "scale-r",
+        "subcategory": "scale-r",
+        "inputs": [{
+            "type": "range",
+            "id": "aperture",
+            "key": "aperture",
+            "label": "Aperture",
+            "min": "0",
+            "max": "360",
+            "step": "1"
+        }]
+    },
+    "scaleData": {
+        "category": "scale",
+        "subcategory": "scale",
+        "inputs": [{
+            "type": "select",
+            "values": [
+                "auto"
+            ],
+            "labels": [
+                "Auto"
+            ],
+            "label": "Size Factor ",
+            "id": "size-factorscalescale",
+            "key": "size-factor"
+        }, {
+            "type": "range",
+            "id": "size-factor2scalescale",
+            "key": "size-factor",
+            "label": "Size Factor",
+            "min": "0",
+            "max": "10",
+            "step": ".1"
+        }]
+    },
+    "labelData": {
+        "category": "labels",
+        "subcategory": "labels",
+        "inputs": [{
+                "type": "bgcolor",
+                "id": "labelslabels",
+                "key": "",
+                "label": ""
+            }, {
+                "type": "checkbox",
+                "id": "callout",
+                "key": "callout",
+                "label": "Callout",
+                "divider": "true"
+            }, {
+                "type": "text",
+                "id": "callout-height",
+                "key": "callout-height",
+                "label": "Callout Height"
+            }, {
+                "type": "text",
+                "id": "callout-width",
+                "key": "callout-width",
+                "label": "Callout Width"
+            }, {
+                "type": "text",
+                "id": "callout-hooklabelsX",
+                "key": "callout-hook",
+                "label": "Callout Hook X"
+            }, {
+                "type": "text",
+                "id": "callout-hooklabelsY",
+                "key": "callout-hook",
+                "label": "Callout Hook Y"
+            }, {
+                "type": "select",
+                "values": [
+                    "top",
+                    "right",
+                    "bottom",
+                    "left"
+                ],
+                "labels": [
+                    "Top",
+                    "Right",
+                    "Bottom",
+                    "Left"
+                ],
+                "label": "Callout position",
+                "id": "callout-positionlabels",
+                "key": "callout-position"
+            }, {
+                "type": "select",
+                "values": [
+                    "",
+                    "c"
+                ],
+                "labels": [
+                    "Normal",
+                    "center"
+                ],
+                "label": "Anchor",
+                "id": "anchorlabels",
+                "key": "anchor",
+                "divider": "true"
+            },
 
-    ],};
-var legendDataMarker   = {
-    "category" : "legend",
-    "subcategory" :"marker",
-    "inputs" : [
-      {
-        "type"  :"select",
-        "values":["triangle", "square", "circle", "diamond", "trapezoid", "rectangle"
-        , "parallelogram", "plus", "cross", "arrow", "star3","star4","star5","star6","star7",
-        "star8","star9","rpoly3","rpoly4","rpoly5","rpoly6","rpoly7","rpoly8","rpoly9","gear3","gear4","gear5","gear6","gear7","gear8","gear9", "ellipse", "arc", "pie"
-        ],
-        "label" :"Type ",
-        "id"    :"typeMarkerLegend",
-        "key"   :"type",
-      },
-      {
-        "type" : "range",
-        "id"   : "alphaMarkerLegend",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "markerlegend", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "backgroundImageMarkerLegend",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type" : "border",
-        "id"   : "markerlegend",
-        "key"  : "",
-        "label": "",
-        "divider" : "true",
-      },
-    ],};
-var plotareaData       = {
-    "category" : "plotarea",
-    "subcategory" :"plotarea",
-    "inputs":[
-      {
-        "type":"checkbox",
-        "label": "Adjust Layout",
-        "id" :"adjustLayoutPlotArea",
-        "key" :"adjust-layout",
-        "divider" :"true"
-      },
-      {
-        "type" : "range",
-        "id"   : "alphaPlotArea",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "plotareaplotarea", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "text",
-        "id"   : "backgroundImagePlotArea",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-      },
-      {
-        "type"  :"select",
-        "values":["X","Y","XY"
-        ],
-        "label" :"Background fit",
-        "id"    :"background-fitPlotArea",
-        "key"   :"background-fit",
-      },
-      {
-        "type" : "border",
-        "id"   : "plotarea",
-        "key"  : "",
-        "label": "",
-        "divider" : "true",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopPlotArea",
-        "key"  : "padding-top",
-        "label": "padding-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightPlotArea",
-        "key"  : "padding-right",
-        "label": "padding-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomPlotArea",
-        "key"  : "padding-bottom",
-        "label": "padding-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingleftPlotArea",
-        "key"  : "padding-left",
-        "label": "padding-left",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginTopPlotArea",
-        "key"  : "margin-top",
-        "label": "margin-top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "marginRightPlotArea",
-        "key"  : "margin-right",
-        "label": "margin-right",
-      },
-      {
-        "type" : "text",
-        "id"   : "marginBottomPlotArea",
-        "key"  : "margin-bottom",
-        "label": "margin-bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "margingleftPlotArea",
-        "key"  : "margin-left",
-        "label": "margin-left",
-      },
-    ],};
-var plotGeneralData    = {
-    "category" : "plot",
-    "subcategory" :"plot",
-    "inputs":[
-      {
-        "type":"checkbox",
-        "label": "Active Area",
-        "id" :"activeAreaPlot",
-        "key" :"active_area"
-      },
-      {
-        "type" : "range",
-        "id"   : "alphaAreaPlot",
-        "key"  : "alphaArea",
-        "label": "Alpha Area",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "hand",
-          "normal"
-        ],
-        "labels" :[
-          "Hand",
-          "Normal"
-        ],
-        "label" :"Cursor",
-        "id"    :"cursorPlot",
-        "key"   :"cursor",
-        "divider":"true"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "cone",
-          "cylinder",
-          "pyramid",
-          "histogram",
-          "stepped",
-          "spline",
-          "segmented"
-        ],
-        "label" :"Aspect",
-        "id"    :"aspectPlot",
-        "key"   :"aspect",
-        "divider":"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "decimalsPlot",
-        "key"  : "decimals",
-        "label": "decimals",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "decimalsSeparatorPlot",
-        "key"  : "decimalsSeparator",
-        "label": "Decimals Separator",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "detachPlot",
-        "key"  : "detach",
-        "label": "Detach",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "maxNodesPlot",
-        "key"  : "maxNodes",
-        "label": "max Nodes",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "multiplierPlot",
-        "key"  : "multiplier",
-        "label": "Multiplier",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "standard",
-          "currency"
-        ],
-        "label" :"Negation",
-        "id"    :"negationPlot",
-        "key"   :"negation",
-        "divider":"true"
-      },
-      {
-        "type" : "range",
-        "id"   : "refAnglePlot",
-        "key"  : "refAngle",
-        "label": "Ref Angle",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '360',
-        "step" :'1'
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "shortPlot",
-        "key"  : "short",
-        "label": "Short",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "K",
-          "M",
-          "B"
-        ],
-        "label" :"Short Unit",
-        "id"    :"shortUnitPlot",
-        "key"   :"shortUnit",
-      },
-      {
-        "type" : "range",
-        "id"   : "slicePlot",
-        "key"  : "slice",
-        "label": "Slice",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '100',
-        "step" :'1'
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "stackedPlot",
-        "key"  : "stacked",
-        "label": "Stacked",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "thousandsSeparatorPlot",
-        "key"  : "thousandsSeparator",
-        "label": "Thousands Separator",
-        "divider" :"true"
-      },
-      {
-        "type" : "range",
-        "id"   : "alphaPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "plotplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-       "type" : "border",
-        "id"   : "plot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "plot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      
-    ],};
-var plotAnimationData  = {
-    "category" : "plot",
-    "subcategory" :"animation",
-    "inputs" :[
-      {
-        "type" : "select",
-        "id"   : "effectAnimation", 
-        "values" :[1,2,3,4,5,6,7,8,9,10,11,12,13
-        ],
-        "labels" :['FADE IN',
-        'EXPAND VERTICAL',
-        'EXPAND TOP',
-        'EXPAND BOTTOM',
-        'EXPAND LEFT',
-        'EXPAND RIGHT',
-        'EXPAND HORIZONTAL',
-        'SLIDE LEFT',
-        'SLIDE RIGHT',
-        'SLIDE TOP',
-        'SLIDE BOTTOM',
-        'UNFOLD HORIZONTAL',
-        'UNFOLD VERTICAL'],
-        "key"  : "effect",
-        "label": "Effect",
-      },
-      {
-        "type" : "select",
-        "id"   : "methodAnimation", 
-        "values" :[1,2,3,4,5],
-        "labels" :['LINEAR',
-        'BACK EASE OUT',
-        'ELASTIC EASE OUT',
-        'BOUNCE EASE OUT',
-        'STRONG EASE OUT',
-        'REGULAR EASE OUT'
-        ],
-        "key"  : "method",
-        "label": "Method",
-        "divider" :"true"
-      },
-      {
-        "type" : "select",
-        "id"   : "sequenceAnimation", 
-        "values" :[1,2,3],
-        "labels" :['NO SEQUENCE',
-        'BY PLOT',
-        'BY NODE',
-        'BY PLOT AND NODE',
-        ],
-        "key"  : "sequence",
-        "label": "Sequence",
-        "divider" :"true"
-      },
-      {
-        "type" : "select",
-        "id"   : "speedAnimation", 
-        "values" :[4000,1000],
-        "labels" :['Slow',
-        'Fast',
-        ],
-        "key"  : "speed",
-        "label": "Speed",
-        "divider" :"true"
-      },
-      
-    ],};
-var plotHoverState     = {
-    "category" : "plot",
-    "subcategory" :"hoverState",
-    "inputs" : [
-      {
-        "type" : "range",
-        "id"   : "alphaHoverStatePlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "hoverStateplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-       "type" : "border",
-        "id"   : "hoverStateplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "hoverStateplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      }
-    ],};
-var hoverMarker        = {
-   "category" : "plot",
-    "subcategory" :"hoverMarker",
-    "inputs" : [
-      {
-        "type" : "range",
-        "id"   : "alphaHoverMarkerPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "hoverMarkerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImageHoverMarkerPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFithoverMarkerPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeathoverMarkerPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "hoverMarkerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "hoverMarkerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type"  :"select",
-        "values":["triangle", "square", "circle", "diamond", "trapezoid", "rectangle"
-        , "parallelogram", "plus", "cross", "arrow", "star3","star4","star5","star6","star7",
-        "star8","star9","rpoly3","rpoly4","rpoly5","rpoly6","rpoly7","rpoly8","rpoly9","gear3","gear4","gear5","gear6","gear7","gear8","gear9", "ellipse", "arc", "pie"
-        ],
-        "label" :"Type",
-        "id"    :"typehoverMarkerPlot",
-        "key"   :"type ",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visiblehoverMarkerPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-      ]};
-var plotMarkerData     = {
-    "category" : "plot",
-    "subcategory" :"marker",
-    "inputs" :[
-      {
-        "type" : "range",
-        "id"   : "alphaMarkerPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "markerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImageMarkerPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFitMarkerPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeatMarkerPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "markerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "markerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type"  :"select",
-        "values":["triangle", "square", "circle", "diamond", "trapezoid", "rectangle"
-        , "parallelogram", "plus", "cross", "arrow", "star3","star4","star5","star6","star7",
-        "star8","star9","rpoly3","rpoly4","rpoly5","rpoly6","rpoly7","rpoly8","rpoly9","gear3","gear4","gear5","gear6","gear7","gear8","gear9", "ellipse", "arc", "pie"
-        ],
-        "label" :"Type ",
-        "id"    :"typeMarkerPlot",
-        "key"   :"type",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visibleMarkerPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-    ]};
-var tooltip            = {
-    "category" : "plot",
-    "subcategory" :"tooltip",
-    "inputs" :[
-      {
-        "type" : "range",
-        "id"   : "alphatooltipPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "tooltipplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImagetooltipPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFittooltipPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeatTooltipPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "tooltipplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "tooltipplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visibletooltipPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-      {
-        "type" : "font",
-        "id"   : "tooltipplot",
-        "key"  : "",
-        "label": "",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "heightTooltipPlot",
-        "key"  : "height",
-        "label": "Height ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "widthTooltipPlot",
-        "key"  : "width",
-        "label": "Width ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginToptooltipplot",
-        "key"  : "marginTop",
-        "label": "Margin Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginRighttooltipplot",
-        "key"  : "marginRight",
-        "label": "Margin Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginBottomtooltipplot",
-        "key"  : "marginBottom",
-        "label": "Margin Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginLefttooltipplot",
-        "key"  : "marginLeft",
-        "label": "Margin Left",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingToptooltipplot",
-        "key"  : "paddingTop",
-        "label": "Padding Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRighttooltipplot",
-        "key"  : "paddingRight",
-        "label": "Padding Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomtooltipplot",
-        "key"  : "paddingBottom",
-        "label": "Padding Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingLefttooltipplot",
-        "key"  : "paddingLeft",
-        "label": "Padding Left",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "calloutTooltipPlot",
-        "key"  : "callout",
-        "label": "Callout",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutHeightTooltipplot",
-        "key"  : "calloutHeight",
-        "label": "Callout Height",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutWidthTooltipplot",
-        "key"  : "calloutWidth",
-        "label": "Callout Width",
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "top",
-          "right",
-          "bottom",
-          "left"
-        ],
-        "labels" :[
-        "Top",
-        "Right",
-        "Bottom",
-        "Left",
-        ],
-        "label" :"Callout Position ",
-        "id"    :"calloutPositionTooltipPlot",
-        "key"   :"calloutPosition",
-      },
-      {
-        "type" : "text",
-        "id"   : "xTooltipPlot",
-        "key"  : "x",
-        "label": "Offset X",
-        "divider" :"true",
-        "defValue" : "0"
-      },
-      {
-        "type" : "text",
-        "id"   : "yTooltipPlot",
-        "key"  : "y",
-        "label": "Offset Y",
-        "defValue" : "0"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "wrapTextTooltipPlot",
-        "key"  : "wrapText",
-        "label": "Wrap text",
-        "divider" :"true"
-      },
-    ]};
-var valueBox           = {
-    "category" : "plot",
-    "subcategory" :"value-box",
-    "inputs" :[
-      {
-        "type" : "range",
-        "id"   : "alphavalueBoxPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "value-boxplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImagevalueBoxPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFitvalueBoxPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeatvalueBoxPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "value-boxplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "value-boxplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visiblevalueBoxPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-      {
-        "type" : "font",
-        "id"   : "value-boxplot",
-        "key"  : "",
-        "label": "",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "heightvalueBoxPlot",
-        "key"  : "height",
-        "label": "Height ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "widthvalueBoxPlot",
-        "key"  : "width",
-        "label": "Width ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginTopvalueBoxPlot",
-        "key"  : "marginTop",
-        "label": "Margin Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginRightvalueBoxPlot",
-        "key"  : "marginRight",
-        "label": "Margin Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginBottomvalueBoxPlot",
-        "key"  : "marginBottom",
-        "label": "Margin Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginLeftvalueBoxPlot",
-        "key"  : "marginLeft",
-        "label": "Margin Left",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopvalueBoxPlot",
-        "key"  : "paddingTop",
-        "label": "Padding Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightvalueBoxPlot",
-        "key"  : "paddingRight",
-        "label": "Padding Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomvalueBoxPlot",
-        "key"  : "paddingBottom",
-        "label": "Padding Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingLeftvalueBoxPlot",
-        "key"  : "paddingLeft",
-        "label": "Padding Left",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "calloutvalueBoxPlot",
-        "key"  : "callout",
-        "label": "Callout",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutHeightvalueBoxPlot",
-        "key"  : "calloutHeight",
-        "label": "Callout Height",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutWidthvalueBoxPlot",
-        "key"  : "calloutWidth",
-        "label": "Callout Width",
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "top",
-          "right",
-          "bottom",
-          "left"
-        ],
-        "labels" :[
-        "Top",
-        "Right",
-        "Bottom",
-        "Left",
-        ],
-        "label" :"Callout Position ",
-        "id"    :"calloutPositionvalueBoxPlot",
-        "key"   :"calloutPosition",
-      },
-      {
-        "type" : "text",
-        "id"   : "xvalueBoxPlot",
-        "key"  : "x",
-        "label": "Offset X",
-        "divider" :"true",
-        "defValue" : "0"
-      },
-      {
-        "type" : "text",
-        "id"   : "yvalueBoxPlot",
-        "key"  : "y",
-        "label": "Offset Y",
-        "defValue" : "0"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "wrapTextvalueBoxPlot",
-        "key"  : "wrapText",
-        "label": "Wrap text",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "placementvalueBoxPlot",
-        "key"  : "placement",
-        "label": "Placement",
-        "divider" :"true"
-      },
-    ]};
-var previewData        = {
-      "category" : "preview",
-      "subcategory" :"preview",
-      "inputs" : [ 
-      {
-        "type" : "checkbox",
-        "id"   : "visiblePreview",
-        "key"  : "visible",
-        "label": "Visib",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "adjustLayoutPreview",
-        "key"  : "adjust-layout",
-        "label": "Adjust Layout",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "heightPreview",
-        "key"  : "height",
-        "label": "Height",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "widthPreview",
-        "key"  : "width",
-        "label": "Width",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginPreview",
-        "key"  : "marginTop",
-        "label": "Margin Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginRightPreview",
-        "key"  : "marginRight",
-        "label": "Margin Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginBottomPreview",
-        "key"  : "marginBottom",
-        "label": "Margin Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginLeftPreview",
-        "key"  : "marginLeft",
-        "label": "Margin Left",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopPreview",
-        "key"  : "paddingTop",
-        "label": "Padding Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightPreview",
-        "key"  : "paddingRight",
-        "label": "Padding Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomPreview",
-        "key"  : "paddingBottom",
-        "label": "Padding Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingLeftPreview",
-        "key"  : "paddingLeft",
-        "label": "Padding Left",
-      },
-      {
-        "type" : "text",
-        "id"   : "xPreview",
-        "key"  : "x",
-        "label": "Offset X",
-        "divider" :"true",
-        "defValue" : "0"
-      },
-      {
-        "type" : "text",
-        "id"   : "yPreview",
-        "key"  : "y",
-        "label": "Offset Y",
-        "defValue" : "0"
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "previewpreview", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },],}
-var scaleRData         = {
-  "category" : "scale-r",
-      "subcategory" :"scale-r",
-      "inputs" : [ 
-      {
-        "type" : "range",
-        "id"   : "aperture",
-        "key"  : "aperture",
-        "label": "Aperture",
-        "min"  : '0',
-        "max"  : '360',
-        "step" :'1'
-      },
-      ],};
-var scaleData          = {
-    "category" : "scale",
-      "subcategory" :"scale",
-      "inputs" : [ 
-      {
-        "type"  :"select",
-        "values":[
-          "auto",
-        ],
-        "labels" :[
-        "Auto",
-        ],
-        "label" :"Size Factor ",
-        "id"    :"size-factorscalescale",
-        "key"   :"size-factor",
-      },
-      {
-        "type" : "range",
-        "id"   : "size-factor2scalescale",
-        "key"  : "size-factor",
-        "label": "Size Factor",
-        "min"  : '0',
-        "max"  : '10',
-        "step" :'.1'
-      },
-      ],};
-var labelData          = {
-      "category" : "labels",
-      "subcategory" :"labels",
-      "inputs" : [ 
-        {
-          "type" : "bgcolor",
-          "id"   : "labelslabels", //In the case of category ID the id should match the category name
-          "key"  : "",
-          "label": "",
-         
-        },
-        {
-          "type" : "checkbox",
-          "id"   : "callout",
-          "key"  : "callout",
-          "label": "Callout",
-           "divider" :"true",
-        },
-        {
-          "type" : "text",
-          "id"   : "callout-height",
-          "key"  : "callout-height",
-          "label": "Callout Height",
-        },
-        {
-          "type" : "text",
-          "id"   : "callout-width",
-          "key"  : "callout-width",
-          "label": "Callout Width",
-        },
-        {
-          "type" : "text",
-          "id"   : "callout-hooklabelsX",
-          "key"  : "callout-hook",
-          "label": "Callout Hook X",
-        },
-        {
-          "type" : "text",
-          "id"   : "callout-hooklabelsY",
-          "key"  : "callout-hook",
-          "label": "Callout Hook Y",
-        },
-         {
-          "type"  :"select",
-          "values":[
-            "top",
-            "right",
-            "bottom",
-            "left"
-          ],
-          "labels" :[
-          "Top",
-          "Right",
-          "Bottom",
-          "Left"
-          ],
-          "label" :"Callout position",
-          "id"    :"callout-positionlabels",
-          "key"   :"callout-position",
-        },
-        {
-          "type"  :"select",
-          "values":[
-            "",
-            "c",
-          ],
-          "labels" :[
-          "Normal",
-          "center"
-          ],
-          "label" :"Anchor",
-          "id"    :"anchorlabels",
-          "key"   :"anchor",
-          "divider" :"true",
-        },
+            {
+                "type": "checkbox",
+                "id": "boldlabels",
+                "key": "bold",
+                "label": "Bold",
+                "divider": "true"
+            }, {
+                "type": "border",
+                "id": "labels",
+                "key": "",
+                "label": "",
+                "divider": "true"
+            }, {
+                "type": "text",
+                "id": "textlabels",
+                "key": "text",
+                "label": "Text",
+                "divider": "true"
+            }, {
+                "type": "select",
+                "values": ["left", "center", "right"],
+                "labels": ["Left", "Center", "Right"],
+                "label": "Text Align",
+                "id": "text-alignlabels",
+                "key": "text-align"
+            }, {
+                "type": "select",
+                "values": ["Top", "middle", "bottom"],
+                "labels": ["Top", "Middle", "Bottom"],
+                "label": "vertical align",
+                "id": "vertical-alignlabels",
+                "key": "vertical-align"
+            }, {
+                "type": "text",
+                "id": "urllabels",
+                "key": "url",
+                "label": "Url"
+            }, {
+                "type": "select",
+                "values": ["_self", "blank"],
+                "labels": ["Self", "Blank"],
+                "label": "Target",
+                "id": "targetlabels",
+                "key": "target"
+            }, {
+                "type": "checkbox",
+                "id": "underlinelabels",
+                "key": "underline",
+                "label": "Underline"
+            }, {
+                "type": "checkbox",
+                "id": "wrap-textlabels",
+                "key": "wrap-text",
+                "label": "Wrap text"
+            }, {
+                "type": "color",
+                "id": "fontColorlabels",
+                "key": "font-color",
+                "label": "Font Color",
+                "divider": "true"
+            }, {
+                "type": "text",
+                "id": "fontSizelabels",
+                "key": "font-size",
+                "label": "Font Size"
+            }, {
+                "type": "text",
+                "id": "fontFamilylabels",
+                "key": "font-family",
+                "label": "Font Family"
+            }, {
+                "type": "range",
+                "id": "font-anglelabels",
+                "key": "font-angle",
+                "label": "Font Angle",
+                "min": "0",
+                "max": "360",
+                "step": "1"
+            }, {
+                "type": "text",
+                "id": "heightlabels",
+                "key": "height",
+                "label": "Height",
+                "divider": "true"
+            }, {
+                "type": "text",
+                "id": "widthlabels",
+                "key": "width",
+                "label": "Width"
+            }, {
+                "type": "text",
+                "id": "margin-toplabels",
+                "key": "margin-top",
+                "label": "Margin top",
+                "divider": "true"
+            }, {
+                "type": "text",
+                "id": "margin-right-labels",
+                "key": "margin-right",
+                "label": "Margin right"
+            }, {
+                "type": "text",
+                "id": "margin-bottom-labels",
+                "key": "margin-bottom",
+                "label": "Margin bottom"
+            }, {
+                "type": "text",
+                "id": "margin-left-labels",
+                "key": "margin-left",
+                "label": "Margin left"
+            }, {
+                "type": "text",
+                "id": "padding-top-labels",
+                "key": "padding-top",
+                "label": "Padding top",
+                "divider": "true"
+            }, {
+                "type": "text",
+                "id": "padding-right-labels",
+                "key": "padding-right",
+                "label": "Padding right"
+            }, {
+                "type": "text",
+                "id": "padding-bottom-labels",
+                "key": "padding-bottom",
+                "label": "Padding bottom"
+            }, {
+                "type": "text",
+                "id": "padding-left-labels",
+                "key": "padding-left",
+                "label": "Padding left"
+            }, {
+                "type": "text",
+                "id": "padding-left-labels",
+                "key": "padding-left",
+                "label": "Padding left"
+            }, {
+                "type": "text",
+                "id": "xlabels",
+                "key": "x",
+                "label": "Offset X",
+                "divider": "true",
+                "defValue": "0"
+            }, {
+                "type": "text",
+                "id": "ylabels",
+                "key": "y",
+                "label": "Offset Y",
+                "defValue": "0"
+            }
+        ]
+    },
+    "seriesGeneralData": {
+        "category": "series",
+        "subcategory": "series",
+        "inputs": [{
+            "type": "checkbox",
+            "label": "Active Area",
+            "id": "activeAreaSeries",
+            "key": "active_area"
+        }, {
+            "type": "range",
+            "id": "alphaAreaSeries",
+            "key": "alphaArea",
+            "label": "Alpha Area",
+            "divider": "true",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "select",
+            "values": [
+                "hand",
+                "normal"
+            ],
+            "labels": [
+                "Hand",
+                "Normal"
+            ],
+            "label": "Cursor",
+            "id": "cursorSeries",
+            "key": "cursor",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "cone",
+                "cylinder",
+                "pyramid",
+                "histogram",
+                "stepped",
+                "spline",
+                "segmented"
+            ],
+            "label": "Aspect",
+            "id": "aspectSeries",
+            "key": "aspect",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "decimalsSeries",
+            "key": "decimals",
+            "label": "decimals",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "decimalsSeparatorSeries",
+            "key": "decimalsSeparator",
+            "label": "Decimals Separator",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "detachSeries",
+            "key": "detach",
+            "label": "Detach",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "maxNodesSeries",
+            "key": "maxNodes",
+            "label": "max Nodes",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "multiplierSeries",
+            "key": "multiplier",
+            "label": "Multiplier",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "standard",
+                "currency"
+            ],
+            "label": "Negation",
+            "id": "negationSeries",
+            "key": "negation",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "refAngleSeries",
+            "key": "refAngle",
+            "label": "Ref Angle",
+            "divider": "true",
+            "min": "0",
+            "max": "360",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "shortSeries",
+            "key": "short",
+            "label": "Short",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "K",
+                "M",
+                "B"
+            ],
+            "label": "Short Unit",
+            "id": "shortUnitSeries",
+            "key": "shortUnit"
+        }, {
+            "type": "range",
+            "id": "sliceSeries",
+            "key": "slice",
+            "label": "Slice",
+            "divider": "true",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "stackedSeries",
+            "key": "stacked",
+            "label": "Stacked",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "thousandsSeparatorSeries",
+            "key": "thousandsSeparator",
+            "label": "Thousands Separator",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "alphaSeries",
+            "key": "alpha",
+            "label": "Alpha",
+            "divider": "true",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "seriesseries",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "series",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "series",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }]
+    },
+    "seriesAnimationData": {
+        "category": "series",
+        "subcategory": "animation",
+        "inputs": [{
+            "type": "select",
+            "id": "effectAnimation",
+            "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            "labels": ["FADE IN",
+                "EXPAND VERTICAL",
+                "EXPAND TOP",
+                "EXPAND BOTTOM",
+                "EXPAND LEFT",
+                "EXPAND RIGHT",
+                "EXPAND HORIZONTAL",
+                "SLIDE LEFT",
+                "SLIDE RIGHT",
+                "SLIDE TOP",
+                "SLIDE BOTTOM",
+                "UNFOLD HORIZONTAL",
+                "UNFOLD VERTICAL"
+            ],
+            "key": "effect",
+            "label": "Effect"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": [1, 2, 3, 4, 5],
+            "labels": ["LINEAR",
+                "BACK EASE OUT",
+                "ELASTIC EASE OUT",
+                "BOUNCE EASE OUT",
+                "STRONG EASE OUT",
+                "REGULAR EASE OUT"
+            ],
+            "key": "method",
+            "label": "Method",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "sequenceAnimation",
+            "values": [1, 2, 3],
+            "labels": ["NO SEQUENCE",
+                "BY PLOT",
+                "BY NODE",
+                "BY PLOT AND NODE"
+            ],
+            "key": "sequence",
+            "label": "Sequence",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "speedAnimation",
+            "values": [4000, 1000],
+            "labels": ["Slow",
+                "Fast"
+            ],
+            "key": "speed",
+            "label": "Speed",
+            "divider": "true"
+        }]
+    },
+    "seriesHoverState": {
+        "category": "series",
+        "subcategory": "hoverState",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaHoverStatePlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "divider": "true",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "hoverStateplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "hoverStateplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "hoverStateplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }]
+    },
+    "serieshoverMarker": {
+        "category": "series",
+        "subcategory": "hoverMarker",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaHoverMarkerPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "hoverMarkerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImageHoverMarkerPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFithoverMarkerPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeathoverMarkerPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "hoverMarkerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "hoverMarkerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
+                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
+            ],
+            "label": "Type",
+            "id": "typehoverMarkerPlot",
+            "key": "type ",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visiblehoverMarkerPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }]
+    },
+    "seriesMarkerData": {
+        "category": "series",
+        "subcategory": "marker",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaMarkerPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "range",
+            "id": "sizePlot",
+            "key": "size",
+            "label": "Size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "bgcolor",
+            "id": "markerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImageMarkerPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFitMarkerPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeatMarkerPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "markerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "markerplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
+                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
+            ],
+            "label": "Type ",
+            "id": "typeMarkerPlot",
+            "key": "type",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visibleMarkerPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }]
+    },
+    "seriestooltip": {
+        "category": "series",
+        "subcategory": "tooltip",
+        "inputs": [{
+            "type": "range",
+            "id": "alphatooltipPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImagetooltipPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFittooltipPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeatTooltipPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visibletooltipPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }, {
+            "type": "font",
+            "id": "tooltipplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "heightTooltipPlot",
+            "key": "height",
+            "label": "Height ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "widthTooltipPlot",
+            "key": "width",
+            "label": "Width ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginToptooltipplot",
+            "key": "marginTop",
+            "label": "Margin Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginRighttooltipplot",
+            "key": "marginRight",
+            "label": "Margin Right"
+        }, {
+            "type": "text",
+            "id": "MarginBottomtooltipplot",
+            "key": "marginBottom",
+            "label": "Margin Bottom"
+        }, {
+            "type": "text",
+            "id": "MarginLefttooltipplot",
+            "key": "marginLeft",
+            "label": "Margin Left"
+        }, {
+            "type": "text",
+            "id": "paddingToptooltipplot",
+            "key": "paddingTop",
+            "label": "Padding Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRighttooltipplot",
+            "key": "paddingRight",
+            "label": "Padding Right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomtooltipplot",
+            "key": "paddingBottom",
+            "label": "Padding Bottom"
+        }, {
+            "type": "text",
+            "id": "paddingLefttooltipplot",
+            "key": "paddingLeft",
+            "label": "Padding Left"
+        }, {
+            "type": "checkbox",
+            "id": "calloutTooltipPlot",
+            "key": "callout",
+            "label": "Callout",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutHeightTooltipplot",
+            "key": "calloutHeight",
+            "label": "Callout Height",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutWidthTooltipplot",
+            "key": "calloutWidth",
+            "label": "Callout Width"
+        }, {
+            "type": "select",
+            "values": [
+                "top",
+                "right",
+                "bottom",
+                "left"
+            ],
+            "labels": [
+                "Top",
+                "Right",
+                "Bottom",
+                "Left"
+            ],
+            "label": "Callout Position ",
+            "id": "calloutPositionTooltipPlot",
+            "key": "calloutPosition"
+        }, {
+            "type": "text",
+            "id": "xTooltipPlot",
+            "key": "x",
+            "label": "Offset X",
+            "divider": "true",
+            "defValue": "0"
+        }, {
+            "type": "text",
+            "id": "yTooltipPlot",
+            "key": "y",
+            "label": "Offset Y",
+            "defValue": "0"
+        }, {
+            "type": "checkbox",
+            "id": "wrapTextTooltipPlot",
+            "key": "wrapText",
+            "label": "Wrap text",
+            "divider": "true"
+        }]
+    },
+    "seriesvalueBox": {
+        "category": "series",
+        "subcategory": "value-box",
+        "inputs": [{
+            "type": "range",
+            "id": "alphavalueBoxPlot",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "backgroundImagevalueBoxPlot",
+            "key": "backgroundImage",
+            "label": "Background Image",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "x",
+                "y",
+                "xy"
+            ],
+            "label": "background Fit ",
+            "id": "backgroundFitvalueBoxPlot",
+            "key": "background-fit ",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "no-repeat",
+                "repeat",
+                "repeat-x",
+                "repeat-y"
+            ],
+            "labels": [
+                "No Repeat",
+                "Repeat",
+                "Repeat X",
+                "Repeat Y"
+            ],
+            "label": "background Repeat ",
+            "id": "backgroundRepeatvalueBoxPlot",
+            "key": "background-repeat ",
+            "divider": "true"
+        }, {
+            "type": "border",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "line",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visiblevalueBoxPlot",
+            "key": "visib",
+            "label": "Visib",
+            "divider": "true"
+        }, {
+            "type": "font",
+            "id": "value-boxplot",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "heightvalueBoxPlot",
+            "key": "height",
+            "label": "Height ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "widthvalueBoxPlot",
+            "key": "width",
+            "label": "Width ",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginTopvalueBoxPlot",
+            "key": "marginTop",
+            "label": "Margin Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "MarginRightvalueBoxPlot",
+            "key": "marginRight",
+            "label": "Margin Right"
+        }, {
+            "type": "text",
+            "id": "MarginBottomvalueBoxPlot",
+            "key": "marginBottom",
+            "label": "Margin Bottom"
+        }, {
+            "type": "text",
+            "id": "MarginLeftvalueBoxPlot",
+            "key": "marginLeft",
+            "label": "Margin Left"
+        }, {
+            "type": "text",
+            "id": "paddingTopvalueBoxPlot",
+            "key": "paddingTop",
+            "label": "Padding Top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingRightvalueBoxPlot",
+            "key": "paddingRight",
+            "label": "Padding Right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomvalueBoxPlot",
+            "key": "paddingBottom",
+            "label": "Padding Bottom"
+        }, {
+            "type": "text",
+            "id": "paddingLeftvalueBoxPlot",
+            "key": "paddingLeft",
+            "label": "Padding Left"
+        }, {
+            "type": "checkbox",
+            "id": "calloutvalueBoxPlot",
+            "key": "callout",
+            "label": "Callout",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutHeightvalueBoxPlot",
+            "key": "calloutHeight",
+            "label": "Callout Height",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "calloutWidthvalueBoxPlot",
+            "key": "calloutWidth",
+            "label": "Callout Width"
+        }, {
+            "type": "select",
+            "values": [
+                "top",
+                "right",
+                "bottom",
+                "left"
+            ],
+            "labels": [
+                "Top",
+                "Right",
+                "Bottom",
+                "Left"
+            ],
+            "label": "Callout Position ",
+            "id": "calloutPositionvalueBoxPlot",
+            "key": "calloutPosition"
+        }, {
+            "type": "text",
+            "id": "xvalueBoxPlot",
+            "key": "x",
+            "label": "Offset X",
+            "divider": "true",
+            "defValue": "0"
+        }, {
+            "type": "text",
+            "id": "yvalueBoxPlot",
+            "key": "y",
+            "label": "Offset Y",
+            "defValue": "0"
+        }, {
+            "type": "checkbox",
+            "id": "wrapTextvalueBoxPlot",
+            "key": "wrapText",
+            "label": "Wrap text",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "placementvalueBoxPlot",
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }]
+    },
+    "scaleX": {
+        "category": "scale-x",
+        "subcategory": "scale-x",
+        "inputs": [{
+            "type": "range",
+            "id": "alphascaleX",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "text",
+            "id": "decimalsScaleX",
+            "key": "decimals",
+            "label": "Decimals",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "decimals-separatorScaleX",
+            "key": "decimals-separator",
+            "label": "Decimals separator"
+        }, {
+            "type": "text",
+            "id": "formatScaleX",
+            "key": "format",
+            "label": "Format",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "items-overlap",
+            "key": "items-overlap",
+            "label": "Callvitems-overlapout",
+            "divider": "true"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleX",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthscaleX",
+            "key": "line-width",
+            "label": "Alpha",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "text",
+            "id": "paddingTopScaleX",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopScaleX",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomScaleX",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftScaleX",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopScaleX",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginTopScaleX",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomScaleX",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftScaleX",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "range",
+            "id": "max-itemsscaleX",
+            "key": "max-items",
+            "label": "Max items",
+            "min": "0",
+            "max": "100",
+            "step": "1",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "max-ticksscaleX",
+            "key": "max-ticks",
+            "label": "Max ticks",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["standard", "currency"],
+            "labels": ["Standartd",
+                "Currancy"
+            ],
+            "key": "negation",
+            "label": "Negation",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "short-unitScaleX",
+            "values": ["k", "K", "m", "M", "b", "B"],
+            "key": "short-unit",
+            "label": "Short unit",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "thousands-separatorScaleX",
+            "values": [",", "."],
+            "key": "thousands-separator",
+            "label": "Thousands Separator",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "valuesScaleX",
+            "key": "values",
+            "label": "Values",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "zoomingScaleX",
+            "key": "zooming",
+            "label": "Zooming",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "zoom-snapScaleX",
+            "key": "zoom-snap",
+            "label": "zoom-snap"
+        }, {
+            "type": "text",
+            "id": "zoom-toScaleX",
+            "key": "zoom-to",
+            "label": "Zoom to",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "placementScaleX",
+            "values": ["default", "opposite"],
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }]
+    },
+    "scaleXGuid": {
+        "category": "scale-x",
+        "subcategory": "guide",
+        "inputs": [{
+            "type": "range",
+            "id": "alphascaleX",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleX",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthscaleX",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizescaleX",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizescaleX",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "checkbox",
+            "id": "visibleScaleX",
+            "key": "visible",
+            "label": "Visible",
+            "divider": "true"
+        }]
+    },
+    "scaleXLabel": {
+        "category": "scale-x",
+        "subcategory": "label",
+        "inputs": [{
+            "type": "range",
+            "id": "font-sizeLabelScaleX",
+            "key": "font-size",
+            "label": "Font size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "color",
+            "id": "font-colorLabelScaleX",
+            "key": "font-color",
+            "label": "Font color"
+        }, {
+            "type": "text",
+            "id": "font-familyLabelScaleX",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "checkbox",
+            "id": "boldLabelScaleX",
+            "key": "bold",
+            "label": "bold"
+        }, {
+            "type": "text",
+            "id": "paddingTopLabelScaleX",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopLabelScaleX",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomLabelScaleX",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftLabelScaleX",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopLabelScaleX",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginTopLabelScaleX",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomLabelScaleX",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftLabelScaleX",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "text",
+            "id": "textLabelScaleX",
+            "key": "text",
+            "label": "Text",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "heightLabelScaleX",
+            "key": "height",
+            "label": "Height",
+            "min": "0",
+            "max": "1000",
+            "step": "1",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "widthLabelScaleX",
+            "key": "width",
+            "label": "Width",
+            "min": "0",
+            "max": "1000",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "wrap-textLabelScaleX",
+            "key": "wrap-text",
+            "label": "Wrap text"
+        }]
+    },
+    "scaleXmarkers": {
+        "category": "scale-x",
+        "subcategory": "markers",
+        "inputs": [{
+            "type": "select",
+            "id": "typeMarkersScale-x",
+            "values": ["line", "area"],
+            "key": "type",
+            "label": "Type"
+        }, {
+            "type": "select",
+            "id": "placementMarkersScaleX",
+            "values": ["default", "opposite"],
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "alphaMarkerscaleX",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "scale-xmarkers",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleX",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthscaleX",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizescaleX",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizescaleX",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }]
+    },
+    "scaleXrefLine": {
+        "category": "scale-x",
+        "subcategory": "ref-line",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaMarkerscaleX",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleX",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthscaleX",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizescaleX",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizescaleX",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "lineStyleRefLineScaleX",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "checkbox",
+            "id": "visibleRefLineScaleX",
+            "key": "visible",
+            "label": "Visible",
+            "divider": "true"
+        }]
+    },
+    "scaleXTick": {
+        "category": "scale-x",
+        "subcategory": "tick",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaTickscaleX",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "color",
+            "id": "line-colorTickScaleX",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthTickscaleX",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizeTickscaleX",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizeTickscaleX",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "lineStyleRefLineTickScaleX",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "select",
+            "id": "placementTickScaleX",
+            "values": ["default", "opposite"],
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visibleRefLineScaleX",
+            "key": "visible",
+            "label": "Visible",
+            "divider": "true"
+        }]
+    },
+    "scaleXItem": {
+        "category": "scale-x",
+        "subcategory": "item",
+        "inputs": [{
+            "type": "range",
+            "id": "font-sizeItemScaleX",
+            "key": "font-size",
+            "label": "Font size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "color",
+            "id": "font-colorItemScaleX",
+            "key": "font-color",
+            "label": "Font color"
+        }, {
+            "type": "text",
+            "id": "font-familyItemScaleX",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "range",
+            "id": "font-angelItemScaleX",
+            "key": "font-angel",
+            "label": "Font angel",
+            "min": "0",
+            "max": "360",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "boldItemScaleX",
+            "key": "bold",
+            "label": "bold"
+        }, {
+            "type": "text",
+            "id": "paddingTopItemScaleX",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopItemScaleX",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomItemScaleX",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftItemScaleX",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopItemScaleX",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginTopItemScaleX",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomItemScaleX",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftItemScaleX",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "text",
+            "id": "max-charsItemScaleX",
+            "key": "max-chars",
+            "label": "Max chars",
+            "divider": "true"
+        }]
+    },
+    "scaleY": {
+        "category": "scale-y",
+        "subcategory": "scale-y",
+        "inputs": [{
+            "type": "range",
+            "id": "alphascaleY",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "text",
+            "id": "decimalsScaleY",
+            "key": "decimals",
+            "label": "Decimals",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "decimals-separatorScaleY",
+            "key": "decimals-separator",
+            "label": "Decimals separator"
+        }, {
+            "type": "text",
+            "id": "formatScaleY",
+            "key": "format",
+            "label": "Format",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "items-overlap",
+            "key": "items-overlap",
+            "label": "Callvitems-overlapout",
+            "divider": "true"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleY",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthscaleY",
+            "key": "line-width",
+            "label": "Alpha",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "text",
+            "id": "paddingTopScaleY",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopScaleY",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomScaleY",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftScaleY",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopScaleY",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginTopScaleY",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomScaleY",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftScaleY",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "range",
+            "id": "max-itemsscaleY",
+            "key": "max-items",
+            "label": "Max items",
+            "min": "0",
+            "max": "100",
+            "step": "1",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "max-ticksscaleY",
+            "key": "max-ticks",
+            "label": "Max ticks",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["standard", "currency"],
+            "labels": ["Standartd",
+                "Currancy"
+            ],
+            "key": "negation",
+            "label": "Negation",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "short-unitScaleY",
+            "values": ["k", "K", "m", "M", "b", "B"],
+            "key": "short-unit",
+            "label": "Short unit",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "thousands-separatorScaleY",
+            "values": [",", "."],
+            "key": "thousands-separator",
+            "label": "Thousands Separator",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "valuesScaleY",
+            "key": "values",
+            "label": "Values",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "zoomingScaleY",
+            "key": "zooming",
+            "label": "Zooming",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "zoom-snapScaleY",
+            "key": "zoom-snap",
+            "label": "zoom-snap"
+        }, {
+            "type": "text",
+            "id": "zoom-toScaleY",
+            "key": "zoom-to",
+            "label": "Zoom to",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "id": "placementScaleY",
+            "values": ["default", "opposite"],
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }]
+    },
+    "scaleYGuid": {
+        "category": "scale-y",
+        "subcategory": "guide",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaScaleY",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleY",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthScaleY",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizeScaleY",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizeScaleY",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "checkbox",
+            "id": "visibleScaleY",
+            "key": "visible",
+            "label": "Visible",
+            "divider": "true"
+        }]
+    },
+    "scaleYLabel": {
+        "category": "scale-y",
+        "subcategory": "label",
+        "inputs": [{
+            "type": "range",
+            "id": "font-sizeLabelScaleY",
+            "key": "font-size",
+            "label": "Font size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "color",
+            "id": "font-colorLabelScaleY",
+            "key": "font-color",
+            "label": "Font color"
+        }, {
+            "type": "text",
+            "id": "font-familyLabelScaleY",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "checkbox",
+            "id": "boldLabelScaleY",
+            "key": "bold",
+            "label": "bold"
+        }, {
+            "type": "text",
+            "id": "paddingTopLabelScaleY",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopLabelScaleY",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomLabelScaleY",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftLabelScaleY",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopLabelScaleY",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginTopLabelScaleY",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomLabelScaleY",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftLabelScaleY",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "text",
+            "id": "textLabelScaleY",
+            "key": "text",
+            "label": "Text",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "heightLabelScaleY",
+            "key": "height",
+            "label": "Height",
+            "min": "0",
+            "max": "1000",
+            "step": "1",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "widthLabelScaleY",
+            "key": "width",
+            "label": "Width",
+            "min": "0",
+            "max": "1000",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "wrap-textLabelScaleY",
+            "key": "wrap-text",
+            "label": "Wrap text"
+        }]
+    },
+    "scaleYmarkers": {
+        "category": "scale-y",
+        "subcategory": "markers",
+        "inputs": [{
+            "type": "select",
+            "id": "typeMarkersScale-y",
+            "values": ["line", "area"],
+            "key": "type",
+            "label": "Type"
+        }, {
+            "type": "select",
+            "id": "placementMarkersScaleY",
+            "values": ["default", "opposite"],
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "alphaMarkerScaleY",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "bgcolor",
+            "id": "scale-y-markers",
+            "key": "",
+            "label": "",
+            "divider": "true"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleY",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthScaleY",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizeScaleY",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizeScaleY",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "methodAnimation",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }]
+    },
+    "scaleYrefLine": {
+        "category": "scale-y",
+        "subcategory": "ref-line",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaMarkerScaleY",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "color",
+            "id": "line-colorScaleY",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthScaleY",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizeScaleY",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizeScaleY",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "lineStyleRefLineScaleY",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "checkbox",
+            "id": "visibleRefLineScaleY",
+            "key": "visible",
+            "label": "Visible",
+            "divider": "true"
+        }]
+    },
+    "scaleYTick": {
+        "category": "scale-y",
+        "subcategory": "tick",
+        "inputs": [{
+            "type": "range",
+            "id": "alphaTickScaleY",
+            "key": "alpha",
+            "label": "Alpha",
+            "min": "0",
+            "max": "1",
+            "step": ".1"
+        }, {
+            "type": "color",
+            "id": "line-colorTickScaleY",
+            "key": "line-color",
+            "label": "Line color",
+            "divider": "true"
+        }, {
+            "type": "range",
+            "id": "line-widthTickScaleY",
+            "key": "line-width",
+            "label": "Line width",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-gap-sizeTickScaleY",
+            "key": "line-gap-size",
+            "label": "Line gap size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "range",
+            "id": "line-segment-sizeTickScaleY",
+            "key": "line-segment-size",
+            "label": "Line segment size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "select",
+            "id": "lineStyleRefLineTickScaleY",
+            "values": ["solid", "dotted", "dashed"],
+            "labels": ["Solid",
+                "Dotted",
+                "Dashed"
+            ],
+            "key": "line-style",
+            "label": "Line style"
+        }, {
+            "type": "select",
+            "id": "placementTickScaleY",
+            "values": ["default", "opposite"],
+            "key": "placement",
+            "label": "Placement",
+            "divider": "true"
+        }, {
+            "type": "checkbox",
+            "id": "visibleRefLineScaleY",
+            "key": "visible",
+            "label": "Visible",
+            "divider": "true"
+        }]
+    },
+    "scaleYItem": {
+        "category": "scale-y",
+        "subcategory": "item",
+        "inputs": [{
+            "type": "range",
+            "id": "font-sizeItemScaleY",
+            "key": "font-size",
+            "label": "Font size",
+            "min": "0",
+            "max": "100",
+            "step": "1"
+        }, {
+            "type": "color",
+            "id": "font-colorItemScaleY",
+            "key": "font-color",
+            "label": "Font color"
+        }, {
+            "type": "text",
+            "id": "font-familyItemScaleY",
+            "key": "font-family",
+            "label": "Font family"
+        }, {
+            "type": "range",
+            "id": "font-angelItemScaleY",
+            "key": "font-angel",
+            "label": "Font angel",
+            "min": "0",
+            "max": "360",
+            "step": "1"
+        }, {
+            "type": "checkbox",
+            "id": "boldItemScaleY",
+            "key": "bold",
+            "label": "bold"
+        }, {
+            "type": "text",
+            "id": "paddingTopItemScaleY",
+            "key": "padding-top",
+            "label": "padding-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "paddingTopItemScaleY",
+            "key": "padding-right",
+            "label": "padding-right"
+        }, {
+            "type": "text",
+            "id": "paddingBottomItemScaleY",
+            "key": "padding-bottom",
+            "label": "padding-bottom"
+        }, {
+            "type": "text",
+            "id": "paddingleftItemScaleY",
+            "key": "padding-left",
+            "label": "padding-left"
+        }, {
+            "type": "text",
+            "id": "marginTopItemScaleY",
+            "key": "margin-top",
+            "label": "margin-top",
+            "divider": "true"
+        }, {
+            "type": "text",
+            "id": "marginTopItemScaleY",
+            "key": "margin-right",
+            "label": "margin-right"
+        }, {
+            "type": "text",
+            "id": "marginBottomItemScaleY",
+            "key": "margin-bottom",
+            "label": "margin-bottom"
+        }, {
+            "type": "text",
+            "id": "margingleftItemScaleY",
+            "key": "margin-left",
+            "label": "margin-left"
+        }, {
+            "type": "text",
+            "id": "max-charsItemScaleY",
+            "key": "max-chars",
+            "label": "Max chars",
+            "divider": "true"
+        }]
+    
+    }
 
-        {
-          "type" : "checkbox",
-          "id"   : "boldlabels",
-          "key"  : "bold",
-          "label": "Bold",
-          "divider" :"true"
-        },
-        {
-          "type" : "border",
-          "id"   : "labels",
-          "key"  : "",
-          "label": "",
-          "divider" :"true"
-        },
-        {
-          "type" : "text",
-          "id"   : "textlabels",
-          "key"  : "text",
-          "label": "Text",
-          "divider" :"true"
-        },
-        {
-          "type" : "select",
-          "values":["left","center","right"],
-          "labels" :["Left","Center","Right"],
-          "label"  : "Text Align",
-          "id"     : "text-alignlabels",
-          "key"    : "text-align"
-        },
-        {
-          "type" : "select",
-          "values":["Top","middle","bottom"],
-          "labels" :["Top","Middle","Bottom"],
-          "label"  : "vertical align",
-          "id"     : "vertical-alignlabels",
-          "key"    : "vertical-align"
-        },
-        {
-          "type" : "text",
-          "id"   : "urllabels",
-          "key"  : "url",
-          "label": "Url",
-        },
-        {
-          "type" : "select",
-          "values":["_self","blank"],
-          "labels" :["Self","Blank"],
-          "label"  : "Target",
-          "id"     : "targetlabels",
-          "key"    : "target"
-        },
-        {
-          "type" : "checkbox",
-          "id"   : "underlinelabels",
-          "key"  : "underline",
-          "label": "Underline",
-        },
-        {
-          "type" : "checkbox",
-          "id"   : "wrap-textlabels",
-          "key"  : "wrap-text",
-          "label": "Wrap text",
-        },
-        {
-          "type" : "color",
-          "id"   : "fontColorlabels",
-          "key"  : "font-color",
-          "label": "Font Color",
-          "divider" :"true"
-        },
-        {
-          "type" : "text",
-          "id"   : "fontSizelabels",
-          "key"  : "font-size",
-          "label": "Font Size",
-        },
-        {
-          "type" : "text",
-          "id"   : "fontFamilylabels",
-          "key"  : "font-family",
-          "label": "Font Family",
-        },
-        {
-        "type" : "range",
-        "id"   : "font-anglelabels",
-        "key"  : "font-angle",
-        "label": "Font Angle",
-        "min"  : '0',
-        "max"  : '360',
-        "step" :'1'
-      },
-      {
-        "type" : "text",
-        "id"   : "heightlabels",
-        "key"  : "height",
-        "label": "Height",
-        "divider" : "true"
-      },
-      {
-        "type" : "text",
-        "id"   : "widthlabels",
-        "key"  : "width",
-        "label": "Width",
-      },
-      {
-        "type" : "text",
-        "id"   : "margin-toplabels",
-        "key"  : "margin-top",
-        "label": "Margin top",
-        "divider" : "true"
-      },
-      {
-        "type" : "text",
-        "id"   : "margin-rightlabels",
-        "key"  : "margin-right",
-        "label": "Margin right",
-      },
-      {
-        "type" : "text",
-        "id"   : "margin-bottomlabels",
-        "key"  : "margin-bottom",
-        "label": "Margin bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "margin-leftlabels",
-        "key"  : "margin-left",
-        "label": "Margin left",
-      },
-       {
-        "type" : "text",
-        "id"   : "padding-toplabels",
-        "key"  : "padding-top",
-        "label": "Padding top",
-        "divider" : "true"
-      },
-      {
-        "type" : "text",
-        "id"   : "padding-rightlabels",
-        "key"  : "padding-right",
-        "label": "Padding right",
-      },
-      {
-        "type" : "text",
-        "id"   : "padding-bottomlabels",
-        "key"  : "padding-bottom",
-        "label": "Padding bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "padding-leftlabels",
-        "key"  : "padding-left",
-        "label": "Padding left",
-      },
-      {
-        "type" : "text",
-        "id"   : "padding-leftlabels",
-        "key"  : "padding-left",
-        "label": "Padding left",
-      },
-      {
-        "type" : "text",
-        "id"   : "xlabels",
-        "key"  : "x",
-        "label": "Offset X",
-        "divider" :"true",
-        "defValue" : "0"
-      },
-      {
-        "type" : "text",
-        "id"   : "ylabels",
-        "key"  : "y",
-        "label": "Offset Y",
-        "defValue" : "0"
-      },
-      ],};
-var seriesGeneralData  = {
-    "category" : "series",
-    "subcategory" :"series",
-    "inputs":[
-      {
-        "type":"checkbox",
-        "label": "Active Area",
-        "id" :"activeAreaSeries",
-        "key" :"active_area"
-      },
-      {
-        "type" : "range",
-        "id"   : "alphaAreaSeries",
-        "key"  : "alphaArea",
-        "label": "Alpha Area",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "hand",
-          "normal"
-        ],
-        "labels" :[
-          "Hand",
-          "Normal"
-        ],
-        "label" :"Cursor",
-        "id"    :"cursorSeries",
-        "key"   :"cursor",
-        "divider":"true"
-      },
-      {   
-        "type"  :"select",
-        "values":[
-          "cone",
-          "cylinder",
-          "pyramid",
-          "histogram",
-          "stepped",
-          "spline",
-          "segmented"
-        ],
-        "label" :"Aspect",
-        "id"    :"aspectSeries",
-        "key"   :"aspect",
-        "divider":"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "decimalsSeries",
-        "key"  : "decimals",
-        "label": "decimals",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "decimalsSeparatorSeries",
-        "key"  : "decimalsSeparator",
-        "label": "Decimals Separator",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "detachSeries",
-        "key"  : "detach",
-        "label": "Detach",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "maxNodesSeries",
-        "key"  : "maxNodes",
-        "label": "max Nodes",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "multiplierSeries",
-        "key"  : "multiplier",
-        "label": "Multiplier",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "standard",
-          "currency"
-        ],
-        "label" :"Negation",
-        "id"    :"negationSeries",
-        "key"   :"negation",
-        "divider":"true"
-      },
-      {
-        "type" : "range",
-        "id"   : "refAngleSeries",
-        "key"  : "refAngle",
-        "label": "Ref Angle",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '360',
-        "step" :'1'
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "shortSeries",
-        "key"  : "short",
-        "label": "Short",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "K",
-          "M",
-          "B"
-        ],
-        "label" :"Short Unit",
-        "id"    :"shortUnitSeries",
-        "key"   :"shortUnit",
-      },
-      {
-        "type" : "range",
-        "id"   : "sliceSeries",
-        "key"  : "slice",
-        "label": "Slice",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '100',
-        "step" :'1'
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "stackedSeries",
-        "key"  : "stacked",
-        "label": "Stacked",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "thousandsSeparatorSeries",
-        "key"  : "thousandsSeparator",
-        "label": "Thousands Separator",
-        "divider" :"true"
-      },
-      {
-        "type" : "range",
-        "id"   : "alphaSeries",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "seriesseries", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-       "type" : "border",
-        "id"   : "series", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "series", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      
-    ],};
-var seriesAnimationData= {
-    "category" : "series",
-    "subcategory" :"animation",
-    "inputs" :[
-      {
-        "type" : "select",
-        "id"   : "effectAnimation", 
-        "values" :[1,2,3,4,5,6,7,8,9,10,11,12,13
-        ],
-        "labels" :['FADE IN',
-        'EXPAND VERTICAL',
-        'EXPAND TOP',
-        'EXPAND BOTTOM',
-        'EXPAND LEFT',
-        'EXPAND RIGHT',
-        'EXPAND HORIZONTAL',
-        'SLIDE LEFT',
-        'SLIDE RIGHT',
-        'SLIDE TOP',
-        'SLIDE BOTTOM',
-        'UNFOLD HORIZONTAL',
-        'UNFOLD VERTICAL'],
-        "key"  : "effect",
-        "label": "Effect",
-      },
-      {
-        "type" : "select",
-        "id"   : "methodAnimation", 
-        "values" :[1,2,3,4,5],
-        "labels" :['LINEAR',
-        'BACK EASE OUT',
-        'ELASTIC EASE OUT',
-        'BOUNCE EASE OUT',
-        'STRONG EASE OUT',
-        'REGULAR EASE OUT'
-        ],
-        "key"  : "method",
-        "label": "Method",
-        "divider" :"true"
-      },
-      {
-        "type" : "select",
-        "id"   : "sequenceAnimation", 
-        "values" :[1,2,3],
-        "labels" :['NO SEQUENCE',
-        'BY PLOT',
-        'BY NODE',
-        'BY PLOT AND NODE',
-        ],
-        "key"  : "sequence",
-        "label": "Sequence",
-        "divider" :"true"
-      },
-      {
-        "type" : "select",
-        "id"   : "speedAnimation", 
-        "values" :[4000,1000],
-        "labels" :['Slow',
-        'Fast',
-        ],
-        "key"  : "speed",
-        "label": "Speed",
-        "divider" :"true"
-      },
-      
-    ],};
-var seriesHoverState   = {
-    "category" : "series",
-    "subcategory" :"hoverState",
-    "inputs" : [
-      {
-        "type" : "range",
-        "id"   : "alphaHoverStatePlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "divider" :"true",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "hoverStateplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-       "type" : "border",
-        "id"   : "hoverStateplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "hoverStateplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      }
-    ],};
-var serieshoverMarker  = {
-   "category" : "series",
-    "subcategory" :"hoverMarker",
-    "inputs" : [
-      {
-        "type" : "range",
-        "id"   : "alphaHoverMarkerPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "hoverMarkerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImageHoverMarkerPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFithoverMarkerPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeathoverMarkerPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "hoverMarkerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "hoverMarkerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type"  :"select",
-        "values":["triangle", "square", "circle", "diamond", "trapezoid", "rectangle"
-        , "parallelogram", "plus", "cross", "arrow", "star3","star4","star5","star6","star7",
-        "star8","star9","rpoly3","rpoly4","rpoly5","rpoly6","rpoly7","rpoly8","rpoly9","gear3","gear4","gear5","gear6","gear7","gear8","gear9", "ellipse", "arc", "pie"
-        ],
-        "label" :"Type",
-        "id"    :"typehoverMarkerPlot",
-        "key"   :"type ",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visiblehoverMarkerPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-      ]};
-var seriesMarkerData   = {
-    "category" : "series",
-    "subcategory" :"marker",
-    "inputs" :[
-      {
-        "type" : "range",
-        "id"   : "alphaMarkerPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-       {
-        "type" : "range",
-        "id"   : "sizePlot",
-        "key"  : "size",
-        "label": "Size",
-        "min"  : '0',
-        "max"  : '100',
-        "step" :'1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "markerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImageMarkerPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFitMarkerPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeatMarkerPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "markerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "markerplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type"  :"select",
-        "values":["triangle", "square", "circle", "diamond", "trapezoid", "rectangle"
-        , "parallelogram", "plus", "cross", "arrow", "star3","star4","star5","star6","star7",
-        "star8","star9","rpoly3","rpoly4","rpoly5","rpoly6","rpoly7","rpoly8","rpoly9","gear3","gear4","gear5","gear6","gear7","gear8","gear9", "ellipse", "arc", "pie"
-        ],
-        "label" :"Type ",
-        "id"    :"typeMarkerPlot",
-        "key"   :"type",
-        "divider" :"true"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visibleMarkerPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-    ]};
-var seriestooltip      = {
-    "category" : "series",
-    "subcategory" :"tooltip",
-    "inputs" :[
-      {
-        "type" : "range",
-        "id"   : "alphatooltipPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "tooltipplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImagetooltipPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFittooltipPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeatTooltipPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "tooltipplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "tooltipplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visibletooltipPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-      {
-        "type" : "font",
-        "id"   : "tooltipplot",
-        "key"  : "",
-        "label": "",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "heightTooltipPlot",
-        "key"  : "height",
-        "label": "Height ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "widthTooltipPlot",
-        "key"  : "width",
-        "label": "Width ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginToptooltipplot",
-        "key"  : "marginTop",
-        "label": "Margin Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginRighttooltipplot",
-        "key"  : "marginRight",
-        "label": "Margin Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginBottomtooltipplot",
-        "key"  : "marginBottom",
-        "label": "Margin Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginLefttooltipplot",
-        "key"  : "marginLeft",
-        "label": "Margin Left",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingToptooltipplot",
-        "key"  : "paddingTop",
-        "label": "Padding Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRighttooltipplot",
-        "key"  : "paddingRight",
-        "label": "Padding Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomtooltipplot",
-        "key"  : "paddingBottom",
-        "label": "Padding Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingLefttooltipplot",
-        "key"  : "paddingLeft",
-        "label": "Padding Left",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "calloutTooltipPlot",
-        "key"  : "callout",
-        "label": "Callout",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutHeightTooltipplot",
-        "key"  : "calloutHeight",
-        "label": "Callout Height",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutWidthTooltipplot",
-        "key"  : "calloutWidth",
-        "label": "Callout Width",
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "top",
-          "right",
-          "bottom",
-          "left"
-        ],
-        "labels" :[
-        "Top",
-        "Right",
-        "Bottom",
-        "Left",
-        ],
-        "label" :"Callout Position ",
-        "id"    :"calloutPositionTooltipPlot",
-        "key"   :"calloutPosition",
-      },
-      {
-        "type" : "text",
-        "id"   : "xTooltipPlot",
-        "key"  : "x",
-        "label": "Offset X",
-        "divider" :"true",
-        "defValue" : "0"
-      },
-      {
-        "type" : "text",
-        "id"   : "yTooltipPlot",
-        "key"  : "y",
-        "label": "Offset Y",
-        "defValue" : "0"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "wrapTextTooltipPlot",
-        "key"  : "wrapText",
-        "label": "Wrap text",
-        "divider" :"true"
-      },
-    ]};
-var seriesvalueBox     = {
-    "category" : "series",
-    "subcategory" :"value-box",
-    "inputs" :[
-      {
-        "type" : "range",
-        "id"   : "alphavalueBoxPlot",
-        "key"  : "alpha",
-        "label": "Alpha",
-        "min"  : '0',
-        "max"  : '1',
-        "step" :'.1'
-      },
-      {
-        "type" : "bgcolor",
-        "id"   : "value-boxplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-       {
-        "type" : "text",
-        "id"   : "backgroundImagevalueBoxPlot",
-        "key"  : "backgroundImage",
-        "label": "Background Image",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "x",
-          "y",
-          "xy"
-        ],
-        "label" :"background Fit ",
-        "id"    :"backgroundFitvalueBoxPlot",
-        "key"   :"background-fit ",
-        "divider" :"true"
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "no-repeat",
-          "repeat",
-          "repeat-x",
-          "repeat-y"
-        ],
-        "labels" :[
-        "No Repeat",
-        "Repeat",
-        "Repeat X",
-        "Repeat Y",
-        ],
-        "label" :"background Repeat ",
-        "id"    :"backgroundRepeatvalueBoxPlot",
-        "key"   :"background-repeat ",
-        "divider" :"true"
-      },
-      {
-       "type" : "border",
-        "id"   : "value-boxplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "line",
-        "id"   : "value-boxplot", //In the case of category ID the id should match the category name
-        "key"  : "",
-        "label": "",
-        "divider" :"true",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "visiblevalueBoxPlot",
-        "key"  : "visib",
-        "label": "Visib",
-        "divider" :"true"
-      },
-      {
-        "type" : "font",
-        "id"   : "value-boxplot",
-        "key"  : "",
-        "label": "",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "heightvalueBoxPlot",
-        "key"  : "height",
-        "label": "Height ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "widthvalueBoxPlot",
-        "key"  : "width",
-        "label": "Width ",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginTopvalueBoxPlot",
-        "key"  : "marginTop",
-        "label": "Margin Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginRightvalueBoxPlot",
-        "key"  : "marginRight",
-        "label": "Margin Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginBottomvalueBoxPlot",
-        "key"  : "marginBottom",
-        "label": "Margin Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "MarginLeftvalueBoxPlot",
-        "key"  : "marginLeft",
-        "label": "Margin Left",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingTopvalueBoxPlot",
-        "key"  : "paddingTop",
-        "label": "Padding Top",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingRightvalueBoxPlot",
-        "key"  : "paddingRight",
-        "label": "Padding Right",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingBottomvalueBoxPlot",
-        "key"  : "paddingBottom",
-        "label": "Padding Bottom",
-      },
-      {
-        "type" : "text",
-        "id"   : "paddingLeftvalueBoxPlot",
-        "key"  : "paddingLeft",
-        "label": "Padding Left",
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "calloutvalueBoxPlot",
-        "key"  : "callout",
-        "label": "Callout",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutHeightvalueBoxPlot",
-        "key"  : "calloutHeight",
-        "label": "Callout Height",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "calloutWidthvalueBoxPlot",
-        "key"  : "calloutWidth",
-        "label": "Callout Width",
-      },
-      {
-        "type"  :"select",
-        "values":[
-          "top",
-          "right",
-          "bottom",
-          "left"
-        ],
-        "labels" :[
-        "Top",
-        "Right",
-        "Bottom",
-        "Left",
-        ],
-        "label" :"Callout Position ",
-        "id"    :"calloutPositionvalueBoxPlot",
-        "key"   :"calloutPosition",
-      },
-      {
-        "type" : "text",
-        "id"   : "xvalueBoxPlot",
-        "key"  : "x",
-        "label": "Offset X",
-        "divider" :"true",
-        "defValue" : "0"
-      },
-      {
-        "type" : "text",
-        "id"   : "yvalueBoxPlot",
-        "key"  : "y",
-        "label": "Offset Y",
-        "defValue" : "0"
-      },
-      {
-        "type" : "checkbox",
-        "id"   : "wrapTextvalueBoxPlot",
-        "key"  : "wrapText",
-        "label": "Wrap text",
-        "divider" :"true"
-      },
-      {
-        "type" : "text",
-        "id"   : "placementvalueBoxPlot",
-        "key"  : "placement",
-        "label": "Placement",
-        "divider" :"true"
-      },
-    ]};
-var scaleX             = {
-  "category" : "scale-x",
-  "subcategory" :"scale-x",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphascaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "text",
-    "id"   : "decimalsScaleX",
-    "key"  : "decimals",
-    "label": "Decimals",
-    "divider" :"true"
-  },
-  {
-    "type" : "text",
-    "id"   : "decimals-separatorScaleX",
-    "key"  : "decimals-separator",
-    "label": "Decimals separator",
-  },
-  {
-    "type" : "text",
-    "id"   : "formatScaleX",
-    "key"  : "format",
-    "label": "Format",
-    "divider" :"true"
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "items-overlap",
-    "key"  : "items-overlap",
-    "label": "Callvitems-overlapout",
-    "divider" :"true",
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingTopScaleX",
-    "key"  : "padding-top",
-    "label": "padding-top",
-    "divider" :"true"
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingTopScaleX",
-    "key"  : "padding-right",
-    "label": "padding-right",
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingBottomScaleX",
-    "key"  : "padding-bottom",
-    "label": "padding-bottom",
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingleftScaleX",
-    "key"  : "padding-left",
-    "label": "padding-left",
-  },
-  {
-    "type" : "text",
-    "id"   : "marginTopScaleX",
-    "key"  : "margin-top",
-    "label": "margin-top",
-    "divider" :"true"
-  },
-  {
-    "type" : "text",
-    "id"   : "marginTopScaleX",
-    "key"  : "margin-right",
-    "label": "margin-right",
-  },
-  {
-    "type" : "text",
-    "id"   : "marginBottomScaleX",
-    "key"  : "margin-bottom",
-    "label": "margin-bottom",
-  },
-  {
-    "type" : "text",
-    "id"   : "margingleftScaleX",
-    "key"  : "margin-left",
-    "label": "margin-left",
-  },
-  {
-    "type" : "range",
-    "id"   : "max-itemsscaleX",
-    "key"  : "max-items",
-    "label": "Max items",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1',
-    "divider" : "true"
-  },
-  {
-    "type" : "range",
-    "id"   : "max-ticksscaleX",
-    "key"  : "max-ticks",
-    "label": "Max ticks",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["standard","currency"],
-    "labels" :['Standartd',
-    'Currancy',
-    ],
-    "key"  : "negation",
-    "label": "Negation",
-    "divider" : "true"
-  },
-  {
-    "type" : "select",
-    "id"   : "short-unitScaleX", 
-    "values" :["k","K","m","M","b","B"],
-    "key"  : "short-unit",
-    "label": "Short unit",
-    "divider" : "true"
-  },
-  {
-    "type" : "select",
-    "id"   : "thousands-separatorScaleX", 
-    "values" :[",","."],
-    "key"  : "thousands-separator",
-    "label": "Thousands Separator",
-    "divider" : "true"
-  },
-  {
-    "type" : "text",
-    "id"   : "valuesScaleX",
-    "key"  : "values",
-    "label": "Values",
-    "divider" :"true"
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "zoomingScaleX",
-    "key"  : "zooming",
-    "label": "Zooming",
-    "divider" :"true",
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "zoom-snapScaleX",
-    "key"  : "zoom-snap",
-    "label": "zoom-snap",
-  },
-   {
-    "type" : "text",
-    "id"   : "zoom-toScaleX",
-    "key"  : "zoom-to",
-    "label": "Zoom to",
-    "divider" :"true"
-  },
-  {
-    "type" : "select",
-    "id"   : "placementScaleX", 
-    "values" :["default","opposite"],
-    "key"  : "placement",
-    "label": "Placement",
-    "divider" : "true"
-  },
+};
 
-  ],};
-var scaleXGuid         = {
-  "category" : "scale-x",
-  "subcategory" :"guide",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphascaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizescaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizescaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "visibleScaleX",
-    "key"  : "visible",
-    "label": "Visible",
-    "divider" :"true",
-  },
-  ],};
-var scaleXLabel        = {
-  "category" : "scale-x",
-  "subcategory" :"label",
-  "inputs" :[
-    {
-      "type" : "range",
-      "id"   : "font-sizeLabelScaleX",
-      "key"  : "font-size",
-      "label": "Font size",
-      "min"  : '0',
-      "max"  : '100',
-      "step" :'1',
-    },
-    {
-      "type" : "color",
-      "id"   : "font-colorLabelScaleX",
-      "key"  : "font-color",
-      "label": "Font color",
-    },
-    {
-      "type" : "text",
-      "id"   : "font-familyLabelScaleX",
-      "key"  : "font-family",
-      "label": "Font family",
-    },
-    {
-      "type" : "checkbox",
-      "id"   : "boldLabelScaleX",
-      "key"  : "bold",
-      "label": "bold",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopLabelScaleX",
-      "key"  : "padding-top",
-      "label": "padding-top",
-      "divider" :"true",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopLabelScaleX",
-      "key"  : "padding-right",
-      "label": "padding-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingBottomLabelScaleX",
-      "key"  : "padding-bottom",
-      "label": "padding-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingleftLabelScaleX",
-      "key"  : "padding-left",
-      "label": "padding-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopLabelScaleX",
-      "key"  : "margin-top",
-      "label": "margin-top",
-      "divider" :"true"
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopLabelScaleX",
-      "key"  : "margin-right",
-      "label": "margin-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginBottomLabelScaleX",
-      "key"  : "margin-bottom",
-      "label": "margin-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "margingleftLabelScaleX",
-      "key"  : "margin-left",
-      "label": "margin-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "textLabelScaleX",
-      "key"  : "text",
-      "label": "Text",
-      "divider" :"true",
-    },
-    {
-      "type" : "range",
-      "id"   : "heightLabelScaleX",
-      "key"  : "height",
-      "label": "Height",
-      "min"  : '0',
-      "max"  : '1000',
-      "step" :'1',
-      "divider" : "true",
-    },
-    {
-      "type" : "range",
-      "id"   : "widthLabelScaleX",
-      "key"  : "width",
-      "label": "Width",
-      "min"  : '0',
-      "max"  : '1000',
-      "step" :'1'
-    },
-    {
-      "type" : "checkbox",
-      "id"   : "wrap-textLabelScaleX",
-      "key"  : "wrap-text",
-      "label": "Wrap text",
-    },
-  ], };
-var scaleXmarkers      = {
-  "category" : "scale-x",
-  "subcategory" :"markers",
-  "inputs" :[
-    {
-    "type" : "select",
-    "id"   : "typeMarkersScale-x", 
-    "values" :["line","area"],
-    "key"  : "type",
-    "label": "Type",
-  },
-  {
-    "type"   : "select",
-    "id"     : "placementMarkersScaleX", 
-    "values" :["default","opposite"],
-    "key"    : "placement",
-    "label"  : "Placement",
-    "divider" : "true"
-  },
-  {
-    "type" : "range",
-    "id"   : "alphaMarkerscaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "bgcolor",
-    "id"   : "scale-xmarkers", //In the case of category ID the id should match the category name
-    "key"  : "",
-    "label": "",
-    "divider" :"true",
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizescaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizescaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
 
-  ],};
-var scaleXrefLine      = {
-  "category" : "scale-x",
-  "subcategory" :"ref-line",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphaMarkerscaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizescaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizescaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "lineStyleRefLineScaleX", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "visibleRefLineScaleX",
-    "key"  : "visible",
-    "label": "Visible",
-    "divider" :"true"
-  },
-  ],};
-var scaleXTick         = {
-  "category" : "scale-x",
-  "subcategory" :"tick",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphaTickscaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorTickScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthTickscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizeTickscaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizeTickscaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "lineStyleRefLineTickScaleX", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "select",
-    "id"   : "placementTickScaleX", 
-    "values" :["default","opposite"],
-    "key"  : "placement",
-    "label": "Placement",
-    "divider" : "true"
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "visibleRefLineScaleX",
-    "key"  : "visible",
-    "label": "Visible",
-    "divider" :"true"
-  },
-  ],};
-var scaleXItem         = {
-  "category" : "scale-x",
-  "subcategory" :"item",
-  "inputs" :[
-    {
-      "type" : "range",
-      "id"   : "font-sizeItemScaleX",
-      "key"  : "font-size",
-      "label": "Font size",
-      "min"  : '0',
-      "max"  : '100',
-      "step" :'1',
-    },
-    {
-      "type" : "color",
-      "id"   : "font-colorItemScaleX",
-      "key"  : "font-color",
-      "label": "Font color",
-    },
-    {
-      "type" : "text",
-      "id"   : "font-familyItemScaleX",
-      "key"  : "font-family",
-      "label": "Font family",
-    },
-    {
-      "type" : "range",
-      "id"   : "font-angelItemScaleX",
-      "key"  : "font-angel",
-      "label": "Font angel",
-      "min"  : '0',
-      "max"  : '360',
-      "step" :'1',
-    },
-    {
-      "type" : "checkbox",
-      "id"   : "boldItemScaleX",
-      "key"  : "bold",
-      "label": "bold",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopItemScaleX",
-      "key"  : "padding-top",
-      "label": "padding-top",
-      "divider" :"true",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopItemScaleX",
-      "key"  : "padding-right",
-      "label": "padding-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingBottomItemScaleX",
-      "key"  : "padding-bottom",
-      "label": "padding-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingleftItemScaleX",
-      "key"  : "padding-left",
-      "label": "padding-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopItemScaleX",
-      "key"  : "margin-top",
-      "label": "margin-top",
-      "divider" :"true"
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopItemScaleX",
-      "key"  : "margin-right",
-      "label": "margin-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginBottomItemScaleX",
-      "key"  : "margin-bottom",
-      "label": "margin-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "margingleftItemScaleX",
-      "key"  : "margin-left",
-      "label": "margin-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "max-charsItemScaleX",
-      "key"  : "max-chars",
-      "label": "Max chars",
-      "divider" :"true",
-    },
-  ],};
-var scaleY             = {
-  "category" : "scale-y",
-  "subcategory" :"scale-y",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphascaleY",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "text",
-    "id"   : "decimalsScaleY",
-    "key"  : "decimals",
-    "label": "Decimals",
-    "divider" :"true"
-  },
-  {
-    "type" : "text",
-    "id"   : "decimals-separatorScaleY",
-    "key"  : "decimals-separator",
-    "label": "Decimals separator",
-  },
-  {
-    "type" : "text",
-    "id"   : "formatScaleY",
-    "key"  : "format",
-    "label": "Format",
-    "divider" :"true"
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "items-overlap",
-    "key"  : "items-overlap",
-    "label": "Callvitems-overlapout",
-    "divider" :"true",
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleY",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleY",
-    "key"  : "line-width",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingTopScaleY",
-    "key"  : "padding-top",
-    "label": "padding-top",
-    "divider" :"true"
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingTopScaleY",
-    "key"  : "padding-right",
-    "label": "padding-right",
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingBottomScaleY",
-    "key"  : "padding-bottom",
-    "label": "padding-bottom",
-  },
-  {
-    "type" : "text",
-    "id"   : "paddingleftScaleY",
-    "key"  : "padding-left",
-    "label": "padding-left",
-  },
-  {
-    "type" : "text",
-    "id"   : "marginTopScaleY",
-    "key"  : "margin-top",
-    "label": "margin-top",
-    "divider" :"true"
-  },
-  {
-    "type" : "text",
-    "id"   : "marginTopScaleY",
-    "key"  : "margin-right",
-    "label": "margin-right",
-  },
-  {
-    "type" : "text",
-    "id"   : "marginBottomScaleY",
-    "key"  : "margin-bottom",
-    "label": "margin-bottom",
-  },
-  {
-    "type" : "text",
-    "id"   : "margingleftScaleY",
-    "key"  : "margin-left",
-    "label": "margin-left",
-  },
-  {
-    "type" : "range",
-    "id"   : "max-itemsscaleY",
-    "key"  : "max-items",
-    "label": "Max items",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1',
-    "divider" : "true"
-  },
-  {
-    "type" : "range",
-    "id"   : "max-ticksscaleY",
-    "key"  : "max-ticks",
-    "label": "Max ticks",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["standard","currency"],
-    "labels" :['Standartd',
-    'Currancy',
-    ],
-    "key"  : "negation",
-    "label": "Negation",
-    "divider" : "true"
-  },
-  {
-    "type" : "select",
-    "id"   : "short-unitScaleY", 
-    "values" :["k","K","m","M","b","B"],
-    "key"  : "short-unit",
-    "label": "Short unit",
-    "divider" : "true"
-  },
-  {
-    "type" : "select",
-    "id"   : "thousands-separatorScaleY", 
-    "values" :[",","."],
-    "key"  : "thousands-separator",
-    "label": "Thousands Separator",
-    "divider" : "true"
-  },
-  {
-    "type" : "text",
-    "id"   : "valuesScaleY",
-    "key"  : "values",
-    "label": "Values",
-    "divider" :"true"
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "zoomingScaleY",
-    "key"  : "zooming",
-    "label": "Zooming",
-    "divider" :"true",
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "zoom-snapScaleY",
-    "key"  : "zoom-snap",
-    "label": "zoom-snap",
-  },
-   {
-    "type" : "text",
-    "id"   : "zoom-toScaleY",
-    "key"  : "zoom-to",
-    "label": "Zoom to",
-    "divider" :"true"
-  },
-  {
-    "type" : "select",
-    "id"   : "placementScaleY", 
-    "values" :["default","opposite"],
-    "key"  : "placement",
-    "label": "Placement",
-    "divider" : "true"
-  },
 
-  ],};
-var scaleYGuid         = {
-  "category" : "scale-y",
-  "subcategory" :"guide",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphascaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizescaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizescaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "visibleScaleX",
-    "key"  : "visible",
-    "label": "Visible",
-    "divider" :"true",
-  },
-  ],};
-var scaleYLabel        = {
-  "category" : "scale-y",
-  "subcategory" :"label",
-  "inputs" :[
-    {
-      "type" : "range",
-      "id"   : "font-sizeLabelScaleX",
-      "key"  : "font-size",
-      "label": "Font size",
-      "min"  : '0',
-      "max"  : '100',
-      "step" :'1',
-    },
-    {
-      "type" : "color",
-      "id"   : "font-colorLabelScaleX",
-      "key"  : "font-color",
-      "label": "Font color",
-    },
-    {
-      "type" : "text",
-      "id"   : "font-familyLabelScaleX",
-      "key"  : "font-family",
-      "label": "Font family",
-    },
-    {
-      "type" : "checkbox",
-      "id"   : "boldLabelScaleX",
-      "key"  : "bold",
-      "label": "bold",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopLabelScaleX",
-      "key"  : "padding-top",
-      "label": "padding-top",
-      "divider" :"true",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopLabelScaleX",
-      "key"  : "padding-right",
-      "label": "padding-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingBottomLabelScaleX",
-      "key"  : "padding-bottom",
-      "label": "padding-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingleftLabelScaleX",
-      "key"  : "padding-left",
-      "label": "padding-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopLabelScaleX",
-      "key"  : "margin-top",
-      "label": "margin-top",
-      "divider" :"true"
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopLabelScaleX",
-      "key"  : "margin-right",
-      "label": "margin-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginBottomLabelScaleX",
-      "key"  : "margin-bottom",
-      "label": "margin-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "margingleftLabelScaleX",
-      "key"  : "margin-left",
-      "label": "margin-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "textLabelScaleX",
-      "key"  : "text",
-      "label": "Text",
-      "divider" :"true",
-    },
-    {
-      "type" : "range",
-      "id"   : "heightLabelScaleX",
-      "key"  : "height",
-      "label": "Height",
-      "min"  : '0',
-      "max"  : '1000',
-      "step" :'1',
-      "divider" : "true",
-    },
-    {
-      "type" : "range",
-      "id"   : "widthLabelScaleX",
-      "key"  : "width",
-      "label": "Width",
-      "min"  : '0',
-      "max"  : '1000',
-      "step" :'1'
-    },
-    {
-      "type" : "checkbox",
-      "id"   : "wrap-textLabelScaleX",
-      "key"  : "wrap-text",
-      "label": "Wrap text",
-    },
-  ], };
-var scaleYmarkers      = {
-  "category" : "scale-y",
-  "subcategory" :"markers",
-  "inputs" :[
-    {
-    "type" : "select",
-    "id"   : "typeMarkersScale-x", 
-    "values" :["line","area"],
-    "key"  : "type",
-    "label": "Type",
-  },
-  {
-    "type"   : "select",
-    "id"     : "placementMarkersScaleX", 
-    "values" :["default","opposite"],
-    "key"    : "placement",
-    "label"  : "Placement",
-    "divider" : "true"
-  },
-  {
-    "type" : "range",
-    "id"   : "alphaMarkerscaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "bgcolor",
-    "id"   : "scale-xmarkers", //In the case of category ID the id should match the category name
-    "key"  : "",
-    "label": "",
-    "divider" :"true",
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizescaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizescaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "methodAnimation", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
+var formData   = [userInterface.titleData,userInterface.subtitleData,userInterface.legendDatageneral,userInterface.legendDataitem,userInterface.
+legendDataMarker,userInterface.plotareaData,userInterface.plotGeneralData,userInterface.plotAnimationData,userInterface.
+plotHoverState,userInterface.hoverMarker,userInterface.plotMarkerData,userInterface.tooltip,userInterface.
+valueBox,userInterface.scaleData,userInterface.scaleRData,userInterface.previewData];
+var seriesData = [userInterface.seriesGeneralData,userInterface.seriesAnimationData,userInterface.seriesHoverState,userInterface.
+serieshoverMarker,userInterface.seriesMarkerData,userInterface.seriestooltip,userInterface.seriesvalueBox];
+var scaleData  = [userInterface.scaleX,userInterface.scaleXGuid,userInterface.scaleXLabel,userInterface.scaleXmarkers,userInterface.
+scaleXrefLine,userInterface.scaleXTick,userInterface.scaleXItem,userInterface.scaleY,userInterface.scaleYGuid,userInterface.scaleYLabel,userInterface.scaleYmarkers,userInterface.
+scaleYrefLine,userInterface.scaleYTick,userInterface.scaleYItem ];
 
-  ],};
-var scaleYrefLine      = {
-  "category" : "scale-y",
-  "subcategory" :"ref-line",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphaMarkerscaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizescaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizescaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "lineStyleRefLineScaleX", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "visibleRefLineScaleX",
-    "key"  : "visible",
-    "label": "Visible",
-    "divider" :"true"
-  },
-  ],};
-var scaleYTick         = {
-  "category" : "scale-y",
-  "subcategory" :"tick",
-  "inputs" :[
-  {
-    "type" : "range",
-    "id"   : "alphaTickscaleX",
-    "key"  : "alpha",
-    "label": "Alpha",
-    "min"  : '0',
-    "max"  : '1',
-    "step" :'.1'
-  },
-  {
-    "type" : "color",
-    "id"   : "line-colorTickScaleX",
-    "key"  : "line-color",
-    "label": "Line color",
-    "divider" :"true"
-  },
-  {
-    "type" : "range",
-    "id"   : "line-widthTickscaleX",
-    "key"  : "line-width",
-    "label": "Line width",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-gap-sizeTickscaleX",
-    "key"  : "line-gap-size",
-    "label": "Line gap size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "range",
-    "id"   : "line-segment-sizeTickscaleX",
-    "key"  : "line-segment-size",
-    "label": "Line segment size",
-    "min"  : '0',
-    "max"  : '100',
-    "step" :'1'
-  },
-  {
-    "type" : "select",
-    "id"   : "lineStyleRefLineTickScaleX", 
-    "values" :["solid","dotted","dashed"],
-    "labels" :['Solid',
-    'Dotted',
-    'Dashed',
-    ],
-    "key"  : "line-style",
-    "label": "Line style",
-  },
-  {
-    "type" : "select",
-    "id"   : "placementTickScaleX", 
-    "values" :["default","opposite"],
-    "key"  : "placement",
-    "label": "Placement",
-    "divider" : "true"
-  },
-  {
-    "type" : "checkbox",
-    "id"   : "visibleRefLineScaleX",
-    "key"  : "visible",
-    "label": "Visible",
-    "divider" :"true"
-  },
-  ],};
-var scaleYItem         = {
-  "category" : "scale-y",
-  "subcategory" :"item",
-  "inputs" :[
-    {
-      "type" : "range",
-      "id"   : "font-sizeItemScaleX",
-      "key"  : "font-size",
-      "label": "Font size",
-      "min"  : '0',
-      "max"  : '100',
-      "step" :'1',
-    },
-    {
-      "type" : "color",
-      "id"   : "font-colorItemScaleX",
-      "key"  : "font-color",
-      "label": "Font color",
-    },
-    {
-      "type" : "text",
-      "id"   : "font-familyItemScaleX",
-      "key"  : "font-family",
-      "label": "Font family",
-    },
-    {
-      "type" : "range",
-      "id"   : "font-angelItemScaleX",
-      "key"  : "font-angel",
-      "label": "Font angel",
-      "min"  : '0',
-      "max"  : '360',
-      "step" :'1',
-    },
-    {
-      "type" : "checkbox",
-      "id"   : "boldItemScaleX",
-      "key"  : "bold",
-      "label": "bold",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopItemScaleX",
-      "key"  : "padding-top",
-      "label": "padding-top",
-      "divider" :"true",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingTopItemScaleX",
-      "key"  : "padding-right",
-      "label": "padding-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingBottomItemScaleX",
-      "key"  : "padding-bottom",
-      "label": "padding-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "paddingleftItemScaleX",
-      "key"  : "padding-left",
-      "label": "padding-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopItemScaleX",
-      "key"  : "margin-top",
-      "label": "margin-top",
-      "divider" :"true"
-    },
-    {
-      "type" : "text",
-      "id"   : "marginTopItemScaleX",
-      "key"  : "margin-right",
-      "label": "margin-right",
-    },
-    {
-      "type" : "text",
-      "id"   : "marginBottomItemScaleX",
-      "key"  : "margin-bottom",
-      "label": "margin-bottom",
-    },
-    {
-      "type" : "text",
-      "id"   : "margingleftItemScaleX",
-      "key"  : "margin-left",
-      "label": "margin-left",
-    },
-    {
-      "type" : "text",
-      "id"   : "max-charsItemScaleX",
-      "key"  : "max-chars",
-      "label": "Max chars",
-      "divider" :"true",
-    },
-  ],};
-//These arrays will regeiustor Json to HTML 
-var formData   = [titleData,subtitleData,legendDatageneral,legendDataitem,
-legendDataMarker,plotareaData,plotGeneralData,plotAnimationData,
-plotHoverState,hoverMarker,plotMarkerData,tooltip,
-valueBox,scaleData,scaleRData,previewData];
-var seriesData = [seriesGeneralData,seriesAnimationData,seriesHoverState,
-serieshoverMarker,seriesMarkerData,seriestooltip,seriesvalueBox];
-var scaleData  = [scaleX,scaleXGuid,scaleXLabel,scaleXmarkers,
-scaleXrefLine,scaleXTick,scaleXItem,scaleY,scaleYGuid,scaleYLabel,scaleYmarkers,
-scaleYrefLine,scaleYTick,scaleYItem ];
 var j = 0;
 var labelConfigId  = 0; // This is for the label replaction. It holds each labels id.
 var seriesConfigId = 0;
@@ -4618,132 +4096,132 @@ window.onload =function load_inputs() {
 /*Lables will go here */
   var lblArrayElemnt = document.getElementsByClassName("lbl-el");
   for (var i=  0 ; i< lblArrayElemnt.length;i++) { // This should be only one
-    for (var j = 0; j<labelData.inputs.length; j++ ) {
-      var linebreak = (labelData.inputs[j].divider) ? "<hr>" : "";
-      switch(labelData.inputs[j].type){
+    for (var j = 0; j<userInterface.labelData.inputs.length; j++ ) {
+      var linebreak = (userInterface.labelData.inputs[j].divider) ? "<hr>" : "";
+      switch(userInterface.labelData.inputs[j].type){
             case('checkbox') :
               lblArrayElemnt[i].innerHTML += linebreak
-              +"<label>"+ labelData.inputs[j].label+": </label>"
-              +"<input type='checkbox' id='"+labelData.inputs[j].id+"' data-category='"
-              +labelData["category"]+"' data-key='"+labelData.inputs[j].key+"' dat-subcat='"+
-              labelData.subcategory+"' data-count='"+labelConfigId
+              +"<label>"+ userInterface.labelData.inputs[j].label+": </label>"
+              +"<input type='checkbox' id='"+userInterface.labelData.inputs[j].id+"' data-category='"
+              +userInterface.labelData["category"]+"' data-key='"+userInterface.labelData.inputs[j].key+"' dat-subcat='"+
+              userInterface.labelData.subcategory+"' data-count='"+labelConfigId
               +"'onchange='Modify_chart_label(this.id, this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'><br>";
             break;
             case("text") :
               var defaultVal= ''; 
-              if (typeof labelData.inputs[j].defValue != 'undefined' ) {
-                defaultVal = labelData.inputs[j].defValue;
+              if (typeof userInterface.labelData.inputs[j].defValue != 'undefined' ) {
+                defaultVal = userInterface.labelData.inputs[j].defValue;
               };
               lblArrayElemnt[i].innerHTML += linebreak
-              +"<label>"+ labelData.inputs[j].label+": </label>"
-              +"<input type='text' id='"+labelData.inputs[j].id+"' data-category='"
-              +labelData["category"]+"' data-key='"+labelData.inputs[j].key+"' dat-subcat='"+
-              labelData.subcategory+"' data-count='"+labelConfigId
+              +"<label>"+ userInterface.labelData.inputs[j].label+": </label>"
+              +"<input type='text' id='"+userInterface.labelData.inputs[j].id+"' data-category='"
+              +userInterface.labelData["category"]+"' data-key='"+userInterface.labelData.inputs[j].key+"' dat-subcat='"+
+              userInterface.labelData.subcategory+"' data-count='"+labelConfigId
               +"' onchange='Modify_chart_label(this.id,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))' value='"+defaultVal+"'><br>";
             break;
              case("color") :
               var defaultVal= ''; 
-              if (typeof labelData.inputs[j].defValue != 'undefined' && labelData.inputs[j].defValue !='') {
-                defaultVal = labelData.inputs[j].defValue;
+              if (typeof userInterface.labelData.inputs[j].defValue != 'undefined' && userInterface.labelData.inputs[j].defValue !='') {
+                defaultVal = userInterface.labelData.inputs[j].defValue;
               } else {
                 defaultVal = "#000000";
               }
               lblArrayElemnt[i].innerHTML += linebreak
-              +"<label>"+ labelData.inputs[j].label+": </label>"
-              +"<input type='color' id='"+labelData.inputs[j].id+"' data-category='"
-              +labelData["category"]+"' data-key='"+labelData.inputs[j].key+"' dat-subcat='"+
-              labelData.subcategory+"' data-count='"+labelConfigId
+              +"<label>"+ userInterface.labelData.inputs[j].label+": </label>"
+              +"<input type='color' id='"+userInterface.labelData.inputs[j].id+"' data-category='"
+              +userInterface.labelData["category"]+"' data-key='"+userInterface.labelData.inputs[j].key+"' dat-subcat='"+
+              userInterface.labelData.subcategory+"' data-count='"+labelConfigId
               +"' onchange='Modify_chart_label(this.id,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))' value='"+defaultVal+"'><br>";
             break;
             case ('select'):
               var options = ''
               var optionLable = '';
-              for (var k=0; k<labelData.inputs[j].values.length;k++) {
-                if (labelData.inputs[j].labels) {
-                   optionLable = labelData.inputs[j].labels[k];
+              for (var k=0; k<userInterface.labelData.inputs[j].values.length;k++) {
+                if (userInterface.labelData.inputs[j].labels) {
+                   optionLable = userInterface.labelData.inputs[j].labels[k];
                 } else {
-                  optionLable = labelData.inputs[j].values[k];
+                  optionLable = userInterface.labelData.inputs[j].values[k];
                 }
-                options += "<option value='"+labelData.inputs[j].values[k]+"'>"+optionLable +"</option>"
+                options += "<option value='"+userInterface.labelData.inputs[j].values[k]+"'>"+optionLable +"</option>"
               };
               lblArrayElemnt[i].innerHTML += linebreak
-              +"<label>"+ labelData.inputs[j].label+": </label>"
-              +"<select id='"+labelData.inputs[j].id+"' data-category='"+labelData["category"]
-              +"' data-key='"+labelData.inputs[j].key+"' dat-subcat='"+labelData.subcategory+"' data-count='"+labelConfigId
+              +"<label>"+ userInterface.labelData.inputs[j].label+": </label>"
+              +"<select id='"+userInterface.labelData.inputs[j].id+"' data-category='"+userInterface.labelData["category"]
+              +"' data-key='"+userInterface.labelData.inputs[j].key+"' dat-subcat='"+userInterface.labelData.subcategory+"' data-count='"+labelConfigId
               +"'onchange='Modify_chart_label(this.id,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'><option></option> "+options+"</select><br>";
             break;
             case ("range") :
             //oninput is for IE compatibility.
               lblArrayElemnt[i].innerHTML += linebreak
-              +"<label>"+ labelData.inputs[j].label+": </label>"
-              +"<input type='range' id='"+labelData.inputs[j].id+"' data-category='"
-              +labelData["category"]+"' data-key='"+labelData.inputs[j].key+"' dat-subcat='"+
-              labelData.subcategory+"' min='"+labelData.inputs[j].min+"' max='"+labelData.inputs[j].max+"' step='"+labelData.inputs[j].step+"' data-count='"+labelConfigId
+              +"<label>"+ userInterface.labelData.inputs[j].label+": </label>"
+              +"<input type='range' id='"+userInterface.labelData.inputs[j].id+"' data-category='"
+              +userInterface.labelData["category"]+"' data-key='"+userInterface.labelData.inputs[j].key+"' dat-subcat='"+
+              userInterface.labelData.subcategory+"' min='"+userInterface.labelData.inputs[j].min+"' max='"+userInterface.labelData.inputs[j].max+"' step='"+userInterface.labelData.inputs[j].step+"' data-count='"+labelConfigId
               +"'onchange='Modify_chart_label(this.id,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'"
               +"  oninput='Modify_chart_label(this.id,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'><br>";
             break;
             case ("bgcolor") :
               lblArrayElemnt[i].innerHTML += linebreak +"<label> Background:</label>";
-              lblArrayElemnt[i].innerHTML += "<select id='backgroundType"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' data-count='"+labelConfigId
-              +"'dat-subcat='"+ labelData["subcategory"]+"'onchange='set_bg_type_label(this.id,this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'>"
+              lblArrayElemnt[i].innerHTML += "<select id='backgroundType"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' data-count='"+labelConfigId
+              +"'dat-subcat='"+ userInterface.labelData["subcategory"]+"'onchange='set_bg_type_label(this.id,this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'>"
               +"<option value='solid'>Solid</option><option value='gradiant'>Gradiant</option></select><br>"
-              +"<label> Background color 1 : </label> <input type='color' id='backgroundColor1"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]
-              +"' dat-subcat='"+labelData["subcategory"]+"' data-count='"+labelConfigId
+              +"<label> Background color 1 : </label> <input type='color' id='backgroundColor1"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]
+              +"' dat-subcat='"+userInterface.labelData["subcategory"]+"' data-count='"+labelConfigId
               +"'onchange='set_bg_color_label(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'><br>"
-              +"<label> Background color 2 : </label> <input type='color' id='backgroundColor2"+labelData.inputs[j].id+"' data-count='"+labelConfigId
-              +"'data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]
+              +"<label> Background color 2 : </label> <input type='color' id='backgroundColor2"+userInterface.labelData.inputs[j].id+"' data-count='"+labelConfigId
+              +"'data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]
               +"' onchange='set_bg_color_label(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))' style='visibility :hidden'><br>";
             break;
             case ("border") :
               lblArrayElemnt[i].innerHTML += linebreak +"<label> Border :</lable>";
-              lblArrayElemnt[i].innerHTML += "<input type='checkbox' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' id='border"+labelData.inputs[j].id
+              lblArrayElemnt[i].innerHTML += "<input type='checkbox' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' id='border"+userInterface.labelData.inputs[j].id
               +"' data-count='"+labelConfigId
               +"'onchange='set_border_label(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'><br>";  
-              lblArrayElemnt[i].innerHTML += "<label> Border width :</label><input type='text' id='borderWidth"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"
-              +labelData["subcategory"]+"' data-count='"+labelConfigId
+              lblArrayElemnt[i].innerHTML += "<label> Border width :</label><input type='text' id='borderWidth"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"
+              +userInterface.labelData["subcategory"]+"' data-count='"+labelConfigId
               +"' oninput='set_border_label(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))' value='1px'><br>";
-              lblArrayElemnt[i].innerHTML += " <label> Border color:</label><input type='color' id='borderColor"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"
-              +labelData["subcategory"]+"' data-count='"+labelConfigId
+              lblArrayElemnt[i].innerHTML += " <label> Border color:</label><input type='color' id='borderColor"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"
+              +userInterface.labelData["subcategory"]+"' data-count='"+labelConfigId
               +"'onchange='set_border_label(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"),this.getAttribute(\"data-count\"))'><br>";
             break;
             case ("line") :
               lblArrayElemnt[i].innerHTML += linebreak + "<label>Line color :</lable>";
-              lblArrayElemnt[i].innerHTML += "<input type='color' id='lineColor"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onchange='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='#000000'><br>";
-              lblArrayElemnt[i].innerHTML += "<label>Line width :</lable> <input type='text' id='lineWidth"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onKeyUp='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='2px'><br>";
+              lblArrayElemnt[i].innerHTML += "<input type='color' id='lineColor"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onchange='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='#000000'><br>";
+              lblArrayElemnt[i].innerHTML += "<label>Line width :</lable> <input type='text' id='lineWidth"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onKeyUp='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='2px'><br>";
               lblArrayElemnt[i].innerHTML += "<lable> Line style :</lable>"
-              +"<select id='lineStyle"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onchange='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
+              +"<select id='lineStyle"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onchange='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
               +"<option></option>"
               +"<option value='solid'> Solid</option>"
               +"<option value='dotted'> Dotted</option>"
               +"<option value='dashed'> Dashed</option>"
               +"</select><br>";
-              lblArrayElemnt[i].innerHTML +="<label>Line gap size :</lable> <input type='text' id='lineGapSize"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onKeyUp='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='2px' ><br>";
-              lblArrayElemnt[i].innerHTML +="<label>Line segment size :</lable> <input type='text' id='lineSegmentSize"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onKeyUp='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='2px' ><br>";
+              lblArrayElemnt[i].innerHTML +="<label>Line gap size :</lable> <input type='text' id='lineGapSize"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onKeyUp='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='2px' ><br>";
+              lblArrayElemnt[i].innerHTML +="<label>Line segment size :</lable> <input type='text' id='lineSegmentSize"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onKeyUp='set_line(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='2px' ><br>";
             break;
             case ("font") :
               lblArrayElemnt[i].innerHTML += linebreak+"<lable> Font color :</label>";
-              lblArrayElemnt[i].innerHTML += " <input type='color' id='fontColor"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='#000000'><br>";
-              lblArrayElemnt[i].innerHTML += "<lable> Font size :</lable><input type='text' id='fontSize"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]
-              +"' dat-subcat='"+labelData["subcategory"]+"' onKeyUp='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='12px'><br>";
+              lblArrayElemnt[i].innerHTML += " <input type='color' id='fontColor"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='#000000'><br>";
+              lblArrayElemnt[i].innerHTML += "<lable> Font size :</lable><input type='text' id='fontSize"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]
+              +"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onKeyUp='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='12px'><br>";
               lblArrayElemnt[i].innerHTML += "<lable>Font style: </lable>";
-              lblArrayElemnt[i].innerHTML += "<select id='fontStyle"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
+              lblArrayElemnt[i].innerHTML += "<select id='fontStyle"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
               +"<option value ='normal' > normal</option>"
               +"<option value ='italic' > italic</option>"
               +"<option value ='oblique'> oblique</option>"
               +"</select><br>";
               lblArrayElemnt[i].innerHTML += "<lable> Font family :</lable>"; // It should get converted to select sometime!!!
-              lblArrayElemnt[i].innerHTML += "<input type='text' id='fontFamily"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]
+              lblArrayElemnt[i].innerHTML += "<input type='text' id='fontFamily"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]
               +"' onKeyUp='set_font(this.id,this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' ><br>";
               lblArrayElemnt[i].innerHTML += "<lable> Text :</label>";
-              lblArrayElemnt[i].innerHTML += "<input  type='text' id='text"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onKeyUp='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>";
+              lblArrayElemnt[i].innerHTML += "<input  type='text' id='text"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onKeyUp='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>";
               lblArrayElemnt[i].innerHTML += "<lable>Text align :</lable>"
-              +"<select id='textAlign"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]+"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
+              +"<select id='textAlign"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]+"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
               +"<option></option>"
               +"<option value='center'> Center</option>"
               +"<option value='left'> Left</option>"
               +"<option value='right'> Right </option>"
               +"</select><br>";
-              lblArrayElemnt[i].innerHTML += "<lable> Bold : </label> <input type='checkbox' id='fontBold"+labelData.inputs[j].id+"' data-category ='"+labelData["category"]+"' dat-subcat='"+labelData["subcategory"]
+              lblArrayElemnt[i].innerHTML += "<lable> Bold : </label> <input type='checkbox' id='fontBold"+userInterface.labelData.inputs[j].id+"' data-category ='"+userInterface.labelData["category"]+"' dat-subcat='"+userInterface.labelData["subcategory"]
               +"' onchange='set_font(this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
             break;
           };
@@ -4764,9 +4242,9 @@ window.onload =function load_inputs() {
             linebreak = formData[m].inputs[j].divider ? "<hr>" :" ";
             switch(formData[m].inputs[j].type){
             case("color") :
-              var defaultVal= ''; 
-              if (typeof labelData.inputs[j].defValue != 'undefined' && labelData.inputs[j].defValue !='') {
-                defaultVal = labelData.inputs[j].defValue;
+              var defaultVal= '';
+              if (typeof userInterface.labelData.inputs[j].defValue != 'undefined' && userInterface.labelData.inputs[j].defValue !='') {
+                defaultVal = userInterface.labelData.inputs[j].defValue;
               } else {
                 defaultVal = "#000000";
               } 
@@ -4913,7 +4391,7 @@ function Modify_chart(element,key,category,subCategory) {
         zingchart.exec(chartID,'setdata', {
           data : tempobj
         });
-        creat_json();
+        create_json();
     } else {
       if (category != subCategory ) {
         dataObj[category][subCategory] ={};
@@ -4942,7 +4420,7 @@ function Modify_chart(element,key,category,subCategory) {
         data : chartData['graphset'][0], 
       });
   }
-    creat_json();
+    create_json();
 }
   
 /*
@@ -5023,7 +4501,8 @@ function set_bg_color(category,subCategory) {
   }
   
   
-  creat_json();
+
+  create_json();
  }
  /*
   *  Generic function for seting border
@@ -5052,9 +4531,7 @@ function set_border(category,subCategory) {
       graphid : 0,
       data : dataObj
     });
-
-
-  creat_json();}
+  create_json();}
 /*
  * Generic function for seting line
  */
@@ -5083,7 +4560,7 @@ function set_line(category,subCategory) {
     graphid : 0,
     data : dataObj
   });
-  creat_json();}
+  create_json();}
 /*
  * Generic function for seting font
  */
@@ -5109,7 +4586,7 @@ function set_font(category,subCategory) {
         graphid: 0,
         data : tempobj.graphset[0]
       });
-      creat_json();
+      create_json();
     }
     dataObj[category][subCategory]["textAlign"] = selected;
     dataObj[category][subCategory]["fontStyle"] = style;
@@ -5122,7 +4599,7 @@ function set_font(category,subCategory) {
     data : dataObj
   });
   zingchart.exec(chartID,'update');
-  creat_json();}
+  create_json();}
 function new_label() {
   var ttl = document.getElementById("LabelsTitle");
   var lbl = document.getElementById("lableConfig");
@@ -5184,7 +4661,7 @@ function new_label() {
       data : chartLabels  
     });
   }
-  creat_json();}
+ create_json();}
 /*
  * Label Modify chart
  */
@@ -5205,7 +4682,7 @@ function Modify_chart_label(id,type,key,category,subcategory,count) {
   // Get chart JSON
   var chartDta = zingchart.exec(chartID, 'getdata');
   var chartLabels = chartDta['graphset'][0]['labels']; // Ternary operator to check to see if 'labels' exists
-  if (typeof chartLabels  == "undefined" ){ //Empty array situation, creating a new label
+  if (typeof chartLabels  == "undefined" ){ //Empty array situation, createing a new label
     var dataObj = {
       labels :[],
     };
@@ -5223,7 +4700,7 @@ function Modify_chart_label(id,type,key,category,subcategory,count) {
         graphid : 0,
         data : dataObj  
       });
-  } else { //Labels already exists, so we're modifying instead of creating 
+  } else { //Labels already exists, so we're modifying instead of createing 
     if (count == chartLabels.length) {//New elemnt case we hace to push it 
       if (key == 'callout-hook') {
         calloutHook =[];
@@ -5251,7 +4728,7 @@ function Modify_chart_label(id,type,key,category,subcategory,count) {
       });
     }
   }
-  creat_json();}
+  create_json();}
 /*
  * functions for labels bg Color
  */ 
@@ -5278,7 +4755,7 @@ function set_bg_color_label(category,subCategory,count) {
   // Get chart JSON
   var chartDta = zingchart.exec(chartID, 'getdata');
   var chartLabels = chartDta['graphset'][0]['labels']
-  if (typeof chartLabels  == "undefined" ){ //Empty array situation, creating a new label
+  if (typeof chartLabels  == "undefined" ){ //Empty array situation, createing a new label
     console.log("We have to add label!!");
     var dataObj = {
       labels :[],
@@ -5341,7 +4818,7 @@ function set_bg_color_label(category,subCategory,count) {
     }
     
   }   
-  creat_json();
+  create_json();
  }
 function set_border_label(category,subCategory,count) {
 
@@ -5379,7 +4856,7 @@ function set_border_label(category,subCategory,count) {
       }
     });
   } 
-  creat_json();}
+  create_json();}
 function new_series() {
   var title = document.getElementById("seriesTitle");
   var series = document.getElementById("seriesConfig");
@@ -5452,7 +4929,7 @@ function new_series() {
       data : chartseries  
     });
   }
-  creat_json();}
+  create_json();}
 var bgTypeseries= [];
 function set_bg_type_series(element,category,subCategory,count) {
   count = (element.parentElement.parentElement.dataset.count != 0) ? element.parentElement.parentElement.dataset.count : ''; 
@@ -5474,7 +4951,7 @@ function set_bg_color_series(element,category,subCategory) {
   // Get chart JSON
   var chartDta = zingchart.exec(chartID, 'getdata');
   var chartSeries = chartDta['graphset'][0]['series']
-  if (typeof chartSeries  == "undefined" ){ //Empty array situation, creating a new label
+  if (typeof chartSeries  == "undefined" ){ //Empty array situation, createing a new label
     if (category == subcategory) {
       var dataObj = {
         series :[],
@@ -5551,7 +5028,7 @@ function set_bg_color_series(element,category,subCategory) {
             chartSeries[(count == "" ) ? 0 : count][subCategory]['background-color-1'] =  element.value;
             chartSeries[(count == "" ) ? 0 : count][subCategory]['background-color-2'] =  element.value; 
           }
-        // If we dont have the subcat, then we have to creat it and assing values to it.
+        // If we dont have the subcat, then we have to create it and assing values to it.
         } else {
           
           var data = {};
@@ -5576,7 +5053,7 @@ function set_bg_color_series(element,category,subCategory) {
       }); 
     } 
   }   
-  creat_json();}
+  create_json();}
 function set_border_series(element,category,subCategory) {
 
   count = (element.parentElement.parentElement.dataset.count != 0) ? element.parentElement.parentElement.dataset.count : ''; 
@@ -5631,7 +5108,7 @@ function set_border_series(element,category,subCategory) {
       }
     });
   } 
-  creat_json();}
+  create_json();}
 /*
  * series setting line
  */
@@ -5669,7 +5146,7 @@ function set_line_series(element,category,subCategory) {
       "series" : chartSeries
     }
   });
-  creat_json();}
+  create_json();}
 /*
  * Series Modify chart
  */
@@ -5705,7 +5182,7 @@ function Modify_chart_series(element,type,key,category,subCategory) {
   var chartDta = zingchart.exec(chartID, 'getdata');
   var chartSeries = chartDta['graphset'][0]['series']; // Ternary operator to check to see if 'labels' exists
 
-  if (typeof chartSeries  == "undefined" ){ //Empty array situation, creating a new series
+  if (typeof chartSeries  == "undefined" ){ //Empty array situation, createing a new series
     var dataObj = {
       series :[],
     };
@@ -5721,7 +5198,7 @@ function Modify_chart_series(element,type,key,category,subCategory) {
         graphid : 0,
         data : dataObj  
       });
-  } else { //Labels already exists, so we're modifying instead of creating 
+  } else { //Labels already exists, so we're modifying instead of createing 
       if (category == subCategory) {
         if (count == chartSeries.length) {//New elemnt case we have to push it 
             var vals = {};
@@ -5769,7 +5246,7 @@ function Modify_chart_series(element,type,key,category,subCategory) {
       }
 
   }
-  creat_json();}
+  create_json();}
 function Modify_chart_scale(element,type,key,category,subCategory) {
   count = element.parentElement.parentElement.dataset.count
   var value = ''
@@ -5791,7 +5268,7 @@ function Modify_chart_scale(element,type,key,category,subCategory) {
     var scalename = "scale-x"+temp;
     var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
 
-    if (typeof chartScale  == "undefined" ){ //Empty array situation, creating a new scale-x
+    if (typeof chartScale  == "undefined" ){ //Empty array situation, createing a new scale-x
       var dataObj = {};
       dataObj[scalename] ={};
       if (category == subCategory) { // The same category part
@@ -5804,7 +5281,7 @@ function Modify_chart_scale(element,type,key,category,subCategory) {
           graphid : 0,
           data : dataObj  
         });
-    } else { //Scale already exists, so we're modifying instead of creating 
+    } else { //Scale already exists, so we're modifying instead of createing 
         if (category == subCategory) {
           //Not sure when this case will happen
           if (count == chartScale.length) {//New elemnt case we have to push it 
@@ -5855,7 +5332,7 @@ function Modify_chart_scale(element,type,key,category,subCategory) {
     var scalename = "scale-y"+temp;
     var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
 
-    if (typeof chartScale  == "undefined" ){ //Empty array situation, creating a new scale-x
+    if (typeof chartScale  == "undefined" ){ //Empty array situation, createing a new scale-x
       var dataObj = {};
       dataObj[scalename] ={};
       if (category == subCategory) { // The same category part
@@ -5868,7 +5345,7 @@ function Modify_chart_scale(element,type,key,category,subCategory) {
           graphid : 0,
           data : dataObj  
         });
-    } else { //Scale already exists, so we're modifying instead of creating 
+    } else { //Scale already exists, so we're modifying instead of createing 
         if (category == subCategory) {
           //Not sure when this case will happen
           if (count == chartScale.length) {//New elemnt case we have to push it 
@@ -5906,7 +5383,7 @@ function Modify_chart_scale(element,type,key,category,subCategory) {
   }
 
 
-  creat_json();}
+  create_json();}
 function new_scale_x() {
   var clonedTitle  = document.getElementById("scaleX").cloneNode(true);
   var clonedConfig = document.getElementById("scaleX").nextElementSibling.cloneNode(true);
@@ -5997,7 +5474,7 @@ function set_xy_position_legend() {
         }
       }
     });
-    creat_json();
+    create_json();
   };
 }
 
@@ -6013,9 +5490,9 @@ function set_background_position_plot_area() {
           }
         }
       });
-  creat_json();
+  create_json();
 }
-function creat_json() {
+function create_json() {
   zingchart.exec(chartID,'update');
   // At some point we have to fix this this does not work correctly
   var jsonString = JSON.stringify(zingchart.exec(chartID,'getdata' ),null,"\t");
@@ -6178,7 +5655,7 @@ function chartRouter() {
         type : selectedChart
       }
     });
-    setTimeout(creat_json(),100);
+    setTimeout(create_json(),100);
   }
   drawChart();
 }
