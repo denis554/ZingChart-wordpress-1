@@ -4338,8 +4338,12 @@ var seriesConfigId = 0;
 var scaleXCounter  = 0;
 var scaleYCounter  = 0;
 window.onload =function load_inputs() {
-
-document.body.onkeydown ="return (event.keyCode!=13)";
+  //If our textarea is not empty it means that we are eddititng so we can draw the chart based on that:
+  if (document.getElementById("zingcharts-javaScript").value != "") {
+    chartData  = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    document.getElementById('whichChart').value = chartData['graphset'][0]["type"] ;
+    drawChart();
+  };
 /*All Scale data goes here*/ 
   var seriesElement = document.getElementsByClassName("scl-el");
   var linebreak = "";
@@ -4924,7 +4928,7 @@ function Modify_chart(element,key,category,subCategory) {
     }
   } else {
     if (category != subCategory ) {
-        if (chartaDta['graphset'][0][category][subCategory]) {
+        if (chartData['graphset'][0][category][subCategory]) {
           chartData['graphset'][0][category][subCategory][key] = value;
         } else {
           chartData['graphset'][0][category][subCategory] ={};
@@ -6027,143 +6031,149 @@ function chartRouter() {
   document.getElementById("dataTabs").style.display = "block";
   document.getElementById("chartSelector").style.display = "none";*/
   var selectedChart = charts.options[charts.selectedIndex].value;
-  switch (selectedChart) {
-    case 'bar' :
-      chartData={
-      "type": "bar",
-      "series": [
-      { "values": [35, 42, 67, 89, 25, 34, 67, 85 ] },
-      { "values": [28, 57, 43, 56, 78, 99, 67, 28 ] }
-      ]
-      };
-    break;
-    case 'line' :
-      chartData = {
-      "show-progress":false,
-      "graphset":[
-          {
-              "plot":{
-                  
-              },
-              "type":"line",
-              "series":[
-                  {
-                      "values":[-57,-44,-7,-17,58,-31,-81,57,28,-14,94,87,-89,-89,-20,-97,-11,44,30,-38],
-                      "text":"Item 0"
-                  },
-                  {
-                      "values":[53,42,-27,-92,6,13,60,-83,-7,-92,47,-71,32,31,-85,-86,8,-12,97,-96],
-                      "text":"Item 1"
-                  },
-              ]
-          }
-      ]
-      };
-
-    break;
-    case 'area':
-      chartData = {
-         "type":"area",
-          "series":[
-            {
-            "values":[11,36,7,44,11,28,42,26,13,32,12,24,16,11,43,39]
-            },
-            {
-            "values":[21,29,14,16,28,35,21,18,11,7,4,9,25,15,33,13]
-          }
-        ] 
-      };
-    break;
-    case 'scatter':
-      chartData = 
-                  {
-            "graphset":[
-                {
-                    "type":"scatter",
-                    "series":[
-                        {
-                            "values":[[1,15],
-                            [2.3,4],
-                            [5,10.4],
-                            [6,7],
-                            [3,6],
-                            [7.5,15],
-                            [8,2.3],
-                            [.81,7],
-                            [2,12.5],
-                            [4.2,4],
-                            [5,1],
-                            [6,3],
-                            [8.8,16.8]]
-                        },
-                        {
-                            "values":[[3,5],
-                            [2.3,17],
-                            [8,8],
-                            [6.4,12.3],
-                            [4,6.6],
-                            [7.2,3],
-                            [2,12],
-                            [1.5,4.3],
-                            [6.7,2],
-                            [4,10],
-                            [3.4,10],
-                            [6,14],
-                            [2,6.7]]
-                        },
-                        {
-                            "values":[[3,11],
-                            [6.2,7.2],
-                            [8,14],
-                            [3,2.5],
-                            [4.4,5],
-                            [8,13],
-                            [2,1],
-                            [7.9,4.1],
-                            [6,16.3],
-                            [.51,8],
-                            [3,6],
-                            [5.7,14.8],
-                            [2,2]]
-                        }
-                    ]   
-                }
-            ]
+  if (document.getElementById('zingcharts-javaScript').value === "") {
+    switch (selectedChart) {
+      case 'bar' :
+        chartData={
+        "type": "bar",
+        "series": [
+        { "values": [35, 42, 67, 89, 25, 34, 67, 85 ] },
+        { "values": [28, 57, 43, 56, 78, 99, 67, 28 ] }
+        ]
         };
-    break;
-    case 'pie':
-       chartData =
-        {
-            "graphset":[
-                {    
-                    "type":"pie",
-                    "series":[
-                        {
-                            "text":"Apples",
-                            "values":[5]
-                        },
-                        {
-                            "text":"Oranges",
-                            "values":[8]
-                        },
-                        {
-                            "text":"Bananas",
-                            "values":[22]
-                        },
-                        {
-                            "text":"Grapes",
-                            "values":[16]
-                        },
-                        {
-                            "text":"Cherries",
-                            "values":[12]
-                        }
-                    ]
-                }
-            ]
-        
-      };
-    break;
+      break;
+      case 'line' :
+        chartData = {
+        "show-progress":false,
+        "graphset":[
+            {
+                "plot":{
+                    
+                },
+                "type":"line",
+                "series":[
+                    {
+                        "values":[-57,-44,-7,-17,58,-31,-81,57,28,-14,94,87,-89,-89,-20,-97,-11,44,30,-38],
+                        "text":"Item 0"
+                    },
+                    {
+                        "values":[53,42,-27,-92,6,13,60,-83,-7,-92,47,-71,32,31,-85,-86,8,-12,97,-96],
+                        "text":"Item 1"
+                    },
+                ]
+            }
+        ]
+        };
+
+      break;
+      case 'area':
+        chartData = {
+           "type":"area",
+            "series":[
+              {
+              "values":[11,36,7,44,11,28,42,26,13,32,12,24,16,11,43,39]
+              },
+              {
+              "values":[21,29,14,16,28,35,21,18,11,7,4,9,25,15,33,13]
+            }
+          ] 
+        };
+      break;
+      case 'scatter':
+        chartData = 
+                    {
+              "graphset":[
+                  {
+                      "type":"scatter",
+                      "series":[
+                          {
+                              "values":[[1,15],
+                              [2.3,4],
+                              [5,10.4],
+                              [6,7],
+                              [3,6],
+                              [7.5,15],
+                              [8,2.3],
+                              [.81,7],
+                              [2,12.5],
+                              [4.2,4],
+                              [5,1],
+                              [6,3],
+                              [8.8,16.8]]
+                          },
+                          {
+                              "values":[[3,5],
+                              [2.3,17],
+                              [8,8],
+                              [6.4,12.3],
+                              [4,6.6],
+                              [7.2,3],
+                              [2,12],
+                              [1.5,4.3],
+                              [6.7,2],
+                              [4,10],
+                              [3.4,10],
+                              [6,14],
+                              [2,6.7]]
+                          },
+                          {
+                              "values":[[3,11],
+                              [6.2,7.2],
+                              [8,14],
+                              [3,2.5],
+                              [4.4,5],
+                              [8,13],
+                              [2,1],
+                              [7.9,4.1],
+                              [6,16.3],
+                              [.51,8],
+                              [3,6],
+                              [5.7,14.8],
+                              [2,2]]
+                          }
+                      ]   
+                  }
+              ]
+          };
+      break;
+      case 'pie':
+         chartData =
+          {
+              "graphset":[
+                  {    
+                      "type":"pie",
+                      "series":[
+                          {
+                              "text":"Apples",
+                              "values":[5]
+                          },
+                          {
+                              "text":"Oranges",
+                              "values":[8]
+                          },
+                          {
+                              "text":"Bananas",
+                              "values":[22]
+                          },
+                          {
+                              "text":"Grapes",
+                              "values":[16]
+                          },
+                          {
+                              "text":"Cherries",
+                              "values":[12]
+                          }
+                      ]
+                  }
+              ]
+          
+        };
+      break;
+    }
+  } else {
+    zingchart.exec(chartID,'setcharttype',{
+      type:selectedChart
+    });
   }
   drawChart();
 }
@@ -6171,11 +6181,11 @@ function chartRouter() {
 function load_attrs(element) {
   if(document.getElementById('zingcharts-javaScript').value != ""){
     var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
-    for(attr in chartJason['graphset'][0]["title"] ) {
+    for(attr in chartJason['graphset'][0][element.dataset.category] ) {
       var elements = element.nextElementSibling.childNodes;
       // This part is for setting bg color attrs since They will set without key
       if (attr == "background-color-1") {
-        if (chartJason['graphset'][0]["title"][attr] != chartJason['graphset'][0]["title"]["background-color-2"]) {
+        if (chartJason['graphset'][0][element.dataset.category][attr] != chartJason['graphset'][0][element.dataset.category]["background-color-2"]) {
           document.getElementById("backgroundTypetitletitle").selectedIndex = 1;
           document.getElementById("backgroundColor2titletitle").style.visibility = "visible";
           document.getElementById("backgroundColor2titletitle").previousElementSibling.style.visibility = "visible";
@@ -6196,13 +6206,13 @@ function load_attrs(element) {
             if (elements[el].dataset.key == attr) {
               switch (elements[el].type) {
               case ("checkbox"):
-                elements[el].checked = chartJason['graphset'][0]["title"][attr];
+                elements[el].checked = chartJason['graphset'][0][element.dataset.category][attr];
                 break;
               case("select-one") :
-                elements[el].value  = chartJason['graphset'][0]["title"][attr];
+                elements[el].value  = chartJason['graphset'][0][element.dataset.category][attr];
                 break;
               default:
-                elements[el].value = chartJason['graphset'][0]["title"][attr];
+                elements[el].value = chartJason['graphset'][0][element.dataset.category][attr];
               }
 
             }

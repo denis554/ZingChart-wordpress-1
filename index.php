@@ -161,7 +161,7 @@ left: -0.25em;
   <h3 onclick="load_attrs(this)" data-laod="0" data-category = "title">Title</h3>
   <div class="frm-el" data-category = "title" data-sub-category = "title">
   </div>
-  <h3>Sub title</h3>
+  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "subtitle">Sub title</h3>
   <div class="frm-el" data-category = "subtitle" data-sub-category = "subtitle">
   </div>
   <h3> Legend</h3>
@@ -181,7 +181,7 @@ left: -0.25em;
     X : <input type="text" id="xPositionLegend" onKeyUp ="set_xy_position_legend()" value = '0' ><br>
     Y : <input type="text" id="yPositionLegend" onKeyUp ="set_xy_position_legend()" value='0'><br>
   </div>
-  <h3>Plotarea</h3>
+  <h3 onclick="load_attrs(this)" data-category ="plotarea">Plotarea</h3>
   <div class="frm-el" data-category = "plotarea" data-sub-category = "plotarea">
     Background Position: <br>
     X : <input type="text" value='0' id="backgroundPositionXPlotArea" onKeyUp="set_background_position_plot_area()" ><br>
@@ -273,7 +273,7 @@ left: -0.25em;
     </div>
     <button type="button" onclick="new_label(); return false;">New Label</button>
   </div>
-  <h3>Preview </h3>
+  <h3 onclick="load_attrs(this)" data-category = "preview">Preview </h3>
   <div id="preview" class="frm-el" data-category = "preview" data-sub-category = "preview">
   </div>
 </div>
