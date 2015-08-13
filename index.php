@@ -134,7 +134,7 @@ document.onkeydown = function(evt) {
 <style type="text/css">
 #accordion{
 float: left;
-width: 60%;
+width: 40%;
 -display: none;
 }
 #dataTabs {
@@ -265,10 +265,10 @@ left: -0.25em;
     <button type="button" onclick="new_scale_x()">New Scale-X</button>
     <button type="button" onclick="new_scale_y()">New Scale-Y</button>
   </div> 
-  <h3>Labels</h3>
+  <h3 onclick="load_empty_labels()">Labels</h3>
   <div >
     <div id="labelsAccordion">
-      <h3  id = "LabelsTitle" > Label </h3>
+      <h3  id = "LabelsTitle" onclick="load_label_data()"> Label </h3>
       <div id = "lableConfig" class="lbl-el" data-category = "labels" data-sub-category = "labels" data-count ="0"></div>
     </div>
     <button type="button" onclick="new_label(); return false;">New Label</button>

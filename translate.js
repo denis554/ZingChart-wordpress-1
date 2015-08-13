@@ -4339,7 +4339,7 @@ var scaleXCounter  = 0;
 var scaleYCounter  = 0;
 window.onload =function load_inputs() {
   //If our textarea is not empty it means that we are eddititng so we can draw the chart based on that:
-  if (document.getElementById("zingcharts-javaScript").value != "") {
+  if (document.getElementById("zingcharts-javaScript").value.trim() != "") {
     chartData  = JSON.parse(document.getElementById('zingcharts-javaScript').value);
     document.getElementById('whichChart').value = chartData['graphset'][0]["type"] ;
     drawChart();
@@ -5133,6 +5133,7 @@ function new_label() {
   for (var i= 0 , len = clnlLbl.childNodes.length ; i<len; i++) {
     if (childs[i].id) {
       childs[i].id += labelConfigId;
+      childs[i].value = "";
       childs[i].setAttribute("data-count",labelConfigId);
       if (childs[i].type == "select-one") {
         childs[i].value = "solid";
@@ -6031,7 +6032,7 @@ function chartRouter() {
   document.getElementById("dataTabs").style.display = "block";
   document.getElementById("chartSelector").style.display = "none";*/
   var selectedChart = charts.options[charts.selectedIndex].value;
-  if (document.getElementById('zingcharts-javaScript').value === "") {
+  if (document.getElementById('zingcharts-javaScript').value.trim() == "") {
     switch (selectedChart) {
       case 'bar' :
         chartData={
@@ -6225,6 +6226,24 @@ function load_attrs(element) {
           }
         }
       }
+    }
+  }
+}
+
+function load_empty_labels() {
+  if(document.getElementById('zingcharts-javaScript').value.trim() != ""){
+    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    for(label in chartJason['graphset'][0]["labels"] ) {
+      new_label();
+    }
+  }
+}
+
+function load_label_data() {
+  if(document.getElementById('zingcharts-javaScript').value.trim() != ""){
+    var chartJason = JSON.parse(document.getElementById('zingcharts-javaScript').value);
+    for(label in chartJason['graphset'][0]["labels"] ) {
+      //new_label();
     }
   }
 }
