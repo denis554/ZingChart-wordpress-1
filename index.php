@@ -17,6 +17,7 @@ TO DOs:
 * Fixing the abspath issue
 * Make sure the plugin loads only once
 * In the view post show the chart
+* change sub-category to subcategory
 */
 /*if (!'defined( 'ABSPATH' )') {
 header( 'HTTP/1.0 404 Not Found', true, 404 );
@@ -28,8 +29,6 @@ error_reporting(E_ALL | E_STRICT);
 define('ZING_PLUGIN_URL',plugin_dir_url(__FILE__));
 define('ZING_PLUGIN_PATH',plugin_dir_path(__FILE__));
 define('ZING_NOUNCE',plugin_dir_path(__FILE__));
-require_once(ZING_PLUGIN_PATH.'Zing_help.php');
-//require_once(ZING_PLUGIN_PATH.'zing_edit.php');
 function zing_activate() {
   //Just a place holder
 }
@@ -52,7 +51,9 @@ add_action('wp_enqueue_scripts','zing_loadLib');
 function Zing_custompost() {
   if(is_admin()) {
     wp_enqueue_script('jquery-ui','http://code.jquery.com/ui/1.11.4/jquery-ui.min.js');
-    wp_enqueue_script('translate', ZING_PLUGIN_URL.'translate.js');
+    wp_enqueue_script('userInterface', ZING_PLUGIN_URL.'js/userInterface.json');
+    wp_enqueue_script('formBuilder', ZING_PLUGIN_URL.'js/formBuilder.js');
+    wp_enqueue_script('ZGWP', ZING_PLUGIN_URL.'js/ZGWP.js');
     wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
   }
   wp_enqueue_script('Zing_chart','http://cdn.zingchart.com/zingchart.min.js');
@@ -158,19 +159,19 @@ left: -0.25em;
 <div style="clear:both"></div>
 
 <div id="accordion">
-  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "title">Title</h3>
+  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "title" data-subCategory ="title">Title</h3>
   <div class="frm-el" data-category = "title" data-sub-category = "title">
   </div>
-  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "subtitle">Sub title</h3>
+  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "subtitle" data-subCategory = "subtitle" >Sub title</h3>
   <div class="frm-el" data-category = "subtitle" data-sub-category = "subtitle">
   </div>
-  <h3> Legend</h3>
+  <h3 onclick="load_attrs(this,true)" data-laod="0" data-category = "legend" data-subCategory ="legend" > Legend</h3>
   <div>
     <div id="legendTabs">
       <ul>
         <li><a href="#legendTab1">General</a></li>
-        <li><a href="#legendTab2">Item</a></li>
-        <li><a href="#legendTab3">Marker</a></li>
+        <li><a href="#legendTab2" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "legend" data-subCategory = "item">Item</a></li>
+        <li><a href="#legendTab3" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "legend" data-subCategory = "marker">Marker</a></li>
       </ul>
       <div id="legendTab1" class="frm-el" data-category = "legend" data-sub-category = "legend"></div>
       <div id="legendTab2" class="frm-el" data-category = "legend" data-sub-category = "item"></div>
@@ -187,17 +188,17 @@ left: -0.25em;
     X : <input type="text" value='0' id="backgroundPositionXPlotArea" onKeyUp="set_background_position_plot_area()" ><br>
     Y : <input type="text" value='0' id="backgroundPositionYPlotArea" onKeyUp="set_background_position_plot_area()" ><hr>
   </div>
-  <h3>Plot</h3>
+  <h3 onclick="load_attrs(this,true)" data-laod="0" data-category = "plot" data-subCategory = "plot">Plot</h3>
   <div>
     <div id="plotTabs">
       <ul>
         <li><a href="#plotTab1">General</a></li>
-        <li><a href="#plotTab2">Animation</a></li>
-        <li><a href="#plotTab3">Hover state</a></li>
-        <li><a href="#plotTab4">Hover marker</a></li>
-        <li><a href="#plotTab5">Marker</a></li>
-        <li><a href="#plotTab6">Tool Tip</a></li>
-        <li><a href="#plotTab7">Value Box</a></li>
+        <li><a href="#plotTab2" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "animation">Animation</a></li>
+        <li><a href="#plotTab3" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "hover-state">Hover state</a></li>
+        <li><a href="#plotTab4" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "hover-marker">Hover marker</a></li>
+        <li><a href="#plotTab5" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "marker">Marker</a></li>
+        <li><a href="#plotTab6" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "tool-tip">Tool Tip</a></li>
+        <li><a href="#plotTab7" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "value-box">Value Box</a></li>
       </ul>
       <div id="plotTab1" class="frm-el" data-category = "plot" data-sub-category = "plot"></div>
       <div id="plotTab2" class="frm-el" data-category = "plot" data-sub-category = "animation"></div>
@@ -307,7 +308,7 @@ left: -0.25em;
             </ul>
             <div id="seriesTab0" class="series-el" data-category = "series" data-sub-category = "data">
               <label for="seriesData">Values:</label>
-              <textarea id="seriesData" data-key="values" data-category="series" data-subcat = "series" oninput='Modify_chart_series(this,this.type,this.getAttribute("data-key"),this.getAttribute("data-category"),this.getAttribute("data-subcat"))'></textarea>
+              <textarea id="seriesData" data-key="values" data-category="series" data-subcat = "series" oninput='modify_chart_series(this,this.type,this.getAttribute("data-key"),this.getAttribute("data-category"),this.getAttribute("data-subcat"))'></textarea>
             </div>
             <div id="seriesTab1" class="series-el" data-category = "series" data-sub-category = "series"></div>
             <div id="seriesTab2" class="series-el" data-category = "series" data-sub-category = "animation"></div>
