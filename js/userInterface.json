@@ -1,3 +1,5 @@
+//Fininish the font family conversions and also add apporpriate fonts to the following array
+fontFamily =["Arial, Helvetica, sans-serif","Arial Black, Gadget, sans-serif"] ;
 /*JSON object that holds The inputs and their values*/
 var userInterface = {
     "titleData": {
@@ -12,7 +14,7 @@ var userInterface = {
             "type": "text",
             "id": "textTitle",
             "key": "text",
-            "label": "text",
+            "label": "Text",
             "divider": "true"
         }, {
             "type": "checkbox",
@@ -38,7 +40,7 @@ var userInterface = {
                 "linear",
                 "radial"
             ],
-            "label": "Fill type",
+            "label": "Fill Type",
             "id": "fillTypeTitle",
             "key": "fill-type",
             "divider": "true"
@@ -46,7 +48,7 @@ var userInterface = {
             "type": "color",
             "id": "fontColorTitle",
             "key": "font-color",
-            "label": "Font color",
+            "label": "Font Color",
             "divider": "true"
         }, {
             "type": "select",
@@ -63,7 +65,7 @@ var userInterface = {
             "type": "text",
             "id": "fontFamilyItemTitle",
             "key": "font-family",
-            "label": "Font family"
+            "label": "Font Family"
         }, {
             "type": "select",
             "values": [
@@ -71,7 +73,7 @@ var userInterface = {
                 "left",
                 "Right"
             ],
-            "label": "Text align",
+            "label": "Text Align",
             "id": "textAlignItemTitle",
             "key": "text-align",
             "divider": "true"
@@ -85,55 +87,55 @@ var userInterface = {
             "type": "text",
             "id": "paddingTopTitle",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightTitle",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomTitle",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingLeftTitle",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopTitle",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginRightTitle",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomTitle",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "marginLeftTitle",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "xTitle",
             "key": "x",
-            "label": "X",
+            "label": "x",
             "divider": "true"
         }, {
             "type": "text",
             "id": "yTitle",
             "key": "y",
-            "label": "Y"
+            "label": "y"
         }]
     },
     "subtitleData": {
@@ -148,7 +150,7 @@ var userInterface = {
             "type": "text",
             "id": "textSubtitle",
             "key": "text",
-            "label": "text",
+            "label": "Text",
             "divider": "true"
         }, {
             "type": "checkbox",
@@ -174,7 +176,7 @@ var userInterface = {
                 "linear",
                 "radial"
             ],
-            "label": "Fill type",
+            "label": "Fill Type",
             "id": "fillTypeSubitle",
             "key": "fill-type",
             "divider": "true"
@@ -182,7 +184,7 @@ var userInterface = {
             "type": "color",
             "id": "fontColorSubtitle",
             "key": "font-color",
-            "label": "Font color",
+            "label": "Font Color",
             "divider": "true"
         }, {
             "type": "select",
@@ -199,7 +201,7 @@ var userInterface = {
             "type": "text",
             "id": "fontFamilyItemSubtitle",
             "key": "font-family",
-            "label": "Font family"
+            "label": "Font Family"
         }, {
             "type": "select",
             "values": [
@@ -207,7 +209,7 @@ var userInterface = {
                 "left",
                 "Right"
             ],
-            "label": "Text align",
+            "label": "Text Align",
             "id": "textAlignitemSubitle",
             "key": "text-align",
             "divider": "true"
@@ -221,55 +223,55 @@ var userInterface = {
             "type": "text",
             "id": "paddingTopSubtitle",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightSubtitle",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomSubtitle",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftSubtitle",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopSubtitle",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginRightSubtitle",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomSubtitle",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftSubtitle",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "xSubtitle",
             "key": "x",
-            "label": "X",
+            "label": "x",
             "divider": "true"
         }, {
             "type": "text",
             "id": "ySubtitle",
             "key": "y",
-            "label": "Y"
+            "label": "y"
         }]
     },
     "legendDatageneral": {
@@ -328,14 +330,14 @@ var userInterface = {
             "type": "text",
             "id": "xLegend",
             "key": "x",
-            "label": "x-string",
+            "label": "x",
             "divider": "true",
             "defValue": "0"
         }, {
             "type": "text",
             "id": "yLegend",
             "key": "y",
-            "label": "y-string",
+            "label": "y",
             "defValue": "0"
         }, {
             "type": "checkbox",
@@ -350,7 +352,7 @@ var userInterface = {
                 "remove",
                 "disabled"
             ],
-            "label": "Toggle action",
+            "label": "Toggle Action",
             "id": "toggle-actionLegend",
             "key": "toggle-action",
             "divider": "true"
@@ -370,47 +372,47 @@ var userInterface = {
             "type": "text",
             "id": "paddingTopLegend",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightLegend",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomLegend",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftLegend",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopLegend",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginRightLegend",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomLegend",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftLegend",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "checkbox",
-            "label": "Highlight plot",
+            "label": "Highlight",
             "id": "highlight-plotLegend",
             "key": "highlight-plot",
             "divider": "true"
@@ -426,7 +428,7 @@ var userInterface = {
             "key": "highlight-plot"
         }, {
             "type": "color",
-            "label": "Font color",
+            "label": "Font Color",
             "id": "font-colorItmeLegend",
             "key": "font-color",
             "divider": "true"
@@ -453,7 +455,7 @@ var userInterface = {
                 "left",
                 "Right"
             ],
-            "label": "Text align",
+            "label": "Text Align",
             "id": "textAlignitemLegend",
             "key": "text-align",
             "divider": "true"
@@ -461,44 +463,44 @@ var userInterface = {
             "type": "text",
             "id": "paddingTopItemLegend",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightItemLegend",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomItemLegend",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftItemLegend",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopItemLegend",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginRightItemLegend",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomItemLegend",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftItemLegend",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }]
     },
     "legendDataMarker": {
@@ -571,7 +573,7 @@ var userInterface = {
         }, {
             "type": "select",
             "values": ["X", "Y", "XY"],
-            "label": "Background fit",
+            "label": "Background Fit",
             "id": "background-fitPlotArea",
             "key": "background-fit"
         }, {
@@ -584,44 +586,44 @@ var userInterface = {
             "type": "text",
             "id": "paddingTopPlotArea",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightPlotArea",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomPlotArea",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftPlotArea",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopPlotArea",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginRightPlotArea",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomPlotArea",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftPlotArea",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }]
     },
     "plotGeneralData": {
@@ -674,7 +676,7 @@ var userInterface = {
             "type": "text",
             "id": "decimalsPlot",
             "key": "decimals",
-            "label": "decimals",
+            "label": "Decimals",
             "divider": "true"
         }, {
             "type": "text",
@@ -692,7 +694,7 @@ var userInterface = {
             "type": "text",
             "id": "maxNodesPlot",
             "key": "maxNodes",
-            "label": "max Nodes",
+            "label": "Max Nodes",
             "divider": "true"
         }, {
             "type": "checkbox",
@@ -837,10 +839,8 @@ var userInterface = {
         }, {
             "type": "select",
             "id": "speedAnimation",
-            "values": [4000, 1000],
-            "labels": ["Slow",
-                "Fast"
-            ],
+            "values": [4000, 3000, 2000, 1000, 500], 
+            "labels": ["4 Sec", "3 Sec", "2 Sec", "1 Sec", ".5 Sec"],
             "key": "speed",
             "label": "Speed",
             "divider": "true"
@@ -908,7 +908,7 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit ",
             "id": "backgroundFithoverMarkerPlot",
             "key": "background-fit ",
             "divider": "true"
@@ -926,7 +926,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat ",
             "id": "backgroundRepeathoverMarkerPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -954,8 +954,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visiblehoverMarkerPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visible",   
+            "label": "Visible",
             "divider": "true"
         }]
     },
@@ -989,7 +989,7 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit ",
             "id": "backgroundFitMarkerPlot",
             "key": "background-fit ",
             "divider": "true"
@@ -1007,7 +1007,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat ",
             "id": "backgroundRepeatMarkerPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -1035,8 +1035,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visibleMarkerPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visible",  
+            "label": "Visible",
             "divider": "true"
         }]
     },
@@ -1088,7 +1088,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat ",
             "id": "backgroundRepeatTooltipPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -1107,8 +1107,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visibletooltipPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visible",                      
+            "label": "Visible",
             "divider": "true"
         }, {
             "type": "font",
@@ -1120,56 +1120,56 @@ var userInterface = {
             "type": "text",
             "id": "heightTooltipPlot",
             "key": "height",
-            "label": "Height ",
+            "label": "h",
             "divider": "true"
         }, {
             "type": "text",
             "id": "widthTooltipPlot",
             "key": "width",
-            "label": "Width ",
+            "label": "w",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginToptooltipplot",
             "key": "marginTop",
-            "label": "Margin Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginRighttooltipplot",
             "key": "marginRight",
-            "label": "Margin Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "MarginBottomtooltipplot",
             "key": "marginBottom",
-            "label": "Margin Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "MarginLefttooltipplot",
             "key": "marginLeft",
-            "label": "Margin Left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "paddingToptooltipplot",
             "key": "paddingTop",
-            "label": "Padding Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRighttooltipplot",
             "key": "paddingRight",
-            "label": "Padding Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomtooltipplot",
             "key": "paddingBottom",
-            "label": "Padding Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingLefttooltipplot",
             "key": "paddingLeft",
-            "label": "Padding Left"
+            "label": "L"
         }, {
             "type": "checkbox",
             "id": "calloutTooltipPlot",
@@ -1180,13 +1180,13 @@ var userInterface = {
             "type": "text",
             "id": "calloutHeightTooltipplot",
             "key": "calloutHeight",
-            "label": "Callout Height",
+            "label": "h",
             "divider": "true"
         }, {
             "type": "text",
             "id": "calloutWidthTooltipplot",
             "key": "calloutWidth",
-            "label": "Callout Width"
+            "label": "w"
         }, {
             "type": "select",
             "values": [
@@ -1221,7 +1221,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "wrapTextTooltipPlot",
             "key": "wrapText",
-            "label": "Wrap text",
+            "label": "Wrap Text",
             "divider": "true"
         }]
     },
@@ -1255,7 +1255,7 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit ",
             "id": "backgroundFitvalueBoxPlot",
             "key": "background-fit ",
             "divider": "true"
@@ -1273,7 +1273,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat ",
             "id": "backgroundRepeatvalueBoxPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -1292,8 +1292,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visiblevalueBoxPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visib",      //this is misspelled
+            "label": "Visible",
             "divider": "true"
         }, {
             "type": "font",
@@ -1305,56 +1305,56 @@ var userInterface = {
             "type": "text",
             "id": "heightvalueBoxPlot",
             "key": "height",
-            "label": "Height ",
+            "label": "h",
             "divider": "true"
         }, {
             "type": "text",
             "id": "widthvalueBoxPlot",
             "key": "width",
-            "label": "Width ",
+            "label": "w",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginTopvalueBoxPlot",
             "key": "marginTop",
-            "label": "Margin Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginRightvalueBoxPlot",
             "key": "marginRight",
-            "label": "Margin Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "MarginBottomvalueBoxPlot",
             "key": "marginBottom",
-            "label": "Margin Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "MarginLeftvalueBoxPlot",
             "key": "marginLeft",
-            "label": "Margin Left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "paddingTopvalueBoxPlot",
             "key": "paddingTop",
-            "label": "Padding Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightvalueBoxPlot",
             "key": "paddingRight",
-            "label": "Padding Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomvalueBoxPlot",
             "key": "paddingBottom",
-            "label": "Padding Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingLeftvalueBoxPlot",
             "key": "paddingLeft",
-            "label": "Padding Left"
+            "label": "L"
         }, {
             "type": "checkbox",
             "id": "calloutvalueBoxPlot",
@@ -1386,7 +1386,7 @@ var userInterface = {
                 "Bottom",
                 "Left"
             ],
-            "label": "Callout Position ",
+            "label": "Callout Position",
             "id": "calloutPositionvalueBoxPlot",
             "key": "calloutPosition"
         }, {
@@ -1406,7 +1406,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "wrapTextvalueBoxPlot",
             "key": "wrapText",
-            "label": "Wrap text",
+            "label": "Wrap Text",
             "divider": "true"
         }, {
             "type": "text",
@@ -1423,7 +1423,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "visiblePreview",
             "key": "visible",
-            "label": "Visib"
+            "label": "Visible"
         }, {
             "type": "checkbox",
             "id": "adjustLayoutPreview",
@@ -1434,56 +1434,56 @@ var userInterface = {
             "type": "text",
             "id": "heightPreview",
             "key": "height",
-            "label": "Height",
+            "label": "h",
             "divider": "true"
         }, {
             "type": "text",
             "id": "widthPreview",
             "key": "width",
-            "label": "Width",
+            "label": "w",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginPreview",
             "key": "marginTop",
-            "label": "Margin Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginRightPreview",
             "key": "marginRight",
-            "label": "Margin Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "MarginBottomPreview",
             "key": "marginBottom",
-            "label": "Margin Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "MarginLeftPreview",
             "key": "marginLeft",
-            "label": "Margin Left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "paddingTopPreview",
             "key": "paddingTop",
-            "label": "Padding Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightPreview",
             "key": "paddingRight",
-            "label": "Padding Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomPreview",
             "key": "paddingBottom",
-            "label": "Padding Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingLeftPreview",
             "key": "paddingLeft",
-            "label": "Padding Left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "xPreview",
@@ -1529,14 +1529,14 @@ var userInterface = {
             "labels": [
                 "Auto"
             ],
-            "label": "Size Factor ",
+            "label": "Size Factor",       //this is used again below
             "id": "size-factorscalescale",
             "key": "size-factor"
         }, {
             "type": "range",
             "id": "size-factor2scalescale",
             "key": "size-factor",
-            "label": "Size Factor",
+            "label": "Size Factor",       //this is used above
             "min": "0",
             "max": "10",
             "step": ".1"
@@ -1552,7 +1552,7 @@ var userInterface = {
                 "label": ""
             }, {
                 "type": "checkbox",
-                "id": "callout",
+                "id": "callout",       
                 "key": "callout",
                 "label": "Callout",
                 "divider": "true"
@@ -1590,7 +1590,7 @@ var userInterface = {
                     "Bottom",
                     "Left"
                 ],
-                "label": "Callout position",
+                "label": "Callout Position",
                 "id": "callout-positionlabels",
                 "key": "callout-position"
             }, {
@@ -1638,14 +1638,14 @@ var userInterface = {
                 "type": "select",
                 "values": ["Top", "middle", "bottom"],
                 "labels": ["Top", "Middle", "Bottom"],
-                "label": "vertical align",
+                "label": "Vertical Align",
                 "id": "vertical-alignlabels",
                 "key": "vertical-align"
             }, {
                 "type": "text",
                 "id": "urllabels",
                 "key": "url",
-                "label": "Url"
+                "label": "URL"
             }, {
                 "type": "select",
                 "values": ["_self", "blank"],
@@ -1662,7 +1662,7 @@ var userInterface = {
                 "type": "checkbox",
                 "id": "wrap-textlabels",
                 "key": "wrap-text",
-                "label": "Wrap text"
+                "label": "Wrap Text"
             }, {
                 "type": "color",
                 "id": "fontColorlabels",
@@ -1691,60 +1691,60 @@ var userInterface = {
                 "type": "text",
                 "id": "heightlabels",
                 "key": "height",
-                "label": "Height",
+                "label": "h",
                 "divider": "true"
             }, {
                 "type": "text",
                 "id": "widthlabels",
                 "key": "width",
-                "label": "Width"
+                "label": "w"
             }, {
                 "type": "text",
                 "id": "margin-toplabels",
                 "key": "margin-top",
-                "label": "Margin top",
+                "label": "T",
                 "divider": "true"
             }, {
                 "type": "text",
                 "id": "margin-right-labels",
                 "key": "margin-right",
-                "label": "Margin right"
+                "label": "R"
             }, {
                 "type": "text",
                 "id": "margin-bottom-labels",
                 "key": "margin-bottom",
-                "label": "Margin bottom"
+                "label": "B"
             }, {
                 "type": "text",
                 "id": "margin-left-labels",
                 "key": "margin-left",
-                "label": "Margin left"
+                "label": "L"
             }, {
                 "type": "text",
                 "id": "padding-top-labels",
                 "key": "padding-top",
-                "label": "Padding top",
+                "label": "T",
                 "divider": "true"
+            }, {
+                "type": "text",                
+                "id": "padding-top-labels",
+                "key": "padding-top",
+                "label": "T"
             }, {
                 "type": "text",
                 "id": "padding-right-labels",
                 "key": "padding-right",
-                "label": "Padding right"
+                "label": "R"
             }, {
                 "type": "text",
                 "id": "padding-bottom-labels",
                 "key": "padding-bottom",
-                "label": "Padding bottom"
+                "label": "B"
             }, {
                 "type": "text",
                 "id": "padding-left-labels",
                 "key": "padding-left",
-                "label": "Padding left"
-            }, {
-                "type": "text",
-                "id": "padding-left-labels",
-                "key": "padding-left",
-                "label": "Padding left"
+                "label": "L"
             }, {
                 "type": "text",
                 "id": "xlabels",
@@ -1811,7 +1811,7 @@ var userInterface = {
             "type": "text",
             "id": "decimalsSeries",
             "key": "decimals",
-            "label": "decimals",
+            "label": "Decimals",
             "divider": "true"
         }, {
             "type": "text",
@@ -1829,7 +1829,7 @@ var userInterface = {
             "type": "text",
             "id": "maxNodesSeries",
             "key": "maxNodes",
-            "label": "max Nodes",
+            "label": "Max Nodes",
             "divider": "true"
         }, {
             "type": "checkbox",
@@ -2045,9 +2045,9 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit",
             "id": "backgroundFithoverMarkerPlot",
-            "key": "background-fit ",
+            "key": "background-fit",
             "divider": "true"
         }, {
             "type": "select",
@@ -2063,7 +2063,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat ",
             "id": "backgroundRepeathoverMarkerPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -2091,8 +2091,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visiblehoverMarkerPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visib",                    //misspelled
+            "label": "Visible",
             "divider": "true"
         }]
     },
@@ -2134,7 +2134,7 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit ",
             "id": "backgroundFitMarkerPlot",
             "key": "background-fit ",
             "divider": "true"
@@ -2152,7 +2152,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat ",
             "id": "backgroundRepeatMarkerPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -2173,15 +2173,15 @@ var userInterface = {
             "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
                 "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
             ],
-            "label": "Type ",
+            "label": "Type",
             "id": "typeMarkerPlot",
             "key": "type",
             "divider": "true"
         }, {
             "type": "checkbox",
             "id": "visibleMarkerPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visible",               
+            "label": "Visible",
             "divider": "true"
         }]
     },
@@ -2215,9 +2215,9 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit",
             "id": "backgroundFittooltipPlot",
-            "key": "background-fit ",
+            "key": "background-fit",
             "divider": "true"
         }, {
             "type": "select",
@@ -2233,9 +2233,9 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat",
             "id": "backgroundRepeatTooltipPlot",
-            "key": "background-repeat ",
+            "key": "background-repeat",
             "divider": "true"
         }, {
             "type": "border",
@@ -2252,8 +2252,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visibletooltipPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visible",              
+            "label": "Visible",
             "divider": "true"
         }, {
             "type": "font",
@@ -2265,56 +2265,56 @@ var userInterface = {
             "type": "text",
             "id": "heightTooltipPlot",
             "key": "height",
-            "label": "Height ",
+            "label": "h",
             "divider": "true"
         }, {
             "type": "text",
             "id": "widthTooltipPlot",
             "key": "width",
-            "label": "Width ",
+            "label": "w",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginToptooltipplot",
             "key": "marginTop",
-            "label": "Margin Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginRighttooltipplot",
             "key": "marginRight",
-            "label": "Margin Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "MarginBottomtooltipplot",
             "key": "marginBottom",
-            "label": "Margin Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "MarginLefttooltipplot",
             "key": "marginLeft",
-            "label": "Margin Left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "paddingToptooltipplot",
             "key": "paddingTop",
-            "label": "Padding Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRighttooltipplot",
             "key": "paddingRight",
-            "label": "Padding Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomtooltipplot",
             "key": "paddingBottom",
-            "label": "Padding Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingLefttooltipplot",
             "key": "paddingLeft",
-            "label": "Padding Left"
+            "label": "L"
         }, {
             "type": "checkbox",
             "id": "calloutTooltipPlot",
@@ -2346,7 +2346,7 @@ var userInterface = {
                 "Bottom",
                 "Left"
             ],
-            "label": "Callout Position ",
+            "label": "Callout Position",
             "id": "calloutPositionTooltipPlot",
             "key": "calloutPosition"
         }, {
@@ -2366,7 +2366,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "wrapTextTooltipPlot",
             "key": "wrapText",
-            "label": "Wrap text",
+            "label": "Wrap Text",
             "divider": "true"
         }]
     },
@@ -2400,7 +2400,7 @@ var userInterface = {
                 "y",
                 "xy"
             ],
-            "label": "background Fit ",
+            "label": "Background Fit ",
             "id": "backgroundFitvalueBoxPlot",
             "key": "background-fit ",
             "divider": "true"
@@ -2418,7 +2418,7 @@ var userInterface = {
                 "Repeat X",
                 "Repeat Y"
             ],
-            "label": "background Repeat ",
+            "label": "Background Repeat",
             "id": "backgroundRepeatvalueBoxPlot",
             "key": "background-repeat ",
             "divider": "true"
@@ -2437,8 +2437,8 @@ var userInterface = {
         }, {
             "type": "checkbox",
             "id": "visiblevalueBoxPlot",
-            "key": "visib",
-            "label": "Visib",
+            "key": "visible",               
+            "label": "Visible",
             "divider": "true"
         }, {
             "type": "font",
@@ -2450,56 +2450,56 @@ var userInterface = {
             "type": "text",
             "id": "heightvalueBoxPlot",
             "key": "height",
-            "label": "Height ",
+            "label": "h",
             "divider": "true"
         }, {
             "type": "text",
             "id": "widthvalueBoxPlot",
             "key": "width",
-            "label": "Width ",
+            "label": "w",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginTopvalueBoxPlot",
             "key": "marginTop",
-            "label": "Margin Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "MarginRightvalueBoxPlot",
             "key": "marginRight",
-            "label": "Margin Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "MarginBottomvalueBoxPlot",
             "key": "marginBottom",
-            "label": "Margin Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "MarginLeftvalueBoxPlot",
             "key": "marginLeft",
-            "label": "Margin Left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "paddingTopvalueBoxPlot",
             "key": "paddingTop",
-            "label": "Padding Top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingRightvalueBoxPlot",
             "key": "paddingRight",
-            "label": "Padding Right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomvalueBoxPlot",
             "key": "paddingBottom",
-            "label": "Padding Bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingLeftvalueBoxPlot",
             "key": "paddingLeft",
-            "label": "Padding Left"
+            "label": "L"
         }, {
             "type": "checkbox",
             "id": "calloutvalueBoxPlot",
@@ -2531,7 +2531,7 @@ var userInterface = {
                 "Bottom",
                 "Left"
             ],
-            "label": "Callout Position ",
+            "label": "Callout Position",
             "id": "calloutPositionvalueBoxPlot",
             "key": "calloutPosition"
         }, {
@@ -2551,7 +2551,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "wrapTextvalueBoxPlot",
             "key": "wrapText",
-            "label": "Wrap text",
+            "label": "Wrap Text",
             "divider": "true"
         }, {
             "type": "text",
@@ -2582,7 +2582,7 @@ var userInterface = {
             "type": "text",
             "id": "decimals-separatorScaleX",
             "key": "decimals-separator",
-            "label": "Decimals separator"
+            "label": "Decimals Separator"
         }, {
             "type": "text",
             "id": "formatScaleX",
@@ -2593,13 +2593,13 @@ var userInterface = {
             "type": "checkbox",
             "id": "items-overlap",
             "key": "items-overlap",
-            "label": "Callvitems-overlapout",
+            "label": "Items Overlap",
             "divider": "true"
         }, {
             "type": "color",
             "id": "line-colorScaleX",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
@@ -2618,54 +2618,54 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "text",
             "id": "paddingTopScaleX",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingTopScaleX",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomScaleX",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftScaleX",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopScaleX",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginTopScaleX",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomScaleX",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftScaleX",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "range",
             "id": "max-itemsscaleX",
             "key": "max-items",
-            "label": "Max items",
+            "label": "Max Items",
             "min": "0",
             "max": "100",
             "step": "1",
@@ -2674,7 +2674,7 @@ var userInterface = {
             "type": "range",
             "id": "max-ticksscaleX",
             "key": "max-ticks",
-            "label": "Max ticks",
+            "label": "Max Ticks",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2682,7 +2682,7 @@ var userInterface = {
             "type": "select",
             "id": "methodAnimation",
             "values": ["standard", "currency"],
-            "labels": ["Standartd",
+            "labels": ["Standard",
                 "Currancy"
             ],
             "key": "negation",
@@ -2693,7 +2693,7 @@ var userInterface = {
             "id": "short-unitScaleX",
             "values": ["k", "K", "m", "M", "b", "B"],
             "key": "short-unit",
-            "label": "Short unit",
+            "label": "Short Unit",
             "divider": "true"
         }, {
             "type": "select",
@@ -2718,12 +2718,12 @@ var userInterface = {
             "type": "checkbox",
             "id": "zoom-snapScaleX",
             "key": "zoom-snap",
-            "label": "zoom-snap"
+            "label": "Zoom Snap"
         }, {
             "type": "text",
             "id": "zoom-toScaleX",
             "key": "zoom-to",
-            "label": "Zoom to",
+            "label": "Zoom To",
             "divider": "true"
         }, {
             "type": "select",
@@ -2749,13 +2749,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorScaleX",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthscaleX",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2763,7 +2763,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizescaleX",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2771,7 +2771,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizescaleX",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2784,7 +2784,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "checkbox",
             "id": "visibleScaleX",
@@ -2800,7 +2800,7 @@ var userInterface = {
             "type": "range",
             "id": "font-sizeLabelScaleX",
             "key": "font-size",
-            "label": "Font size",
+            "label": "Font Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2808,59 +2808,59 @@ var userInterface = {
             "type": "color",
             "id": "font-colorLabelScaleX",
             "key": "font-color",
-            "label": "Font color"
+            "label": "Font Color"
         }, {
             "type": "text",
             "id": "font-familyLabelScaleX",
             "key": "font-family",
-            "label": "Font family"
+            "label": "Font Family"
         }, {
             "type": "checkbox",
             "id": "boldLabelScaleX",
             "key": "bold",
-            "label": "bold"
+            "label": "Bold"
         }, {
             "type": "text",
             "id": "paddingTopLabelScaleX",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingTopLabelScaleX",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomLabelScaleX",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftLabelScaleX",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopLabelScaleX",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginTopLabelScaleX",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomLabelScaleX",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftLabelScaleX",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "textLabelScaleX",
@@ -2871,7 +2871,7 @@ var userInterface = {
             "type": "range",
             "id": "heightLabelScaleX",
             "key": "height",
-            "label": "Height",
+            "label": "h",
             "min": "0",
             "max": "1000",
             "step": "1",
@@ -2880,7 +2880,7 @@ var userInterface = {
             "type": "range",
             "id": "widthLabelScaleX",
             "key": "width",
-            "label": "Width",
+            "label": "w",
             "min": "0",
             "max": "1000",
             "step": "1"
@@ -2888,7 +2888,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "wrap-textLabelScaleX",
             "key": "wrap-text",
-            "label": "Wrap text"
+            "label": "Wrap Text"
         }]
     },
     "scaleXmarkers": {
@@ -2925,13 +2925,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorScaleX",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthscaleX",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2939,7 +2939,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizescaleX",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2947,7 +2947,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizescaleX",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2960,7 +2960,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }]
     },
     "scaleXrefLine": {
@@ -2978,13 +2978,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorScaleX",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthscaleX",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -2992,7 +2992,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizescaleX",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3000,7 +3000,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizescaleX",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3013,7 +3013,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "checkbox",
             "id": "visibleRefLineScaleX",
@@ -3037,13 +3037,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorTickScaleX",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthTickscaleX",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3051,7 +3051,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizeTickscaleX",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3059,7 +3059,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizeTickscaleX",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3072,7 +3072,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "select",
             "id": "placementTickScaleX",
@@ -3095,7 +3095,7 @@ var userInterface = {
             "type": "range",
             "id": "font-sizeItemScaleX",
             "key": "font-size",
-            "label": "Font size",
+            "label": "Font Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3103,17 +3103,17 @@ var userInterface = {
             "type": "color",
             "id": "font-colorItemScaleX",
             "key": "font-color",
-            "label": "Font color"
+            "label": "Font Color"
         }, {
             "type": "text",
             "id": "font-familyItemScaleX",
             "key": "font-family",
-            "label": "Font family"
+            "label": "Font Family"
         }, {
             "type": "range",
             "id": "font-angelItemScaleX",
             "key": "font-angel",
-            "label": "Font angel",
+            "label": "Font Angel",
             "min": "0",
             "max": "360",
             "step": "1"
@@ -3121,54 +3121,54 @@ var userInterface = {
             "type": "checkbox",
             "id": "boldItemScaleX",
             "key": "bold",
-            "label": "bold"
+            "label": "Bold"
         }, {
             "type": "text",
             "id": "paddingTopItemScaleX",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingTopItemScaleX",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomItemScaleX",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftItemScaleX",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopItemScaleX",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginTopItemScaleX",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomItemScaleX",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftItemScaleX",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "max-charsItemScaleX",
             "key": "max-chars",
-            "label": "Max chars",
+            "label": "Max Characters",
             "divider": "true"
         }]
     },
@@ -3193,7 +3193,7 @@ var userInterface = {
             "type": "text",
             "id": "decimals-separatorScaleY",
             "key": "decimals-separator",
-            "label": "Decimals separator"
+            "label": "Decimals Separator"
         }, {
             "type": "text",
             "id": "formatScaleY",
@@ -3204,13 +3204,13 @@ var userInterface = {
             "type": "checkbox",
             "id": "items-overlap",
             "key": "items-overlap",
-            "label": "Callvitems-overlapout",
+            "label": "Items Overlap",
             "divider": "true"
         }, {
             "type": "color",
             "id": "line-colorScaleY",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
@@ -3229,54 +3229,54 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "text",
             "id": "paddingTopScaleY",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingTopScaleY",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomScaleY",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftScaleY",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopScaleY",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginTopScaleY",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomScaleY",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftScaleY",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "range",
             "id": "max-itemsscaleY",
             "key": "max-items",
-            "label": "Max items",
+            "label": "Max Items",
             "min": "0",
             "max": "100",
             "step": "1",
@@ -3285,7 +3285,7 @@ var userInterface = {
             "type": "range",
             "id": "max-ticksscaleY",
             "key": "max-ticks",
-            "label": "Max ticks",
+            "label": "Max Ticks",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3304,7 +3304,7 @@ var userInterface = {
             "id": "short-unitScaleY",
             "values": ["k", "K", "m", "M", "b", "B"],
             "key": "short-unit",
-            "label": "Short unit",
+            "label": "Short Unit",
             "divider": "true"
         }, {
             "type": "select",
@@ -3329,12 +3329,12 @@ var userInterface = {
             "type": "checkbox",
             "id": "zoom-snapScaleY",
             "key": "zoom-snap",
-            "label": "zoom-snap"
+            "label": "Zoom-Snap"
         }, {
             "type": "text",
             "id": "zoom-toScaleY",
             "key": "zoom-to",
-            "label": "Zoom to",
+            "label": "Zoom To",
             "divider": "true"
         }, {
             "type": "select",
@@ -3360,13 +3360,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorScaleY",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthScaleY",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3374,7 +3374,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizeScaleY",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3382,7 +3382,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizeScaleY",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3395,7 +3395,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "checkbox",
             "id": "visibleScaleY",
@@ -3411,7 +3411,7 @@ var userInterface = {
             "type": "range",
             "id": "font-sizeLabelScaleY",
             "key": "font-size",
-            "label": "Font size",
+            "label": "Font Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3419,59 +3419,59 @@ var userInterface = {
             "type": "color",
             "id": "font-colorLabelScaleY",
             "key": "font-color",
-            "label": "Font color"
+            "label": "Font Color"
         }, {
             "type": "text",
             "id": "font-familyLabelScaleY",
             "key": "font-family",
-            "label": "Font family"
+            "label": "Font Family"
         }, {
             "type": "checkbox",
             "id": "boldLabelScaleY",
             "key": "bold",
-            "label": "bold"
+            "label": "Bold"
         }, {
             "type": "text",
             "id": "paddingTopLabelScaleY",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingTopLabelScaleY",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomLabelScaleY",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftLabelScaleY",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopLabelScaleY",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginTopLabelScaleY",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomLabelScaleY",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftLabelScaleY",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "textLabelScaleY",
@@ -3482,7 +3482,7 @@ var userInterface = {
             "type": "range",
             "id": "heightLabelScaleY",
             "key": "height",
-            "label": "Height",
+            "label": "h",
             "min": "0",
             "max": "1000",
             "step": "1",
@@ -3491,7 +3491,7 @@ var userInterface = {
             "type": "range",
             "id": "widthLabelScaleY",
             "key": "width",
-            "label": "Width",
+            "label": "w",
             "min": "0",
             "max": "1000",
             "step": "1"
@@ -3499,7 +3499,7 @@ var userInterface = {
             "type": "checkbox",
             "id": "wrap-textLabelScaleY",
             "key": "wrap-text",
-            "label": "Wrap text"
+            "label": "Wrap Text"
         }]
     },
     "scaleYmarkers": {
@@ -3536,13 +3536,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorScaleY",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthScaleY",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3550,7 +3550,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizeScaleY",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3558,7 +3558,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizeScaleY",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3571,7 +3571,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }]
     },
     "scaleYrefLine": {
@@ -3589,13 +3589,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorScaleY",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthScaleY",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3603,7 +3603,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizeScaleY",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3611,7 +3611,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizeScaleY",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3624,7 +3624,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "checkbox",
             "id": "visibleRefLineScaleY",
@@ -3648,13 +3648,13 @@ var userInterface = {
             "type": "color",
             "id": "line-colorTickScaleY",
             "key": "line-color",
-            "label": "Line color",
+            "label": "Line Color",
             "divider": "true"
         }, {
             "type": "range",
             "id": "line-widthTickScaleY",
             "key": "line-width",
-            "label": "Line width",
+            "label": "Line Width",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3662,7 +3662,7 @@ var userInterface = {
             "type": "range",
             "id": "line-gap-sizeTickScaleY",
             "key": "line-gap-size",
-            "label": "Line gap size",
+            "label": "Line Gap Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3670,7 +3670,7 @@ var userInterface = {
             "type": "range",
             "id": "line-segment-sizeTickScaleY",
             "key": "line-segment-size",
-            "label": "Line segment size",
+            "label": "Line Segment Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3683,7 +3683,7 @@ var userInterface = {
                 "Dashed"
             ],
             "key": "line-style",
-            "label": "Line style"
+            "label": "Line Style"
         }, {
             "type": "select",
             "id": "placementTickScaleY",
@@ -3706,7 +3706,7 @@ var userInterface = {
             "type": "range",
             "id": "font-sizeItemScaleY",
             "key": "font-size",
-            "label": "Font size",
+            "label": "Font Size",
             "min": "0",
             "max": "100",
             "step": "1"
@@ -3714,17 +3714,17 @@ var userInterface = {
             "type": "color",
             "id": "font-colorItemScaleY",
             "key": "font-color",
-            "label": "Font color"
+            "label": "Font Color"
         }, {
             "type": "text",
             "id": "font-familyItemScaleY",
             "key": "font-family",
-            "label": "Font family"
+            "label": "Font Family"
         }, {
             "type": "range",
             "id": "font-angelItemScaleY",
             "key": "font-angel",
-            "label": "Font angel",
+            "label": "Font Angel",
             "min": "0",
             "max": "360",
             "step": "1"
@@ -3732,54 +3732,54 @@ var userInterface = {
             "type": "checkbox",
             "id": "boldItemScaleY",
             "key": "bold",
-            "label": "bold"
+            "label": "Bold"
         }, {
             "type": "text",
             "id": "paddingTopItemScaleY",
             "key": "padding-top",
-            "label": "padding-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "paddingTopItemScaleY",
             "key": "padding-right",
-            "label": "padding-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "paddingBottomItemScaleY",
             "key": "padding-bottom",
-            "label": "padding-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "paddingleftItemScaleY",
             "key": "padding-left",
-            "label": "padding-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "marginTopItemScaleY",
             "key": "margin-top",
-            "label": "margin-top",
+            "label": "T",
             "divider": "true"
         }, {
             "type": "text",
             "id": "marginTopItemScaleY",
             "key": "margin-right",
-            "label": "margin-right"
+            "label": "R"
         }, {
             "type": "text",
             "id": "marginBottomItemScaleY",
             "key": "margin-bottom",
-            "label": "margin-bottom"
+            "label": "B"
         }, {
             "type": "text",
             "id": "margingleftItemScaleY",
             "key": "margin-left",
-            "label": "margin-left"
+            "label": "L"
         }, {
             "type": "text",
             "id": "max-charsItemScaleY",
             "key": "max-chars",
-            "label": "Max chars",
+            "label": "Max Characters",
             "divider": "true"
         }]
     

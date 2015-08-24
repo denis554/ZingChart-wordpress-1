@@ -107,10 +107,12 @@ jQuery(document).ready(function($) {
   $("#labelsAccordion").accordion({
   heightStyle: "content",
   collapsible: true,
+   active : 'none'
   });
   $("#seriesAccordion").accordion({
   heightStyle: "content",
   collapsible: true,
+   active : 'none'
   });
   $(".seriesTabs").tabs();
   $("#plotJson").tabs();
@@ -118,6 +120,7 @@ jQuery(document).ready(function($) {
   $("#scaleAccordion").accordion({
   heightStyle: "content",
   collapsible: true,
+  active : 'none' 
   });
   $("#scaleXTabs").tabs();
   $("#scaleYTabs").tabs();
@@ -182,7 +185,7 @@ left: -0.25em;
     X : <input type="text" id="xPositionLegend" onKeyUp ="set_xy_position_legend()" value = '0' ><br>
     Y : <input type="text" id="yPositionLegend" onKeyUp ="set_xy_position_legend()" value='0'><br>
   </div>
-  <h3 onclick="load_attrs(this)" data-category ="plotarea">Plotarea</h3>
+  <h3 onclick="load_attrs(this)" data-category ="plotarea" data-subCategory = "plotarea">Plotarea</h3>
   <div class="frm-el" data-category = "plotarea" data-sub-category = "plotarea">
     Background Position: <br>
     X : <input type="text" value='0' id="backgroundPositionXPlotArea" onKeyUp="set_background_position_plot_area()" ><br>
@@ -209,21 +212,21 @@ left: -0.25em;
       <div id="plotTab7" class="frm-el" data-category = "plot" data-sub-category = "value-box"></div>
     </div>
   </div>
-  <h3>Scale</h3>
+  <h3 onclick="load_attrs(this)" data-category = "scale" >Scale</h3>
   <div class="frm-el" data-category = "scale" data-sub-category = "scaleX">
     <div id="scaleAccordion">
-      <h3 id="scaleX"> Scale-x</h3>
+      <h3 id="scaleX" onclick="load_attrs(this,true)" data-laod="0" data-category = "scale-x" data-subCategory = "scale-x"> Scale-x</h3>
       <div>
         <div id="scaleXTabs" data-count = "0">
           <ul>
             <li><a href="#scaleXGeneral">General</a></li>
-            <li><a href="#scaleXGuid">Guid</a></li>
-            <li><a href="#scaleXLabels">Label</a></li>
-            <li><a href="#scaleXMarkers">Markers</a></li>
-            <li><a href="#ScaleXRefLine">ref-line</a></li>
-            <li><a href="#scaleXTransform">Transform</a></li>
-            <li><a href="#scaleXTick">Tick</a></li>
-            <li><a href="#scaleXItem">Item</a></li>
+            <li><a href="#scaleXGuid" onclick="load_attrs(this.parentElement.parentElement.parentElement,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "guide">Guid</a></li>
+            <li><a href="#scaleXLabels" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "label">Label</a></li>
+            <li><a href="#scaleXMarkers" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "markers">Markers</a></li>
+            <li><a href="#ScaleXRefLine" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "ref-line">ref-line</a></li>
+            <li><a href="#scaleXTransform" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "transform">Transform</a></li>
+            <li><a href="#scaleXTick" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "tick">Tick</a></li>
+            <li><a href="#scaleXItem" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "item">Item</a></li>
           </ul>
           <div class = "scl-el" data-category = "scale-x" data-sub-category = "scale-x" id="scaleXGeneral"></div>
           <div class = "scl-el" data-category = "scale-x" data-sub-category = "guide"    id="scaleXGuid"></div>
@@ -274,7 +277,7 @@ left: -0.25em;
     </div>
     <button type="button" onclick="new_label(); return false;">New Label</button>
   </div>
-  <h3 onclick="load_attrs(this)" data-category = "preview">Preview </h3>
+  <h3 onclick="load_attrs(this)" data-category = "preview" data-subCategory = "preview" >Preview </h3>
   <div id="preview" class="frm-el" data-category = "preview" data-sub-category = "preview">
   </div>
 </div>

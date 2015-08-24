@@ -4,7 +4,7 @@
  * Be able to feed data as a csv file to it
  * Validate form inputs
  * Add set data Key for inputing data,(it is a little buggy)
- * 
+ * Organize variables into currect opbjects
  */
 
 var ZCWP  ={
@@ -19,9 +19,14 @@ var ZCWP  ={
 var j = 0;
 var labelConfigId  = 0; // This is for the label replaction. It holds each labels id.
 var seriesConfigId = 0;
-var scaleXCounter  = 0;
-var scaleYCounter  = 0;
-
+var scaleXCounter  = 1;
+var scaleYCounter  = 1;
+var jsonObject = '';
+var chartTitle = '';
+var chartType  = 'Bar';
+var chartData = ''; 
+var selectedChart = '';
+var chartID = 'chartDiv';
 
 /*Genereal form data that has chekbox, select, text, or range will get handeled here. */
 function modify_chart(element,key,category,subCategory) {
@@ -170,9 +175,9 @@ function set_border(category,subCategory) {
        dataObj[category][subCategory]["border-width"] = 0;
     }
   } else {
-    if (document.getElementById('border'+category).checked) {
-      dataObj[category]["border-width"] = document.getElementById('borderWidth'+category).value;
-      dataObj[category]["border-color"] = document.getElementById('borderColor'+category).value;
+    if (document.getElementById('border'+category+category).checked) {
+      dataObj[category]["border-width"] = document.getElementById('borderWidth'+category+category).value;
+      dataObj[category]["border-color"] = document.getElementById('borderColor'+category+category).value;
     } else {
        dataObj[category]["border-width"] = 0;
     }
@@ -897,10 +902,18 @@ function modify_chart_series(element,type,key,category,subCategory) {
 
   }
   create_json();}
-function modify_chart_scale(element,type,key,category,subCategory) {
-  count = element.parentElement.parentElement.dataset.count
-  var value = ''
-  switch (type) {
+function modify_chart_scale(element) {
+  //This does not get at the first scale
+  var category = '';
+  if (element.parentElement.parentElement.dataset.category) {
+    category = element.parentElement.parentElement.dataset.category
+  } else {
+    category = element.parentElement.dataset.category;
+  }
+  //Subcategories get duplicated but categories won't because of speed.
+  var subCategory = element.parentElement.dataset.subCategory;
+  var value = '';
+  switch (element.type) {
     case("checkbox") :
       value = element.checked;
     break;
@@ -911,141 +924,43 @@ function modify_chart_scale(element,type,key,category,subCategory) {
     //default is for text,range
       value= element.value;
   }
-  if (category == "scale-x") {
-    // Get chart JSON, see if it has our category or not
-    var chartDta = zingchart.exec(chartID, 'getdata');
-    var temp = (scaleXCounter == 0)?"": "-"+scaleXCounter;
-    var scalename = "scale-x"+temp;
-    var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
-
-    if (typeof chartScale  == "undefined" ){ //Empty array situation, createing a new scale-x
-      var dataObj = {};
-      dataObj[scalename] ={};
-      if (category == subCategory) { // The same category part
-        dataObj[scalename][key] = value;
-      } else {
-        dataObj[scalename][subCategory] = {};
-        dataObj[scalename][subCategory][key] = value;
-      }
-      zingchart.exec(chartID,'modify', {
-          graphid : 0,
-          data : dataObj  
-        });
-    } else { //Scale already exists, so we're modifying instead of createing 
-        if (category == subCategory) {
-          //Not sure when this case will happen
-          if (count == chartScale.length) {//New elemnt case we have to push it 
-              var vals = {};
-              vals[key] = value;
-              chartDta['graphset'][0][scalename].push(vals);
-              ////TODO
-             zingchart.exec(chartID,'modify', {
-              graphid : 0,
-              data : chartDta['graphset'][0]
-            });
-          } else {
-            //This should happen in general tabs in all categories
-            chartDta['graphset'][0][scalename][key] = value;
-            zingchart.exec(chartID,'setdata', {
-              graphid : 0,
-              data : chartDta['graphset'][0]
-            });
-          }
-        } else {
-          if (count == chartScale.length) {//New elemnt case we have to push it 
-              var vals = {};
-              vals[key] = value;
-              var sub = {}
-              sub[subCategory] = vals;
-              chartLabels.push(sub);
-              zingchart.exec(chartID,'modify', {
-              graphid : 0,
-              data : {
-                "scale-x": chartScale
-              }
-            });
-          } else {
-            console.log(vals);
-            chartDta['graphset'][0][scalename][subCategory][key] = value;
-            zingchart.exec(chartID,'setdata', {
-              graphid : 0,
-              data : chartDta['graphset'][0] 
-            });
-          }
-        }
-
+  var chartData = zingchart.exec(chartID, 'getdata');
+  if (subCategory == "scale-x" || subCategory=="scale-y") {
+    if (!chartData ['graphset'][0][category]) {
+      chartData ['graphset'][0][category] = {};
     }
-  }else  {
-    // Get chart JSON, see if it has our category or not
-    var chartDta = zingchart.exec(chartID, 'getdata');
-    var temp = (scaleYCounter == 0)?"": "-"+scaleYCounter;
-    var scalename = "scale-y"+temp;
-    var chartScale = chartDta['graphset'][0][scalename]; // Ternary operator to check to see if 'scale' exists
-
-    if (typeof chartScale  == "undefined" ){ //Empty array situation, createing a new scale-x
-      var dataObj = {};
-      dataObj[scalename] ={};
-      if (category == subCategory) { // The same category part
-        dataObj[scalename][key] = value;
-      } else {
-        dataObj[scalename][subCategory] = {};
-        dataObj[scalename][subCategory][key] = value;
-      }
-      zingchart.exec(chartID,'modify', {
-          graphid : 0,
-          data : dataObj  
-        });
-    } else { //Scale already exists, so we're modifying instead of createing 
-        if (category == subCategory) {
-          //Not sure when this case will happen
-          if (count == chartScale.length) {//New elemnt case we have to push it 
-              var vals = {};
-              vals[key] = value;
-              chartDta['graphset'][0][scalename].push(vals);
-              ////TODO
-             zingchart.exec(chartID,'modify', {
-              graphid : 0,
-              data : chartDta['graphset'][0]
-            });
-          } else {
-            //This should happen in general tabs in all categories
-            chartDta['graphset'][0][scalename][key] = value;
-            zingchart.exec(chartID,'setdata', {
-              graphid : 0,
-              data : chartDta['graphset'][0]
-            });
-          }
-        } else {
-          if (chartDta['graphset'][0][scalename][subCategory]) {
-            chartDta['graphset'][0][scalename][subCategory][key] = value;
-          } else {
-            chartDta['graphset'][0][scalename][subCategory] = {};
-            chartDta['graphset'][0][scalename][subCategory][key] = value;
-          }
-            zingchart.exec(chartID,'setdata', {
-              graphid : 0,
-              data : chartDta['graphset'][0] 
-            });
-        }
-
-    }
-
+    chartData ['graphset'][0][category][element.dataset.key] = value;
+  } else {
+    // This is the case that we modify the subcategory within category
+    if (!chartData ['graphset'][0][category]) {
+      chartData ['graphset'][0][category] = {};
+    };
+    if (!chartData ['graphset'][0][category][subCategory]) {
+      chartData ['graphset'][0][category][subCategory] = {};
+    } 
+    chartData ['graphset'][0][category][subCategory][element.dataset.key] = value;
   }
-
-
-  create_json();}
+  zingchart.exec(chartID,'setdata', {
+          graphid : 0,
+          data : chartData ['graphset'][0]
+        });
+  create_json();
+}
 function new_scale_x() {
   var clonedTitle  = document.getElementById("scaleX").cloneNode(true);
   var clonedConfig = document.getElementById("scaleX").nextElementSibling.cloneNode(true);
   scaleXCounter ++;
   clonedTitle.id  = "scaleX"+scaleXCounter;
-  clonedTitle.innerHTML = "scale-x-"+scaleXCounter;
+  var scaleCategory = "scale-x-"+scaleXCounter;
+  clonedTitle.innerHTML = scaleCategory;
+  clonedConfig.dataset.category = scaleCategory;
   childs = clonedConfig.childNodes;
   for (var i= 0 , len = clonedConfig.childNodes.length ; i<len; i++) {
     //We only care about the elements that has id
     if (childs[i].id) {
       childs[i].id += scaleXCounter;
-      childs[i].setAttribute("data-count",scaleXCounter);
+      childs[i].dataset.category = scaleCategory;
+      childs[i].dataset.count = scaleXCounter;
       //This one checks for the childs of the cloned node
       //it checks for the childs of tabseries div
       for (var k= 0;k<childs[i].childNodes.length;k++ ) {
@@ -1071,20 +986,23 @@ function new_scale_y() {
   var clonedTitle  = document.getElementById("scaleY").cloneNode(true);
   var clonedConfig = document.getElementById("scaleY").nextElementSibling.cloneNode(true);
   scaleYCounter ++;
-  clonedTitle.innerHTML = "scale-y-"+scaleYCounter;
+  var scaleCategory = "scale-y-"+scaleYCounter;
+  clonedTitle.innerHTML = scaleCategory;
+  clonedConfig.dataset.category = scaleCategory;
   clonedTitle.id  = "scaleY"+scaleYCounter;
   childs = clonedConfig.childNodes;
   for (var i= 0 , len = clonedConfig.childNodes.length ; i<len; i++) {
     //We only care about the elements that has id
     if (childs[i].id) {
       childs[i].id += scaleYCounter;
-      childs[i].setAttribute("data-count",scaleYCounter);
+      childs[i].dataset.category = scaleCategory;
+      childs[i].dataset.count    = scaleYCounter;
       //This one checks for the childs of the cloned node
       //it checks for the childs of tabseries div
       for (var k= 0;k<childs[i].childNodes.length;k++ ) {
           //if the child has data-category == series and it is a elemnet 
         if (childs[i].childNodes[k].nodeName != "#text") {
-          if (childs[i].childNodes[k].getAttribute("data-category") == "scale-x") {
+          if (childs[i].childNodes[k].getAttribute("data-category") == "scale-y") {
             //childs[i].childNodes[k] += scaleXCounter;
             childs[i].childNodes[k].setAttribute("data-count",scaleYCounter);
           };
@@ -1101,14 +1019,7 @@ function new_scale_y() {
   });
 }
 
-var jsonObject = '';
-var chartTitle = '';
-var chartType  = 'Bar';
-var chartData = ''; 
-var selectedChart = '';
 
-
-var chartID = 'chartDiv';
 
 
 /*****************************************************
@@ -1305,18 +1216,31 @@ function chartRouter() {
      zingchart.exec(chartID,'setdata', {
           data : chartJSON
         });
-    setTimeout(create_json(),100);
   }
   
 }
 
-function load_attrs(element,tabbed,laodTab) {
-  tabbed  = typeof tabbed  !== "undefined" ? tabbed  : false;
-  laodTab = typeof laodTab !== "undefined" ? laodTab : false;
-
+function load_attrs(element) {
+  tabbed      = arguments[1] || false;
+  laodTab     = arguments[2] || false;
+  category    = element.dataset.category ;
+  subCategory = element.dataset.subcategory;
   if(document.getElementById('zingcharts-javaScript').value.trim() != ""){
     var chartJSON = JSON.parse(document.getElementById('zingcharts-javaScript').value.trim());
     var elementsJSON = '';
+    //This part only makes the scales but it does not fill them.
+    if (element.dataset.category == "scale") {
+      var scales = zingchart.exec(chartID,'getscales');
+      for (scale in scales) {
+        if (scales[scale].indexOf("scale-x") >-1 && scales[scale] != "scale-x") {
+          new_scale_x();
+        };
+      }
+    };
+    //This part is for setting categories for the scale
+    /*if () {
+        category = element.parentElement.parentElement.parentElement.dataset.category;
+    };*/
     if (element.dataset.category !== element.dataset.subcategory) {
       try {
         elementsJSON = chartJSON['graphset'][0][element.dataset.category][element.dataset.subcategory];
@@ -1371,8 +1295,13 @@ function load_attrs(element,tabbed,laodTab) {
           }
         };
         // border check box should be cheked manually as well
-        if (attr == "border-width" && chartJSON['graphset'][0]["title"][attr] != 0 ) {
-          document.getElementById("border"+element.dataset.category).checked = true;
+        if (attr == "border-width" && elementsJSON[attr] != 0 ) {
+          document.getElementById("border"+element.dataset.category+element.dataset.subcategory).checked = true;
+          document.getElementById("borderWidth"+element.dataset.category+element.dataset.subcategory).value = elementsJSON[attr];
+        };
+        //Regardless of border witdth we will set its color if it exist
+        if (attr == "border-color"  ) {
+          document.getElementById("borderColor"+element.dataset.category+element.dataset.subcategory).value = elementsJSON[attr];
         };
         for(el in elements) {
           if (elements[el].nodeName != "#text") {

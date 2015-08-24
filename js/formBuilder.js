@@ -41,7 +41,7 @@ window.onload =function load_inputs() {
               +"<input type='checkbox' id='"+scaleData[m].inputs[j].id+"' data-category='"
               +scaleData[m]["category"]+"' data-key='"+scaleData[m].inputs[j].key+"' dat-subcat='"+
               scaleData[m].subcategory
-              +"' onchange='modify_chart_scale(this, this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>";
+              +"' onchange='modify_chart_scale(this)'><br>";
             break;
             case("color") :
               var defaultVal= ''; 
@@ -54,7 +54,7 @@ window.onload =function load_inputs() {
               +"<label>"+ scaleData[m].inputs[j].label+": </label>"
               +"<input type='color' id='"+scaleData[m].inputs[j].id+"' data-category='"
               +scaleData[m]["category"]+"' data-key='"+scaleData[m].inputs[j].key+"' dat-subcat='"+
-              scaleData[m].subcategory +"' onchange='modify_chart_scale(this,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='"+defaultVal+"'><br>";
+              scaleData[m].subcategory +"' onchange='modify_chart_scale(this)' value='"+defaultVal+"'><br>";
             break;
             case("text") :
               var defaultVal= ''; 
@@ -65,7 +65,7 @@ window.onload =function load_inputs() {
               +"<label>"+ scaleData[m].inputs[j].label+": </label>"
               +"<input type='text' id='"+scaleData[m].inputs[j].id+"' data-category='"
               +scaleData[m]["category"]+"' data-key='"+scaleData[m].inputs[j].key+"' dat-subcat='"+
-              scaleData[m].subcategory +"' onKeyUp='modify_chart_scale(this,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))' value='"+defaultVal+"'><br>";
+              scaleData[m].subcategory +"' onKeyUp='modify_chart_scale(this)' value='"+defaultVal+"'><br>";
             break;
             case ('select'):
               var options = ''
@@ -83,7 +83,7 @@ window.onload =function load_inputs() {
               +"<select id='"+scaleData[m].inputs[j].id+"' data-category='"+scaleData[m]["category"]
               +"' data-key='"+scaleData[m].inputs[j].key+"' dat-subcat='"+
               scaleData[m].subcategory 
-              +"'onchange='modify_chart_scale(this,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><option></option> "+options+"</select><br>";
+              +"'onchange='modify_chart_scale(this)'><option></option> "+options+"</select><br>";
             break;
             case ("range") :
             //oninput is for IE compatibility.
@@ -93,8 +93,8 @@ window.onload =function load_inputs() {
               +scaleData[m]["category"]+"' data-key='"+scaleData[m].inputs[j].key+"' dat-subcat='"+
               scaleData[m].subcategory
               +"' min='"+scaleData[m].inputs[j].min+"' max='"+scaleData[m].inputs[j].max+"' step='"+scaleData[m].inputs[j].step
-              +"' onchange='modify_chart_scale(this,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'"
-              +"  oninput='modify_chart_scale(this,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>";
+              +"' onchange='modify_chart_scale(this)'"
+              +"  oninput='modify_chart_scale(this)'><br>";
             break;
             case ("bgcolor") :
               seriesElement[i].innerHTML += linebreak +"<label> Background:</label>";//ID here represents category
@@ -504,11 +504,11 @@ window.onload =function load_inputs() {
               +formData[m]["category"]+"' data-key='"+formData[m].inputs[j].key+"' dat-subcat='"+
               formData[m].subcategory
               +"' min='"+formData[m].inputs[j].min+"' max='"+formData[m].inputs[j].max+"' step='"+formData[m].inputs[j].step
-              +"' onchange='modify_chart(this,this.type,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'"
+              +"' onchange='modify_chart(this,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'"
               +"  oninput='modify_chart(this,this.getAttribute(\"data-key\"),this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'><br>";
             break;
             case ("bgcolor") :
-              element[i].innerHTML += linebreak +"<label> Background:</label>";//ID here represents category
+              element[i].innerHTML += linebreak +"<label> Background :</label>";//ID here represents category
               element[i].innerHTML += "<select id='backgroundType"+formData[m].inputs[j].id+"' data-category ='"+formData[m]["category"]+"' dat-subcat='"+
               formData[m]["subcategory"]+"'onchange='set_bg_type(this.id,this.getAttribute(\"data-category\"),this.getAttribute(\"dat-subcat\"))'>"
               +"<option value='solid'>Solid</option><option value='gradiant'>Gradiant</option></select><br>"
