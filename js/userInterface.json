@@ -1,5 +1,7 @@
 //Fininish the font family conversions and also add apporpriate fonts to the following array
-fontFamily =["Arial, Helvetica, sans-serif","Arial Black, Gadget, sans-serif"] ;
+fontFamily = ["Georgia, serif","Palatino Linotype, Book Antiqua, Palatino, serif","Times New Roman, Times, serif","Arial, Helvetica, sans-serif","Arial Black, Gadget, sans-serif"] ;
+shapes     = ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
+                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"]
 /*JSON object that holds The inputs and their values*/
 var userInterface = {
     "titleData": {
@@ -49,7 +51,7 @@ var userInterface = {
             "id": "fontColorTitle",
             "key": "font-color",
             "label": "Font Color",
-            "divider": "true"
+            "divider" : "true"
         }, {
             "type": "select",
             "values": [
@@ -60,29 +62,53 @@ var userInterface = {
             "label": "Font Style",
             "id": "fontStyleItemTitle",
             "key": "font-style",
-            "divider": "true"
         }, {
-            "type": "text",
+            "type": "select",
+            "values" : fontFamily,
             "id": "fontFamilyItemTitle",
             "key": "font-family",
             "label": "Font Family"
         }, {
             "type": "select",
             "values": [
-                "Center",
+                "center",
                 "left",
-                "Right"
+                "right"
+            ],
+            "labels" : [
+            "Center",
+            "Left",
+            "Right"
             ],
             "label": "Text Align",
             "id": "textAlignItemTitle",
             "key": "text-align",
+            
+        }, {
+            "type": "text",
+            "id": "titleBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "title",
-            "key": "",
-            "label": "",
-            "divider": "true"
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "TitleLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "titleBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "text",
             "id": "paddingTopTitle",
@@ -198,27 +224,52 @@ var userInterface = {
             "key": "font-style",
             "divider": "true"
         }, {
-            "type": "text",
+            "type": "select",
             "id": "fontFamilyItemSubtitle",
+            "values" :  fontFamily,
             "key": "font-family",
             "label": "Font Family"
         }, {
             "type": "select",
             "values": [
-                "Center",
+                "center",
                 "left",
-                "Right"
+                "right"
+            ],
+            "labels" : [
+            "Center",
+            "Left",
+            "Right"
             ],
             "label": "Text Align",
             "id": "textAlignitemSubitle",
             "key": "text-align",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "subtitle",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "subTitleBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "subTitleLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "subTitleBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "text",
             "id": "paddingTopSubtitle",
@@ -363,11 +414,30 @@ var userInterface = {
             "label": "",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "legend",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "legendBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "legendLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "legendBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "text",
             "id": "paddingTopLegend",
@@ -444,9 +514,10 @@ var userInterface = {
             "key": "font-style",
             "divider": "true"
         }, {
-            "type": "text",
+            "type": "select",
             "id": "fontFamilyItemLegend",
             "key": "font-family",
+            "values" : fontFamily,
             "label": "Font family"
         }, {
             "type": "select",
@@ -508,9 +579,7 @@ var userInterface = {
         "subcategory": "marker",
         "inputs": [{
             "type": "select",
-            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
-                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
-            ],
+            "values": shapes,
             "label": "Type ",
             "id": "typeMarkerLegend",
             "key": "type"
@@ -535,11 +604,30 @@ var userInterface = {
             "label": "Background Image",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "markerlegend",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "legendMarkerBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "legendMarkerLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "legendMarkerBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }]
     },
     "plotareaData": {
@@ -577,11 +665,30 @@ var userInterface = {
             "id": "background-fitPlotArea",
             "key": "background-fit"
         }, {
-            "type": "border",
-            "id": "plotarea",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "plotAreaBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plotAreaLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plotAreaBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "text",
             "id": "paddingTopPlotArea",
@@ -773,12 +880,31 @@ var userInterface = {
             "key": "",
             "label": "",
             "divider": "true"
-        }, {
-            "type": "border",
-            "id": "plot",
-            "key": "",
-            "label": "",
+        },{
+            "type": "text",
+            "id": "plotBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plotLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plotBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "line",
             "id": "plot",
@@ -860,16 +986,35 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "hoverStateplot",
+            "id": "plothoverState",
             "key": "",
             "label": "",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "hoverStateplot",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "plothoverStateBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plothoverStateLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plothoverStateBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "line",
             "id": "hoverStateplot",
@@ -891,7 +1036,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "hoverMarkerplot",
+            "id": "plothoverMarker",
             "key": "",
             "label": "",
             "divider": "true"
@@ -931,12 +1076,31 @@ var userInterface = {
             "key": "background-repeat ",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "hoverMarkerplot",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "plotMarkerBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
         }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plotMarkerLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plotMarkerBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
+        },{
             "type": "line",
             "id": "hoverMarkerplot",
             "key": "",
@@ -944,16 +1108,14 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "select",
-            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
-                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
-            ],
+            "values": shapes,
             "label": "Type",
-            "id": "typehoverMarkerPlot",
+            "id": "PlottypehoverMarker",
             "key": "type ",
             "divider": "true"
         }, {
             "type": "checkbox",
-            "id": "visiblehoverMarkerPlot",
+            "id": "PlotvisiblehoverMarker",
             "key": "visible",   
             "label": "Visible",
             "divider": "true"
@@ -972,7 +1134,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "markerplot",
+            "id": "plotmarker",
             "key": "",
             "label": "",
             "divider": "true"
@@ -1012,11 +1174,30 @@ var userInterface = {
             "key": "background-repeat ",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "markerplot",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "plotMarkerBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plotMarkerLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plotMarkerBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "line",
             "id": "markerplot",
@@ -1025,9 +1206,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "select",
-            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
-                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
-            ],
+            "values": shapes,
             "label": "Type ",
             "id": "typeMarkerPlot",
             "key": "type",
@@ -1053,7 +1232,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "tooltipplot",
+            "id": "plottooltip",
             "key": "",
             "label": "",
             "divider": "true"
@@ -1093,11 +1272,30 @@ var userInterface = {
             "key": "background-repeat ",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "tooltipplot",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "plotTooltipBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plotTooltipLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plotTooltipBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "line",
             "id": "tooltipplot",
@@ -1111,10 +1309,43 @@ var userInterface = {
             "label": "Visible",
             "divider": "true"
         }, {
-            "type": "font",
-            "id": "tooltipplot",
-            "key": "",
-            "label": "",
+            "type": "color",
+            "id": "fontColorTitle",
+            "key": "font-color",
+            "label": "Font Color",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "fontStyleItemTitle",
+            "key": "font-style",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values" : fontFamily,
+            "id": "fontFamilyItemTitle",
+            "key": "font-family",
+            "label": "Font Family"
+        }, {
+            "type": "select",
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
+            "labels" : [
+            "Center",
+            "Left",
+            "Right"
+            ],
+            "label": "Text Align",
+            "id": "textAlignItemTitle",
+            "key": "text-align",
             "divider": "true"
         }, {
             "type": "text",
@@ -1238,7 +1469,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "value-boxplot",
+            "id": "plotvalue-box",
             "key": "",
             "label": "",
             "divider": "true"
@@ -1278,11 +1509,30 @@ var userInterface = {
             "key": "background-repeat ",
             "divider": "true"
         }, {
-            "type": "border",
-            "id": "value-boxplot",
-            "key": "",
-            "label": "",
+            "type": "text",
+            "id": "plotvalueBoxBorderWidth",
+            "key": "border-width",
+            "label": "Border Width",
             "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "solid",
+                "dotted",
+                "dashed"
+            ],
+            "Solid" : [
+            "Dotted",
+            "Dashed",
+            ],
+            "label": "Line Style",
+            "id": "plotvalueBoxLineStyle",
+            "key": "line-style",
+        }, {
+            "type": "color",
+            "id": "plotvalueBoxBorderColor",
+            "key": "border-color",
+            "label": "Border Color",
         }, {
             "type": "line",
             "id": "value-boxplot",
@@ -1296,10 +1546,43 @@ var userInterface = {
             "label": "Visible",
             "divider": "true"
         }, {
-            "type": "font",
-            "id": "value-boxplot",
-            "key": "",
-            "label": "",
+            "type": "color",
+            "id": "fontColorTitle",
+            "key": "font-color",
+            "label": "Font Color",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "fontStyleItemTitle",
+            "key": "font-style",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values" : fontFamily,
+            "id": "fontFamilyItemTitle",
+            "key": "font-family",
+            "label": "Font Family"
+        }, {
+            "type": "select",
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
+            "labels" : [
+            "Center",
+            "Left",
+            "Right"
+            ],
+            "label": "Text Align",
+            "id": "textAlignItemTitle",
+            "key": "text-align",
             "divider": "true"
         }, {
             "type": "text",
@@ -1499,7 +1782,7 @@ var userInterface = {
             "defValue": "0"
         }, {
             "type": "bgcolor",
-            "id": "preview",
+            "id": "previewpreview",
             "key": "",
             "label": "",
             "divider": "true"
@@ -1607,20 +1890,37 @@ var userInterface = {
                 "id": "anchorlabels",
                 "key": "anchor",
                 "divider": "true"
-            },
-
-            {
+            }, {
                 "type": "checkbox",
                 "id": "boldlabels",
                 "key": "bold",
                 "label": "Bold",
                 "divider": "true"
             }, {
-                "type": "border",
-                "id": "labels",
-                "key": "",
-                "label": "",
+                "type": "text",
+                "id": "labelsBorderWidth",
+                "key": "border-width",
+                "label": "Border Width",
                 "divider": "true"
+            }, {
+                "type": "select",
+                "values": [
+                    "solid",
+                    "dotted",
+                    "dashed"
+                ],
+                "Solid" : [
+                "Dotted",
+                "Dashed",
+                ],
+                "label": "Line Style",
+                "id": "labelsLineStyle",
+                "key": "line-style",
+            }, {
+                "type": "color",
+                "id": "labelsBorderColor",
+                "key": "border-color",
+                "label": "Border Color",
             }, {
                 "type": "text",
                 "id": "textlabels",
@@ -1675,8 +1975,9 @@ var userInterface = {
                 "key": "font-size",
                 "label": "Font Size"
             }, {
-                "type": "text",
+                "type": "select",
                 "id": "fontFamilylabels",
+                "values": fontFamily,
                 "key": "font-family",
                 "label": "Font Family"
             }, {
@@ -1767,11 +2068,11 @@ var userInterface = {
         "inputs": [{
             "type": "checkbox",
             "label": "Active Area",
-            "id": "activeAreaSeries",
+            "id": "seriesActiveArea",
             "key": "active_area"
         }, {
             "type": "range",
-            "id": "alphaAreaSeries",
+            "id": "seriesAlphaArea",
             "key": "alphaArea",
             "label": "Alpha Area",
             "divider": "true",
@@ -1997,19 +2298,19 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "hoverStateplot",
+            "id": "plothoverState",
             "key": "",
             "label": "",
             "divider": "true"
         }, {
             "type": "border",
-            "id": "hoverStateplot",
+            "id": "serieshoverState",
             "key": "",
             "label": "",
             "divider": "true"
         }, {
             "type": "line",
-            "id": "hoverStateplot",
+            "id": "serieshoverState",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2028,7 +2329,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "hoverMarkerplot",
+            "id": "plothoverMarker",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2069,7 +2370,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "border",
-            "id": "hoverMarkerplot",
+            "id": "serieshoverMarker",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2081,9 +2382,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "select",
-            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
-                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
-            ],
+            "values": shapes,
             "label": "Type",
             "id": "typehoverMarkerPlot",
             "key": "type ",
@@ -2117,7 +2416,7 @@ var userInterface = {
             "step": "1"
         }, {
             "type": "bgcolor",
-            "id": "markerplot",
+            "id": "plotmarker",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2158,7 +2457,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "border",
-            "id": "markerplot",
+            "id": "seriesmarker",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2170,9 +2469,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "select",
-            "values": ["triangle", "square", "circle", "diamond", "trapezoid", "rectangle", "parallelogram", "plus", "cross", "arrow", "star3", "star4", "star5", "star6", "star7",
-                "star8", "star9", "rpoly3", "rpoly4", "rpoly5", "rpoly6", "rpoly7", "rpoly8", "rpoly9", "gear3", "gear4", "gear5", "gear6", "gear7", "gear8", "gear9", "ellipse", "arc", "pie"
-            ],
+            "values": shapes,
             "label": "Type",
             "id": "typeMarkerPlot",
             "key": "type",
@@ -2198,7 +2495,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "tooltipplot",
+            "id": "plottooltip",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2239,7 +2536,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "border",
-            "id": "tooltipplot",
+            "id": "seriestooltip",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2256,11 +2553,43 @@ var userInterface = {
             "label": "Visible",
             "divider": "true"
         }, {
-            "type": "font",
-            "id": "tooltipplot",
-            "key": "",
-            "label": "",
-            "divider": "true"
+            "type": "color",
+            "id": "plotTooltipfontColor",
+            "key": "font-color",
+            "label": "Font Color",
+            "divider" : "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "plotTooltipfontStyleItem",
+            "key": "font-style",
+        }, {
+            "type": "select",
+            "values" : fontFamily,
+            "id": "plotTooltipfontFamilyItem",
+            "key": "font-family",
+            "label": "Font Family"
+        }, {
+            "type": "select",
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
+            "labels" : [
+            "Center",
+            "Left",
+            "Right"
+            ],
+            "label": "Text Align",
+            "id": "plotTooltiptextAlignItem",
+            "key": "text-align",
+            
         }, {
             "type": "text",
             "id": "heightTooltipPlot",
@@ -2383,7 +2712,7 @@ var userInterface = {
             "step": ".1"
         }, {
             "type": "bgcolor",
-            "id": "value-boxplot",
+            "id": "plotvalue-box",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2424,7 +2753,7 @@ var userInterface = {
             "divider": "true"
         }, {
             "type": "border",
-            "id": "value-boxplot",
+            "id": "seriesvalue-box",
             "key": "",
             "label": "",
             "divider": "true"
@@ -2441,10 +2770,43 @@ var userInterface = {
             "label": "Visible",
             "divider": "true"
         }, {
-            "type": "font",
-            "id": "value-boxplot",
-            "key": "",
-            "label": "",
+            "type": "color",
+            "id": "fontColorTitle",
+            "key": "font-color",
+            "label": "Font Color",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values": [
+                "normal",
+                "italic",
+                "oblique"
+            ],
+            "label": "Font Style",
+            "id": "fontStyleItemTitle",
+            "key": "font-style",
+            "divider": "true"
+        }, {
+            "type": "select",
+            "values" : fontFamily,
+            "id": "fontFamilyItemTitle",
+            "key": "font-family",
+            "label": "Font Family"
+        }, {
+            "type": "select",
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
+            "labels" : [
+            "Center",
+            "Left",
+            "Right"
+            ],
+            "label": "Text Align",
+            "id": "textAlignItemTitle",
+            "key": "text-align",
             "divider": "true"
         }, {
             "type": "text",

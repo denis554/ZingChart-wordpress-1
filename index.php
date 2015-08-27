@@ -1,11 +1,11 @@
 <?php
-/* Plugin Name: Zing Charts
+/* Plugin Name: ZingChart
 * Plugin URI:http://www.zingchart.com/
-* Description: This plugin adds Zing charts to wordpress.
+* Description: This plugin adds ZingChart to wordpress.
 * Author: Hamid Tavakoli
 * Version:1.0
-* Author URI: http://pint.com
-* Lisense :???
+* Author URI: http://zingchart.com
+* Lisense :Commercial ZingChart
 */
 /*
 TO DOs:
@@ -53,7 +53,7 @@ function Zing_custompost() {
     wp_enqueue_script('jquery-ui','http://code.jquery.com/ui/1.11.4/jquery-ui.min.js');
     wp_enqueue_script('userInterface', ZING_PLUGIN_URL.'js/userInterface.json');
     wp_enqueue_script('formBuilder', ZING_PLUGIN_URL.'js/formBuilder.js');
-    wp_enqueue_script('ZGWP', ZING_PLUGIN_URL.'js/ZGWP.js');
+    wp_enqueue_script('ZGWP', ZING_PLUGIN_URL.'js/ZCWP.js');
     wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
   }
   wp_enqueue_script('Zing_chart','http://cdn.zingchart.com/zingchart.min.js');
@@ -149,7 +149,7 @@ left: -0.25em;
 }
 </style>
 <section id="chartSelector">
-<label >Chart type:</label>
+<label >Chart Type:</label>
 <select onchange="chartRouter()" id="whichChart">
   <option value=""></option>
   <option value="area">Area</option>
@@ -165,7 +165,7 @@ left: -0.25em;
   <h3 onclick="load_attrs(this)" data-laod="0" data-category = "title" data-subCategory ="title">Title</h3>
   <div class="frm-el" data-category = "title" data-sub-category = "title">
   </div>
-  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "subtitle" data-subCategory = "subtitle" >Sub title</h3>
+  <h3 onclick="load_attrs(this)" data-laod="0" data-category = "subtitle" data-subCategory = "subtitle" >Subtitle</h3>
   <div class="frm-el" data-category = "subtitle" data-sub-category = "subtitle">
   </div>
   <h3 onclick="load_attrs(this,true)" data-laod="0" data-category = "legend" data-subCategory ="legend" > Legend</h3>
@@ -197,11 +197,11 @@ left: -0.25em;
       <ul>
         <li><a href="#plotTab1">General</a></li>
         <li><a href="#plotTab2" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "animation">Animation</a></li>
-        <li><a href="#plotTab3" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "hover-state">Hover state</a></li>
-        <li><a href="#plotTab4" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "hover-marker">Hover marker</a></li>
+        <li><a href="#plotTab3" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "hover-state">Hover State</a></li>
+        <li><a href="#plotTab4" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "hover-marker">Hover Marker</a></li>
         <li><a href="#plotTab5" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "marker">Marker</a></li>
-        <li><a href="#plotTab6" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "tool-tip">Tool Tip</a></li>
-        <li><a href="#plotTab7" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "value-box">Value Box</a></li>
+        <li><a href="#plotTab6" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "tool-tip">Tooltip</a></li>
+        <li><a href="#plotTab7" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "plot" data-subCategory = "value-box">Valuebox</a></li>
       </ul>
       <div id="plotTab1" class="frm-el" data-category = "plot" data-sub-category = "plot"></div>
       <div id="plotTab2" class="frm-el" data-category = "plot" data-sub-category = "animation"></div>
@@ -215,15 +215,15 @@ left: -0.25em;
   <h3 onclick="load_attrs(this)" data-category = "scale" >Scale</h3>
   <div class="frm-el" data-category = "scale" data-sub-category = "scaleX">
     <div id="scaleAccordion">
-      <h3 id="scaleX" onclick="load_attrs(this,true)" data-laod="0" data-category = "scale-x" data-subCategory = "scale-x"> Scale-x</h3>
+      <h3 id="scaleX" onclick="load_attrs(this,true)" data-laod="0" data-category = "scale-x" data-subCategory = "scale-x"> Scale X</h3>
       <div>
         <div id="scaleXTabs" data-count = "0">
           <ul>
             <li><a href="#scaleXGeneral">General</a></li>
-            <li><a href="#scaleXGuid" onclick="load_attrs(this.parentElement.parentElement.parentElement,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "guide">Guid</a></li>
+            <li><a href="#scaleXGuid" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "guide">Guide</a></li>
             <li><a href="#scaleXLabels" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "label">Label</a></li>
             <li><a href="#scaleXMarkers" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "markers">Markers</a></li>
-            <li><a href="#ScaleXRefLine" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "ref-line">ref-line</a></li>
+            <li><a href="#ScaleXRefLine" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "ref-line">Ref Line</a></li>
             <li><a href="#scaleXTransform" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "transform">Transform</a></li>
             <li><a href="#scaleXTick" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "tick">Tick</a></li>
             <li><a href="#scaleXItem" onclick="load_attrs(this,false,true)" data-laod="0" data-category = "scale-x" data-subCategory = "item">Item</a></li>
@@ -238,15 +238,15 @@ left: -0.25em;
           <div class = "scl-el" data-category = "scale-x" data-sub-category = "item"    id="scaleXItem"></div>
         </div>
       </div>
-      <h3 id="scaleY">Scale-y</h3>
+      <h3 id="scaleY">Scale Y</h3>
       <div>
         <div id="scaleYTabs" data-count = "0">
           <ul>
             <li><a href="#scaleYGeneral">General</a></li>
-            <li><a href="#scaleYGuid">Guid</a></li>
+            <li><a href="#scaleYGuid">Guide</a></li>
             <li><a href="#scaleYLabels">Label</a></li>
             <li><a href="#scaleYMarkers">Markers</a></li>
-            <li><a href="#ScaleYRefLine">ref-line</a></li>
+            <li><a href="#ScaleYRefLine">Ref Line</a></li>
             <li><a href="#scaleYTransform">Transform</a></li>
             <li><a href="#scaleYTick">Tick</a></li>
             <li><a href="#scaleYItem">Item</a></li>
@@ -261,21 +261,21 @@ left: -0.25em;
           <div class = "scl-el" data-category = "scale-y" data-sub-category = "item"    id="scaleYItem"></div>
         </div>
       </div>
-      <h3>Scale-r</h3>
+      <h3>Scale R</h3>
       <div class="frm-el" data-category = "scale-r" data-sub-category = "scale-r"></div>
       <h3>Scale</h3>
       <div class="frm-el" data-category = "scale" data-sub-category = "scale"></div>
     </div>
-    <button type="button" onclick="new_scale_x()">New Scale-X</button>
-    <button type="button" onclick="new_scale_y()">New Scale-Y</button>
+    <button type="button" onclick="new_scale_x()">New Scale X</button>
+    <button type="button" onclick="new_scale_y()">New Scale Y</button>
   </div> 
   <h3 onclick="load_empty_labels()">Labels</h3>
   <div >
     <div id="labelsAccordion">
-      <h3  id = "LabelsTitle" onclick="load_label_data()"> Label </h3>
+      <h3  id = "LabelsTitle" onclick="load_label_data(this)"> Label </h3>
       <div id = "lableConfig" class="lbl-el" data-category = "labels" data-sub-category = "labels" data-count ="0"></div>
     </div>
-    <button type="button" onclick="new_label(); return false;">New Label</button>
+    <button type="button" onclick="ZCWP.label.new_label()">New Label</button>
   </div>
   <h3 onclick="load_attrs(this)" data-category = "preview" data-subCategory = "preview" >Preview </h3>
   <div id="preview" class="frm-el" data-category = "preview" data-sub-category = "preview">
@@ -288,8 +288,8 @@ left: -0.25em;
   <div style="clear:both"></div>
   <div id='dataTabs'>
     <ul>
-      <li><a href="#jsonString">Json</a></li>
-      <li><a href="#series">data</a></li>
+      <li><a href="#jsonString">JSON</a></li>
+      <li><a href="#series">Data</a></li>
     </ul>
     <div id='jsonString'>
       <textarea name="JavaScript" class="widefat code code-html" id="zingcharts-javaScript34333"> </textarea>
@@ -303,11 +303,11 @@ left: -0.25em;
               <li><a href="#seriesTab0">Data</a></li>
               <li><a href="#seriesTab1">General</a></li>
               <li><a href="#seriesTab2">Animation</a></li>
-              <li><a href="#seriesTab3">Hover state</a></li>
-              <li><a href="#seriesTab4">Hover marker</a></li>
+              <li><a href="#seriesTab3">Hover State</a></li>
+              <li><a href="#seriesTab4">Hover Marker</a></li>
               <li><a href="#seriesTab5">Marker</a></li>
-              <li><a href="#seriesTab6">Tool Tip</a></li>
-              <li><a href="#seriesTab7">Value Box</a></li>
+              <li><a href="#seriesTab6">Tooltip</a></li>
+              <li><a href="#seriesTab7">Valuebox</a></li>
             </ul>
             <div id="seriesTab0" class="series-el" data-category = "series" data-sub-category = "data">
               <label for="seriesData">Values:</label>
@@ -326,6 +326,7 @@ left: -0.25em;
       <button type="button" onclick="new_series(); return false;">New Series</button>
     </div>
   </div>
+  <div class="media-modal wp-core-ui"></div>
   <?php
   }
 function zing_javascript($post) {
