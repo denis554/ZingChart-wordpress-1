@@ -50,6 +50,7 @@ ZCWP.general = {
         value= element.value;
     }
     var chartData = zingchart.exec(chartID, 'getdata');
+
     if (!chartData['graphset'][0][category]) {
       chartData['graphset'][0][category] = {};
       if (category != subCategory ) {
@@ -61,11 +62,6 @@ ZCWP.general = {
         chartData['graphset'][0][category][key] = value;
       }
       update_zingchart("modify",chartData['graphset'][0]);
-      if (category === "preview" && !element.checked && element.id === "visiblePreview") {
-        var tempobj = zingchart.exec(chartID,'getdata' );
-          delete tempobj.graphset[0][category];
-          update_zingchart("setdata",tempobj);
-      } 
     } else {
       if (category != subCategory ) {
         if (chartData['graphset'][0][category][subCategory]) {
@@ -79,6 +75,11 @@ ZCWP.general = {
       }
       update_zingchart("setdata",chartData); 
     }
+    if (category === "preview" && !element.checked && element.id === "visiblePreview") {
+        var tempobj = zingchart.exec(chartID,'getdata' );
+          delete tempobj.graphset[0][category];
+          update_zingchart("setdata",tempobj);
+    } 
   },
   /*
    * Generic functions for bg Color
@@ -327,7 +328,7 @@ ZCWP.label  = {
         chartData['graphset'][0]['labels'][(count == "" ) ? 0 : count]['background-color-1'] = document.getElementById('backgroundColor1'+subCategory+category+count).value;
         chartData['graphset'][0]['labels'][(count == "" ) ? 0 : count]['background-color-2'] = document.getElementById('backgroundColor1'+subCategory+category+count).value; 
       }
-      update_zingchart("modify", chartData['graphset'][0]);
+      update_zingchart("setdata", chartData['graphset'][0]);
     }
   }   
  }
@@ -336,117 +337,70 @@ ZCWP.label  = {
 
 
 
-
-function set_border_label(category,subCategory,count) {
-
-  count = (count != 0) ? count : ''; 
-  // Get chart JSON
-  var chartData = zingchart.exec(chartID, 'getdata');
-  var chartLabels = chartData['graphset'][0]['labels']; 
-  if (typeof chartLabels  == "undefined") { 
-    var dataObj = {
-      labels :[],
-    };
-    var vals = {};
-    if (document.getElementById('border'+category+count).checked) {
-      vals["border-width"] = document.getElementById('borderWidth'+category+count).value;
-      vals["border-color"] = document.getElementById('borderColor'+category+count).value;
-    } else {
-      vals["border-width"] = 0;
-    }
-    dataObj.labels.push (vals);
-    zingchart.exec(chartID,'modify', {
-      graphid : 0,
-      data : dataObj  
-    });
-  } else {
-    if (document.getElementById('border'+category+count).checked) {
-      chartLabels[(count == "" ) ? 0 : count]["border-width"] = document.getElementById('borderWidth'+category+count).value;
-      chartLabels[(count == "" ) ? 0 : count]["border-color"] = document.getElementById('borderColor'+category+count).value;
-    } else {
-       chartLabels[(count == "" ) ? 0 : count]["border-width"] = 0;
-    }
-    zingchart.exec(chartID,'modify', {
-      graphid : 0,
-      data : {
-        "labels":chartLabels
-      }
-    });
-  } 
-  create_json();}
-function new_series() {
-  var title = document.getElementById("seriesTitle");
-  var series = document.getElementById("seriesConfig");
-  var clonedSeries = series.cloneNode(true);
-  var clonedTitle = title.cloneNode(true);
-  childs = clonedSeries.childNodes;
-  seriesConfigId++;
-  // THis for will add id and data count,
-  // In our case this will be only the tabseris div
-  for (var i= 0 , len = clonedSeries.childNodes.length ; i<len; i++) {
-    //We only care about the elements that has id
-    if (childs[i].id) {
-      childs[i].id += seriesConfigId;
-      childs[i].setAttribute("data-count",seriesConfigId);
-      //This one checks for the childs of the cloned node
-      //it checks for the childs of tabseries div
-      for (var k= 0;k<childs[i].childNodes.length;k++ ) {
-          //if the child has data-category == series and it is a elemnet 
-        if (childs[i].childNodes[k].nodeName != "#text") {
-          if (childs[i].childNodes[k].getAttribute("data-category") == "series") {
-            if (childs[i].childNodes[k].type =="label") {
-              childs[i].childNodes[k].innerHTML += seriesConfigId;
+ZCWP.series = {
+  new_series : function () {
+    var title = document.getElementById("seriesTitle");
+    var series = document.getElementById("seriesConfig");
+    var clonedSeries = series.cloneNode(true);
+    var clonedTitle = title.cloneNode(true);
+    childs = clonedSeries.childNodes;
+    seriesConfigId++;
+    // THis for will add id and data count,
+    // In our case this will be only the tabseris div
+    for (var i= 0 , len = clonedSeries.childNodes.length ; i<len; i++) {
+      //We only care about the elements that has id
+      if (childs[i].id) {
+        childs[i].id += seriesConfigId;
+        childs[i].setAttribute("data-count",seriesConfigId);
+        //This one checks for the childs of the cloned node
+        //it checks for the childs of tabseries div
+        for (var k= 0;k<childs[i].childNodes.length;k++ ) {
+            //if the child has data-category == series and it is a elemnet 
+          if (childs[i].childNodes[k].nodeName != "#text") {
+            if (childs[i].childNodes[k].getAttribute("data-category") == "series") {
+              if (childs[i].childNodes[k].type =="label") {
+                childs[i].childNodes[k].innerHTML += seriesConfigId;
+              };
+              childs[i].childNodes[k].setAttribute("data-count",seriesConfigId);
             };
-            childs[i].childNodes[k].setAttribute("data-count",seriesConfigId);
           };
         };
       };
-    };
-  }
-  clonedTitle.innerHTML += seriesConfigId;
-  document.querySelector("#seriesAccordion").appendChild(clonedTitle);
-  document.querySelector("#seriesAccordion").appendChild(clonedSeries);
-  //Refrreshing Ui toaccomedate new elemnts
-  jQuery(function($) {
-    $('#seriesAccordion').accordion("refresh"); 
-    $("#"+childs[1].id).tabs(); 
-  });
-  if (seriesConfigId == 1 ) {
-    var chartData = zingchart.exec(chartID, 'getdata');
-    var chartseries = chartData['graphset'][0]['series'];
-    if( typeof chartseries == "undefined") {
-      var dataObj = {
-        series :[]
-      };
-      var vals ={}
-      dataObj.labels.push(vals);
-      dataObj.labels.push(vals);
-      zingchart.exec(chartID,'modify', {
-        graphid : 0,
-        data : dataObj  
-      });
-    } else {
-      var vals ={};
-      chartseries.push(vals);
-       zingchart.exec(chartID,'modify', {
-        graphid : 0,
-        data : {
-          "series" : chartseries
-        }  
-      });
     }
-
-  } else {
-    var chartData = zingchart.exec(chartID, 'getdata');
-    var chartseries = chartData['graphset'][0];
-    var empty ={}
-    chartseries['series'].push(empty);
-    zingchart.exec(chartID,'modify', {
-      graphid : 0,
-      data : chartseries  
+    clonedTitle.innerHTML += seriesConfigId;
+    document.querySelector("#seriesAccordion").appendChild(clonedTitle);
+    document.querySelector("#seriesAccordion").appendChild(clonedSeries);
+    //Refrreshing Ui toaccomedate new elemnts
+    jQuery(function($) {
+      $('#seriesAccordion').accordion("refresh"); 
+      $("#"+childs[1].id).tabs(); 
     });
+
+    if (seriesConfigId == 1 ) {
+      var chartData = zingchart.exec(chartID, 'getdata');
+      if( typeof chartData['graphset'][0]['series'] == "undefined") {
+        var dataObj = {
+          series :[]
+        };
+        var vals ={}
+        //There is no series in the JSON.So I have to creat 2 series.
+        // This case will happen unlikely 
+        dataObj.series.push(vals);
+        dataObj.series.push(vals);
+        update_zingchart("modify", dataObj);
+      } 
+    } else {
+      var chartData = zingchart.exec(chartID, 'getdata');
+      if (seriesConfigId == chartData['graphset'][0]['series'].length) {
+        var vals ={};
+        chartData['graphset'][0]['series'].push(vals);
+        update_zingchart("setdata", chartData['graphset'][0]);
+      };
+    }
   }
-  create_json();}
+}
+
+
 var bgTypeseries= [];
 function set_bg_type_series(element,category,subCategory,count) {
   count = (element.parentElement.parentElement.dataset.count != 0) ? element.parentElement.parentElement.dataset.count : ''; 
@@ -1306,4 +1260,42 @@ function set_font(category,subCategory) {
     data : dataObj
   });
   zingchart.exec(chartID,'update');
+  create_json();}*/
+
+  /*function set_border_label(category,subCategory,count) {
+
+  count = (count != 0) ? count : ''; 
+  // Get chart JSON
+  var chartData = zingchart.exec(chartID, 'getdata');
+  var chartLabels = chartData['graphset'][0]['labels']; 
+  if (typeof chartLabels  == "undefined") { 
+    var dataObj = {
+      labels :[],
+    };
+    var vals = {};
+    if (document.getElementById('border'+category+count).checked) {
+      vals["border-width"] = document.getElementById('borderWidth'+category+count).value;
+      vals["border-color"] = document.getElementById('borderColor'+category+count).value;
+    } else {
+      vals["border-width"] = 0;
+    }
+    dataObj.labels.push (vals);
+    zingchart.exec(chartID,'modify', {
+      graphid : 0,
+      data : dataObj  
+    });
+  } else {
+    if (document.getElementById('border'+category+count).checked) {
+      chartLabels[(count == "" ) ? 0 : count]["border-width"] = document.getElementById('borderWidth'+category+count).value;
+      chartLabels[(count == "" ) ? 0 : count]["border-color"] = document.getElementById('borderColor'+category+count).value;
+    } else {
+       chartLabels[(count == "" ) ? 0 : count]["border-width"] = 0;
+    }
+    zingchart.exec(chartID,'modify', {
+      graphid : 0,
+      data : {
+        "labels":chartLabels
+      }
+    });
+  } 
   create_json();}*/

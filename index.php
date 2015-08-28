@@ -323,7 +323,7 @@ left: -0.25em;
           </div>
         </div>
       </div>
-      <button type="button" onclick="new_series(); return false;">New Series</button>
+      <button type="button" onclick="ZCWP.series.new_series();">New Series</button>
     </div>
   </div>
   <div class="media-modal wp-core-ui"></div>
